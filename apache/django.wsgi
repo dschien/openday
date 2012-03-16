@@ -1,9 +1,9 @@
 import os
 import sys
  
-path = '/srv/www'
+path = '/var/www/django/openday'
 if path not in sys.path:
-    sys.path.insert(0, '/srv/www')
+    sys.path.insert(0, '/var/www/django/openday')
  
 os.environ['DJANGO_SETTINGS_MODULE'] = 'openday.settings'
  
