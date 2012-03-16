@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<form action="app" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		I am knowledgeable about climate change
+		<br>
+		<input type="radio" name="cc" value="5">
+		Strongly agree
+		<br>
+		<input type="radio" name="cc" value="4">
+		agree
+		<br>
+		<input type="radio" name="cc" value="3">
+		undecided
+		<br>
+		<input type="radio" name="cc" value="2">
+		disagree
+		<br>
+		<input type="radio" name="cc" value="1">
+		strongly disagree
+		<br>
+		I am knowledgeable about IT
+		<br>
+		<input type="radio" name="it" value="5">
+		Strongly agree
+		<br>
+		<input type="radio" name="it" value="4">
+		agree
+		<br>
+		<input type="radio" name="it" value="3">
+		undecided
+		<br>
+		<input type="radio" name="it" value="2">
+		disagree
+		<br>
+		<input type="radio" name="it" value="1">
+		strongly disagree
+		<br>
+		<p>
+			<input type="submit" value="Continue &rarr;"/>
+		</p>
+	</form>
+	</select> </body>
+</html>
