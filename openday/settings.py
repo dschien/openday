@@ -11,7 +11,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'opendaydb',                      # Or path to database file if using sqlite3.
         'USER': 'openday',                      # Not used with sqlite3.
         'PASSWORD': 'PhWfu3UcLX8b',                  # Not used with sqlite3.
