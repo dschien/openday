@@ -52,8 +52,14 @@
 	</head>
 	<body>
 		<div id="frame">
-			<div id="header"><h1><a href="index.html"><img src="../img/logo1.png"/></a></h1></div>
-			<div id="menu"><p><a href="about.html">ABOUT</a> | <a href="data.html">DATA</a></p></div>
+			<div id="header">
+				<h1><a href="index.html"><img src="{{STATIC_URL}}img/logo1.png"/></a></h1>
+			</div>
+			<div id="menu">
+				<p>
+					<a href="about.html">ABOUT</a> | <a href="data.html">DATA</a>
+				</p>
+			</div>
 			<div id="column_left">
 				<h2>1. Website</h2>
 				<p>
@@ -114,7 +120,8 @@
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+			( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)

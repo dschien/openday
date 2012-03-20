@@ -2,28 +2,45 @@
 <html class="no-js" lang="en">
 	<head>
 		<title>Guardian energy calculator</title>
-		<link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{ STATIC_URL }}style.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
- 		<div id="frame">
-			<div id="header"><h1><a href="index.html"><img src="../img/logo1.png"/></a></h1></div>
-			<div id="menu"><p><a href="about.html">ABOUT</a> | <a href="data.html">DATA</a></p></div>
+		<div id="frame">
+			<div id="header">
+				<h1><a href="index.html"><img src="../img/logo1.png"/></a></h1>
 			</div>
-			<div id="about">
-				<p>This project is part of <a href="http://sympact.cs.bris.ac.uk/" target="_blank">Sympact</a>, a joint research project between University of Bristol, University of Surrey and Guardian News and Media, exploring the environmental impact of digital transformation. In collaboration with the <a href="http://cesc.kth.se" target="_blank">Centre for Sustainable Communications</a> in Stockholm</p>
-				<p>Contact us at info@cs.bris.ac.uk</p>
-				
-				<p><smaller>Created by Daniel Schien and <a href="http://jorge.zapi.co">Jorge Zapico</a>.</smaller></p>
-				<p><smaller>Code available as open source at <a href="http://github.com/dschien/godee">Github</a>.</smaller></p>
-				
-				<br/>
-				<img src="http://sympact.cs.bris.ac.uk/wp-content/themes/sympact2/images/sympactlogo.jpg" width="160px"/>
-				<img src="http://cesc.kth.se/img/blacklogo.png" width="160px"/>
+			<div id="menu">
+				<p>
+					<a href="about.html">ABOUT</a> | <a href="data.html">DATA</a>
+				</p>
 			</div>
 		</div>
+		<div id="about">
+			<p>
+				This project is part of <a href="http://sympact.cs.bris.ac.uk/" target="_blank">Sympact</a>, a joint research project between University of Bristol, University of Surrey and Guardian News and Media, exploring the environmental impact of digital transformation. In collaboration with the <a href="http://cesc.kth.se" target="_blank">Centre for Sustainable Communications</a> in Stockholm
+			</p>
+			<p>
+				Contact us at info@cs.bris.ac.uk
+			</p>
+			<p>
+				<smaller>
+					Created by Daniel Schien and <a href="http://jorge.zapi.co">Jorge Zapico</a>.
+				</smaller>
+			</p>
+			<p>
+				<smaller>
+					Code available as open source at <a href="http://github.com/dschien/godee">Github</a>.
+				</smaller>
+			</p>
+			<br/>
+			<img src="http://sympact.cs.bris.ac.uk/wp-content/themes/sympact2/images/sympactlogo.jpg" width="160px"/>
+			<img src="http://cesc.kth.se/img/blacklogo.png" width="160px"/>
+		</div>
+		</div>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+			( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
