@@ -39,7 +39,7 @@ HOST_NAME = ''
 # Then load those sensitive settings from a local file with tight
 # filesystem permissions.
 #from os.path import expanduser
-execfile('/var/www/django/openday/.local_settings')
+execfile('/var/www/django/.local_settings')
 
 DATABASES = {
     'default': {
