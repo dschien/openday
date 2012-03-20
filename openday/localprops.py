@@ -1,0 +1,1 @@
+DATABASES['default']['PASSWORD'] = 'PhWfu3UcLX8b'
