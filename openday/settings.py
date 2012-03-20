@@ -1,5 +1,12 @@
 # Django settings for openday project.
-
+#import os, sys, inspect
+## cmd_folder = os.path.dirname(os.path.abspath(__file__)) # DO NOT USE __file__ !!!
+## __file__ fails if script is called in different ways on Windows
+## __file__ fails if someone does os.chdir() before
+## sys.argv[0] also fails because it doesn't not always contains the path
+#cmd_folder = os.path.abspath(os.path.split(inspect.getfile(inspect.currentframe()))[0])
+#if cmd_folder not in sys.path:
+#    sys.path.insert(0, cmd_folder)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -9,14 +16,28 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Exposing database details is a security hole, so leave them blank here.
+DATABASE_ENGINE = ''
+DATABASE_NAME = ''
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = ''
+DATABASE_PORT = ''
+SECRET_KEY = ''
+
+# Then load those sensitive settings from a local file with tight
+# filesystem permissions.
+#from os.path import expanduser
+execfile('.local_settings')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'opendaydb', # Or path to database file if using sqlite3.
-        'USER': 'openday', # Not used with sqlite3.
-        'PASSWORD': 'PhWfu3UcLX8b', # Not used with sqlite3.
-        'HOST': 'localhost', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': DATABASE_ENGINE, # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': DATABASE_NAME, # Or path to database file if using sqlite3.
+        'USER': DATABASE_USER, # Not used with sqlite3.
+        'PASSWORD': DATABASE_PASSWORD, # Not used with sqlite3.
+        'HOST': DATABASE_HOST, # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': DATABASE_PORT, # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -166,7 +187,7 @@ LOGGING = {
         },
     'console': {
             'handlers': ['console'],
-            'level': 'DEBUG',            
+            'level': 'DEBUG',
         }
     
     }
