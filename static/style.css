@@ -7,9 +7,19 @@ body{
 	width:1024px;
 }
 #header{
+	float:left;
 	position:relative;
-	width:1024px;
+	width:800px;
+	height:100px;
 	padding:20px;
+	padding-top:0px;
+}
+#menu{
+	float:right;
+	width:140px;
+	height:60px;
+	margin-top:20px;
+	text-align:right;
 }
 #column_left{
 	position:relative;
@@ -61,8 +71,11 @@ body{
 big{
 	font-size:145px;
 }
+smaller{
+	font-size:16px;
+}
 #about p{
-	font-size:28px;
+	font-size:24px;
 }
 a{
 	color: #0776A0;
