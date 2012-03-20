@@ -1,7 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.simple import redirect_to
+from django.views.generic import ListView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from openday.models import Survey
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -26,4 +28,8 @@ urlpatterns = patterns('',
      #(r'^favicon\.ico$', redirect_to, {'url': '/media/favicon.ico'}),
      (r'^robots\.txt$', 'django.views.generic.simple.direct_to_template', {'template': 'robots.txt', 'mimetype': 'text/plain'}),
      (r'^favicon\.ico$', redirect_to, {'url': ' {{ STATIC_URL }}favicon.ico'}),
+     url(r'^list', ListView.as_view(
+            queryset=Survey.objects.order_by('-survey_date')[:50],
+            context_object_name='past_surveys_list',
+            template_name='list.html')),
 )

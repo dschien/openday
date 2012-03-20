@@ -5,13 +5,13 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<form action="climate.html" method="post" accept-charset="utf-8">
+<form action="climate" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 	Are you?
 	<br>
-	<input type="radio" name="gender" value="male" id='male'>
+	<input type="radio" name="gender" value="0" id='male'>
 	<label for="male">Male</label>
-	<input type="radio" name="gender" value="female" id='female'>
+	<input type="radio" name="gender" value="1" id='female'>
 	<label for="female">Female</label>
 	<br>
 	What is your age group?

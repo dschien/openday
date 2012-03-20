@@ -1,0 +1,9 @@
+{% if past_surveys_list %}
+    <ul>
+    {% for survey in latest_poll_list %}
+        <li> {{ survey }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No surveys are available.</p>
+{% endif %}

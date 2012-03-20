@@ -82,7 +82,7 @@ MEDIA_ROOT = '/var/www/django/openday/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = HOST_NAME + 'media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -97,7 +97,7 @@ STATIC_URL = HOST_NAME + 'static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = 'static/admin/'
+ADMIN_MEDIA_PREFIX = MEDIA_URL + '/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -154,6 +154,10 @@ INSTALLED_APPS = (
     'openday'
 )
 
+logging.basicConfig(level=logging.INFO,
+     format='%(asctime)s %(levelname)s %(message)s',
+     filename='/var/www/django/logs/django.log',
+     filemode='a+')
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
@@ -180,11 +184,6 @@ LOGGING = {
             'class':'logging.StreamHandler',
             'formatter': 'simple'
         },
-        'file':{
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/var/www/django/logs/openday.log',
-        }
     },
     'loggers': {
         'django.request': {
@@ -192,11 +191,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-    'file': {
-            'handlers': ['file'],
-            'level': 'INFO',
-        },
-    'console': {
+        'console': {
             'handlers': ['console'],
             'level': 'DEBUG',
         }
