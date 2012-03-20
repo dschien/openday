@@ -183,7 +183,7 @@ LOGGING = {
         'file':{
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'django/logs/openday.log',
+            'filename': '/var/www/django/logs/openday.log',
         }
     },
     'loggers': {
