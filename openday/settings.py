@@ -31,9 +31,6 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-import os
-logger.debug(os.getcwd())
-
 HOST_NAME = ''
 
 # Then load those sensitive settings from a local file with tight
@@ -112,10 +109,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'i6*s1ppsyq09axu6ap_4g8@m+rzu(vy^_5kl2s3)46aitt5s$$'
+) 
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
