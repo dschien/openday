@@ -4,8 +4,11 @@ from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from forms import ContactForm
 from models import Contact
+import logging
 
 # Create your views here.
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 def start(request):    
     return render_to_response('start.html', context_instance=RequestContext(request))
@@ -23,7 +26,11 @@ def gender(request):
     # no data to show    
     if not request.session :
         # if it doesn't have a session -> start again
-        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))    
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+
+    logger.debug(request['gender'])    
+    request.session['gender'] = request['gender'] 
+        
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
     
 def gender2(request):
@@ -50,3 +57,31 @@ def contact(request):
     else:
         form = ContactForm()
     return render_to_response('form.html', {'form': form}, context_instance=RequestContext(request))
+
+
+def app(request):
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    # save the information from the form into the session
+    
+        #request.session
+    return render_to_response('index.html', {}, context_instance=RequestContext(request))
+
+
+def review(request):
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    # save the information from the form into the session
+    #request.session
+    return render_to_response('review.html', {}, context_instance=RequestContext(request))
+
+def finish(request):
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+#     save the information from the form into the session
+    
+    # save the session information    
+    return render_to_response('start.html', {}, context_instance=RequestContext(request))

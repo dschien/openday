@@ -11,7 +11,11 @@ urlpatterns = patterns('',
 #     url(r'^gender', 'openday.quest.views.gender'),
      url(r'^gender', 'openday.views.gender2'),
      url(r'^climate', 'openday.views.climate'),
-     url(r'^app', redirect_to, {'url': 'http://sympact.cs.bris.ac.uk/godee'}),
+     url(r'^app', 'openday.views.app'),
+     url(r'^review', 'openday.views.review'),
+     url(r'^finish', 'openday.views.finish'),
+     
+     
 #     url(r'^app', redirect_to, {'url': 'http://sympact.cs.bris.ac.uk/openday/godee/'}),
      url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -21,5 +25,5 @@ urlpatterns = patterns('',
      url(r'^admin/', include(admin.site.urls)),
      #(r'^favicon\.ico$', redirect_to, {'url': '/media/favicon.ico'}),
      (r'^robots\.txt$', 'django.views.generic.simple.direct_to_template', {'template': 'robots.txt', 'mimetype': 'text/plain'}),
-     (r'^favicon\.ico$', redirect_to, {'url': '/media/favicon.ico'}),
+     (r'^favicon\.ico$', redirect_to, {'url': ' {{ STATIC_URL }}favicon.ico'}),
 )

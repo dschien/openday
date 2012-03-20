@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<title>Guardian energy calculator</title>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script>
+			$(function() {
+				$("#slider").slider({
+					value : 0,
+					min : 0,
+					max : 1800,
+					step : 60,
+					slide : function(event, ui) {
+						$("#amount").val(ui.value / 60);
+						if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
+							calc();
+						}
+					}
+				});
+				$("#amount").val("" + $("#slider").slider("value"));
+			});
+			$(function() {
+				var device = '';
+				var connection = '';
+				$("#selectable li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					device = $(this).text();
+					$("#device_selected").val(device);
+					if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
+						calc();
+					}
+				});
+				$("#selectable2 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#device_selected").val(connection);
+					if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
+						calc();
+					}
+				});
+			});
+
+		</script>
+	</head>
+	<body>
+		<div id="frame">
+			<div id="header">
+				<h1><a href="index.html"><img src="{{STATIC_URL}}img/logo1.png"/></a></h1>
+				<p>
+					<a href="about.html">ABOUT</a> | <a href="data.html">DATA</a>
+				</p>
+			</div>
+			<div id="column_left">
+				<h2>1. Website</h2>
+				<p>
+					http://theguardian.co.uk
+				</p>
+				<h2>2. Select device</h2>
+				<ol id="selectable">
+					<li class="device">
+						phone
+					</li>
+					<li class="device">
+						tablet
+					</li>
+					<li class="device">
+						laptop
+					</li>
+					<li class="device">
+						pc
+					</li>
+					<input id="device_selected" type="hidden" value="" runat="server" />
+				</ol>
+				<h2>3. Select connection</h2>
+				<ol id="selectable2">
+					<li class="connection">
+						dsl
+					</li>
+					<li class="connection">
+						mobile
+					</li>
+					<input id="connection_selected" type="hidden" value="" runat="server" />
+				</ol>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<h2>4. Browsing time</h2>
+				<div id="slider"></div>
+				<p>
+					<input type="text" id="amount" style="border:0; font-weight:bold;" />
+					Minutes
+				</p>
+				<h2>Calculate</h2>
+				<button value="calc" name="calculate" onclick="calc()">
+					Go
+				</button>
+			</div>
+			<!--Div that will hold the pie chart-->
+			<div id="column_right">
+				<div id="bignr">
+					<h1>How much electricity does visiting The Guardian website consumes?</h1>
+					<h2>It depends on your device, they way you connect and how much time you spent in the site. Choose in the left column and experiment how the energy consumption changes!</h2>
+				</div>
+				<div id="chart_div"></div>
+			</div>
+		</div>
+		<form action="review" method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			<input type="submit" value="Continue &rarr;"/>
+		</form></footer>
+		<script>
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g, s)
+			}(document, 'script'));
+
+		</script>
+	</body>
+</html>
