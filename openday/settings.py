@@ -34,6 +34,8 @@ logger = logging.getLogger(__name__)
 import os
 logger.debug(os.getcwd())
 
+HOST_NAME = ''
+
 # Then load those sensitive settings from a local file with tight
 # filesystem permissions.
 #from os.path import expanduser
@@ -90,7 +92,7 @@ STATIC_ROOT = '/var/www/django/openday/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://localhost/static/'
+STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
