@@ -2,8 +2,9 @@ Energy calculator for websites. It calculates the energy footprint of a single w
 (More info)
 
 Coded by
-- Daniel Schien
-- Jorge L. Zapico http://jorge.zapi.co
+- Daniel Schien http://sympact.cs.bris.ac.uk/
+- Jorge L. Zapico http://jorge.zapi.co http://cesc.kth.se
 
-Release under Open Source License 
-(Choose license)
+This project is part of  Sympact, a joint research project between University of Bristol, University of Surrey and Guardian News and Media, exploring the environmental impact of digital transformation. In collaboration with the Centre for Sustainable Communications in Stockholm.
+
+Release Open Source under GNU General Public License, version 3.

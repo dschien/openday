@@ -13,32 +13,11 @@
 		</style>
 	</head>
 	<body>
-		<!-- navbar -->
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-					<a class="brand" href="#">SYMPACT Energy Explorer</a>
-					<div class="nav-collapse">
-						<ul class="nav">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
-							<li>
-								<a href="#about">About</a>
-							</li>
-							<li>
-								<a href="#contact">Contact</a>
-							</li>
-						</ul>
-					</div><!--/.nav-collapse -->
-				</div>
-			</div>
-		</div>
-		<! -- end navbar -->
-		<div class="container">
+ 		<div id="frame">
+			<div id="header"><h1><a href="index.html"><img src="../img/logo1.png"/></a></h1></div>
+			<div id="menu"><p><a href="about.html">ABOUT</a> | <a href="data.html">DATA</a></p></div>
 			{% block content %}
 			{% endblock %}
-		</div>
+	</div>
 	</body>
 </html>
