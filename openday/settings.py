@@ -25,10 +25,19 @@ DATABASE_HOST = ''
 DATABASE_PORT = ''
 SECRET_KEY = ''
 
+import logging
+
+# Create your views here.
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+import os
+logger.debug(os.getcwd())
+
 # Then load those sensitive settings from a local file with tight
 # filesystem permissions.
 #from os.path import expanduser
-execfile('.local_settings')
+execfile('/var/www/django/openday/.local_settings')
 
 DATABASES = {
     'default': {
@@ -172,7 +181,7 @@ LOGGING = {
         'file':{
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'openday.log',
+            'filename': 'django/logs/openday.log',
         }
     },
     'loggers': {
