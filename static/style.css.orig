@@ -42,6 +42,8 @@ body{
 	padding:20px;
 }
 /*Items*/
+<<<<<<< HEAD
+
 #selected_service .selected { background: #333; color: white; }
 #selected_service { list-style-type: none; margin: 0; padding: 0; width: 100%; }
 .connection{
@@ -55,7 +57,10 @@ body{
 	color:white;
 }
 
+#selectable .selected { background: #333; color: white; }
+=======
 #selectable .selected { background: #0776A0; color: white; }
+>>>>>>> d3f057c5c7759ad4dba71d16df188e443193aba6
 #selectable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
 .device{
 	float:left;
