@@ -122,13 +122,13 @@ function calc() {
 	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> Wh</h1>"
 	// create percentages
-	var p_user = (e_user * 100) / e_total
-	var p_network = (e_network * 100) + e_total
-	var p_serv = (e_serv * 100) / e_total
-	var p_acc_net = (e_acc_net * 100) / e_total
+	var p_user = (e_user * 100) / e_total_joule
+	var p_network = (e_network * 100) / e_total_joule
+	var p_serv = (e_serv * 100) / e_total_joule
+	var p_acc_net = (e_acc_net * 100) / e_total_joule
 	// create circles
 	var max_size=30
-	var circle_user= Math.round(Math.sqrt(max_size*e_user/3.1416))
+	var circle_user= Math.round(Math.sqrt(max_size*(e_user/3600)/3.1416))
 	document.getElementById('circle1').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
 	/*
 	var size = round(sqrt($max*$impactAssessment['amount']/pi()));
