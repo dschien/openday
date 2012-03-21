@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div id="about">
 <form action="app" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 	I am knowledgeable about climate change
@@ -40,5 +41,6 @@
 		<input type="submit" value="Continue &rarr;"/>
 	</p>
 </form>
-</select> </body>
+</select>
+</div>
 {% endblock %} 

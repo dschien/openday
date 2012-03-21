@@ -5,6 +5,7 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
+<div id="about">
 <form action="climate" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 	Are you?
@@ -31,4 +32,5 @@
 	<br>
 	<input type="submit" value="Continue &rarr;"/>
 </form>
+</div>
 {% endblock %} 
