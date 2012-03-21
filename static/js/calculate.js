@@ -84,12 +84,10 @@ function calc() {
 		case 'mobile':
 			e_acc_net = dataVolume * 1.8144144197598379e-05
 			break;
-
 		default:
 			// default is dsl
 			e_acc_net = 10 * durationSecs
 	}
-
 	var e_origin = 102
 	var e_3rdp = 5.3490346705157022e-06 * dataVolume
 	var e_serv = e_3rdp + e_origin
@@ -99,8 +97,9 @@ function calc() {
 	// convert to watthour
 	e_total /= 3600
 	e_total = Math.round(e_total * 100) / 100
-
+	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
+	document.getElementById('details').innerHTML = "<h1>Device: "+ deviceType + ":" + e_serv/3600 + " wh</h1>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total, durationSecs)
 
