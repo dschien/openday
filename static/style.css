@@ -79,6 +79,13 @@ body{
 	background-color: #333;
 	color:white;
 }
+.selection{
+	position:relative;
+	width: 340px;
+	height:auto;
+	margin-bottom:6px;
+	
+}
 
 /* Typography */
 big{
