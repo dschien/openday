@@ -127,7 +127,7 @@ function calc() {
 	var p_serv = (e_serv * 100) / e_total_joule
 	var p_acc_net = (e_acc_net * 100) / e_total_joule
 	// create circles
-	var max_size=300
+	var max_size=2000
 	var circle_user= Math.round(Math.sqrt(max_size*(e_user/3600)/3.1416))
 	document.getElementById('circle1').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
 	var circle_network= Math.round(Math.sqrt(max_size*(e_network/3600)/3.1416))
@@ -152,7 +152,7 @@ function calc() {
 
 	*/
 	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, " + p_user + " &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
+	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, " + Math.round(p_user) + " &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 	currentSelection = selection
