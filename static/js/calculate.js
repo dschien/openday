@@ -84,10 +84,6 @@ function calc() {
 		case 'mobile':
 			e_acc_net = dataVolume * 1.8144144197598379e-05
 			break;
-<<<<<<< HEAD:static/js/calculate.js
-=======
-
->>>>>>> 86a2cd45fd5de09680783de590916738533eac8c:static/js/calculate.js
 		default:
 			// default is dsl
 			e_acc_net = 10 * durationSecs
@@ -110,26 +106,6 @@ function calc() {
 	saveSelectionToSession()
 }
 
-<<<<<<< HEAD:static/js/calculate.js
-=======
-	var e_origin = 102
-	var e_3rdp = 5.3490346705157022e-06 * dataVolume
-	var e_serv = e_3rdp + e_origin
-	var e_network = 5.8616855E-6 * dataVolume
-	var e_user = p_device * durationSecs
-	var e_total = e_serv + e_network + e_acc_net + e_user
-	// convert to watthour
-	e_total /= 3600
-	e_total = Math.round(e_total * 100) / 100
-
-	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
-	drawChart(e_serv, e_network, e_acc_net, e_user)
-	calcLightBulbsAndCarbon(e_total, duration)
-
-	saveSelectionToSession()
-}
-
->>>>>>> 86a2cd45fd5de09680783de590916738533eac8c:static/js/calculate.js
 function calcLightBulbsAndCarbon(e_total, duration) {
 	// 	to kWh
 	e_kWh = e_total / 1000
@@ -138,8 +114,4 @@ function calcLightBulbsAndCarbon(e_total, duration) {
 	lightBulb = 11 * duration
 	percentLightBulb = e_total / lightBulb / 100
 	$("div#lightBulb").text(percentLightBulb);
-<<<<<<< HEAD:static/js/calculate.js
 }
-=======
-}
->>>>>>> 86a2cd45fd5de09680783de590916738533eac8c:static/js/calculate.js
