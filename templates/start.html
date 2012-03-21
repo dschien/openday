@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %} 
 <div id="about">
-<p>
-	<strong>{{ error_message }}</strong>
-</p>
-{% endif %} <h1>Survey and Demonstration Background:</h1>
+<h1>Survey and Demonstration Background:</h1>
 The Sympact
 group from the University of Bristol is working in conjunction with
 Guardian News Media to research the energy consumption of digital
