@@ -42,7 +42,7 @@ body{
 	padding:20px;
 }
 /*Items*/
-#selectable .selected { background: #333; color: white; }
+#selectable .selected { background: #0776A0; color: white; }
 #selectable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
 .device{
 	float:left;
@@ -51,10 +51,10 @@ body{
 	padding:10px;
 	margin-right:10px;
 	margin-bottom:10px;
-	background-color: #0776A0;
+	background-color: #333;
 	color:white;
 }
-#selectable2 .selected { background: #333; color: white; }
+#selectable2 .selected { background: #0776A0; color: white; }
 #selectable2 { list-style-type: none; margin: 0; padding: 0; width: 100%; }
 .connection{
 	float:left;
@@ -63,7 +63,7 @@ body{
 	padding:10px;
 	margin-right:10px;
 	margin-bottom:10px;
-	background-color: #0776A0;
+	background-color: #333;
 	color:white;
 }
 
