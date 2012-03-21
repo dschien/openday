@@ -16,7 +16,7 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Component');
 	data.addColumn('number', 'Energy');
-	data.addRows([['Server', e_serv], ['Network', e_network], ['Access Network', e_acc_net], ['User Device', e_user]]);
+	data.addRows([['Servers', e_serv], ['Internet', e_network], ['Access Network', e_acc_net], ['User Device', e_user]]);
 
 	// Set chart options
 	var options = {
@@ -115,20 +115,21 @@ function calc() {
 
 	*/
 	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + Math.round(e_user / 36) / 100 + " Wh</p>" + "<p>Server: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>Access network (" + connectionType + "):" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>Network:" + Math.round(e_network / 36) / 100 + " Wh</p>"
+	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 
 	saveSelectionToSession()
 }
 
-function calcLightBulbsAndCarbon(e_total, duration) {
+function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// 	to kWh
-	e_kWh = e_total / 1000
-	carbon = .53 / e_kWh
-	$("div#carbon").text(Math.round(carbon * 100) / 100 + " kgCO2-eq");
-	lightBulb = 11 * duration
-	ratioLightBulb = e_total / lightBulb
+	e_total_Wh = e_total_joule / 3600
+	e_total_kWh = e_total_Wh / 1000
+	carbon = .53 * e_total_kWh
+	$("div#carbon").text(Math.round(carbon * 10000) / 10000 + " kgCO2-eq");
+	power_lightBulb = 11
+	ratioLightBulb = e_total_Wh / power_lightBulb
 	$("div#lightBulb").text(Math.round(ratioLightBulb * 100) / 100 + " hours using a light bulb");
 
 }
