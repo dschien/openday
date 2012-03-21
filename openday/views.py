@@ -5,6 +5,7 @@ from forms import ContactForm
 from models import Contact, Survey
 import logging
 import datetime
+from django.core.urlresolvers import reverse
 #import pdb;
 
 # Create your views here.
@@ -39,10 +40,17 @@ def climate(request):
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
     
 def gender(request):
-    # no data to show    
+
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
+
+    if request.POST['type'] == 'Skip survey':
+        request.session['type'] = 'skip'
+        return render_to_response('index.html', {}, context_instance=RequestContext(request)) 
+    
+    request.session['type'] = 'survey'
+    # no data to show    
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
 
 
@@ -53,13 +61,14 @@ def app(request):
     # save the information from the form into the session
     logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
         #request.session
-    if not 'cc' in request.POST or not 'it' in request.POST : 
+    
+    if request.session['type'] == 'survey' and not 'cc' in request.POST or not 'it' in request.POST : 
         return render_to_response('climate.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
     
     request.session['cc_pre'] = request.POST['cc']
     request.session['it_pre'] = request.POST['it'] 
 #    pdb.set_trace()    
-    return render_to_response('index.html', {}, context_instance=RequestContext(request))
+    return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 
 def review(request):

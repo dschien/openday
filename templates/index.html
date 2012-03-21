@@ -78,10 +78,10 @@
 			</div>
 			<div id="column_left">
 				<div class="selection">
-					<h2>1. Select service</h2>
+					<h2>1. Select content</h2>
 					<ol id="selected_service">
 						<li class="service">
-							text
+							web page
 						</li>
 						<li class="service">
 							video
@@ -111,7 +111,9 @@
 					<h2>3. Select internet connection</h2>
 					<ol id="selectable2">
 						<li class="connection">
-							wifi &amp;<br> router
+							wifi &amp;
+							<br>
+							router
 						</li>
 						<li class="connection">
 							mobile
@@ -120,7 +122,7 @@
 					</ol>
 				</div>
 				<div class="selection">
-					<h2>4. Browsing time</h2>
+					<h2>4. Viewing/reading time</h2>
 					<div id="slider"></div>
 					<p>
 						<input type="text" id="duration" style="border:0; font-weight:bold;" />
@@ -140,10 +142,17 @@
 				<div id="carbon"></div>
 			</div>
 		</div>
+		{%if type == 'survey'%}
 		<form action="review" method="post" accept-charset="utf-8">
 			{% csrf_token %}
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>
+		{% else %}
+		<form action="start" method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			<input type="submit" value="Restart"/>
+		</form></footer>
+		{% endif %}
 		<script>
 			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
 			( function(d, t) {
