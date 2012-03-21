@@ -78,6 +78,7 @@
 		e_total *= 0.000277777778
 		e_total = Math.round(e_total*100)/100
 		document.getElementById('bignr').innerHTML = "<h1><big>"+ e_total +"</big> wh</h1>"
+		document.getElementById('bignr').innerHTML = "<h1><big>"+ e_total +"</big> wh</h1>"
 		drawChart(e_serv, e_network, e_acc_net, e_user)
 		// alert('total energy :' + e_total)
 
