@@ -19,12 +19,12 @@
 		<script>
 			$(function() {
 				$("#slider").slider({
-					value : 0,
-					min : 0,
-					max : 1800,
-					step : 60,
+					value : 1,
+					min : 1,
+					max : 30,
+					step : 1,
 					slide : function(event, ui) {
-						$("#duration").val(ui.value / 60);
+						$("#duration").val(ui.value);
 						if($("#connection_selected").val() != '' & $("#device_selected").val() != '' & $("#service_selected").val() != '') {
 							calc();
 						}
@@ -140,10 +140,11 @@
 				<div id="chart_div"></div>
 				<div id="lightBulb"></div>
 				<div id="carbon"></div>
+				<div id="carMeters"></div>
 			</div>
 		</div>
 		{%if type == 'survey'%}
-		<form action="review" method="post" accept-charset="utf-8">
+		<form action="branch" method="post" accept-charset="utf-8">
 			{% csrf_token %}
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>

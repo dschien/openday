@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% if error_message %}
+<p>
+	<strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+<form action="postpower" method="post" accept-charset="utf-8">
+	{% csrf_token %}
+	<br>
+	<h2>SOME TITLE</h2>
+	<p>
+		<b>8: Since looking at the "Energy Explorer" have your opinions about Internet energy consumption changed? </b>
+		<br>
+		<input type="radio" name="next" value="postpower" id='yes'>
+		<label for="yes">Yes</label>
+		<br>
+		<input type="radio" name="next" value="thankyou" id='no'>
+		<label for="no">No</label>
+	</p>
+	<p>
+		<input type="submit" value="Continue &rarr;"/>
+	</p>
+</form>
+{% endblock %} 

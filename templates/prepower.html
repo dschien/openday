@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+{% if error_message %}
+<p>
+	<strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+<form action="app" method="post" accept-charset="utf-8">
+	{% csrf_token %} <h2>Internet Carbon Footprint</h2>
+	<p>
+		John Deane browses the Guardian website for <b>2 MINUTES</b>. The technology he is using to access the digital Guardian consists of:
+		<br>
+		His <b>LAPTOP</b>, his home <b>WIFI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
+	</p>
+	<p>
+		<b>6: Please rank each part of John's system according to the amount of electrical energy it consumes. Rank 1-4 (1 lowest energy, 4 highest energy)</b>
+	</p>
+	<p>
+		<table>
+			<tr>
+				<td align="right"><b>Content Servers<b></td>
+				<td>
+				<select name="pre_servers">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>Internet</b></td>
+				<td>
+				<select name="pre_internet">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>Laptop</b></td>
+				<td>
+				<select name="pre_laptop">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>WiFi and Router</b></td>
+				<td>
+				<select name="pre_acc_net">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<table>
+	</p>
+	<p>
+		<b>7: How much electricy overall do you think John's 2 minutes of Guardian website browsing uses. Use the slider below to indicate roughly how many standard 11 Watt low energy lightbulbs (also used for 2 minues) you think this would be equivalent too.</b>
+	</p>
+	<p>
+		Number of lightbulbs:
+		<input type="range" name="pre_points" min="1" max="500" step="5" />
+	</p>
+	<p>
+		<input type="submit" value="Continue &rarr;"/>
+	</p>
+</form>
+{% endblock %} 

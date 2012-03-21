@@ -4,48 +4,46 @@
 <p>
 	<strong>{{ error_message }}</strong>
 </p>
-{% endif %}
-<div id="about">
-	<h1>Survey and Demonstration Background:</h1>
-	The Sympact
-	group from the University of Bristol is working in conjunction with
-	Guardian News Media to research the energy consumption of digital
-	newspaper offerings, such as the Guardian On-Line.
-
-	This exhibit consists of a survey and a demonstration.
-
+{% endif %} <h1>Survey and Demonstration Background:</h1>
+<p>
+	This project is part of <a href="http://sympact.cs.bris.ac.uk/" target="_blank">SYMPACT</a>, a joint research project between University of Bristol, University of Surrey and Guardian News and Media, exploring the environmental impact of digital transformation. In collaboration with
+</p>
+<p>
+	This exhibit was developed in collaboration with the <a href="http://cesc.kth.se" target="_blank">Centre for Sustainable Communications</a> in Stockholm and it focuses on the energy consumed when delivering digital media over the internet. The exhibit consists of an 'Energy Explorer' application designed to allow users to explore this concept, and a short survey to provide further research data for Sympact.
+</p>
+<p>
 	The survey involves answering some general demographic questions and some
 	questions concerning the respondents understanding of the energy
-	consumed by digital newspaper distribution.
-
-	The demonstration allows the user to explore those energy consumption patterns.
-
-	Your participation in this survey is entirely voluntary therefore you do not have to answer any question you do not wish to answer, and there are no consequences should you decide not to complete the survey.
-
-	If so desired, is also possible to enjoy the demonstration without also completing the survey.
-
-	The demonstration takes between X and Y mins to explore.
-	The survey takes about  minutes to complete.
-
+	consumed when reading a website.
+</p>
+<p>
+	Your participation in the survey is entirely voluntary therefore you do not have to answer any question you do not wish to answer. Hence if so desired, is also possible to enjoy the 'Energy Explorer" without completing the survey.
+</p>
+<p>
+	The survey consists of no more than 10 questions and takes about 5 minutes to complete.
+</p>
+<h1>Privacy Statement:</h1>
+<p>
+	All responses are anonymous and no personally identifiable information is requested in this survey.  Consequently there will be no way to retrieve
+	specific individual responses once the survey is complete.
+</p>
+<p>
 	The data collected will be analysed at the University of Bristol and relevant
 	results shared both within the academic community and with the
-	Guardian News Group. <h2>All responses 		are anonymous and no personally identifiable information is requested
-	in this survey.  Consequently there will be no way to retrieve
-	specific individual responses once the survey is complete.</h2>
-	</p>
+	Guardian News Group.
+</p>
+<p>
+	None of the data collected will be shared with any other third party.
+</p>
+<p>
+	If you wish to participate please proceed.
+</p>
+<form action="gender" method="POST">
+	{% csrf_token %}
 	<p>
-		None of the data collected will be sold to any third party.
+		<input type="submit" value="Continue" name="type"/>
+		<input type="submit" value="Skip survey" name="type"/>
 	</p>
-	<p>
-		If you wish to participate please proceed.
-	</p>
-	<form action="gender" method="POST">
-		{% csrf_token %}
-		<p>
-			<input type="submit" value="Continue" name="type"/>
-			<input type="submit" value="Skip survey" name="type"/>
-		</p>
-	</form>
-	</p>
-</div>
+</form>
+</p>
 {% endblock %} 

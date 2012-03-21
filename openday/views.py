@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from forms import ContactForm
@@ -6,38 +6,22 @@ from models import Contact, Survey
 import logging
 import datetime
 from django.core.urlresolvers import reverse
+import re
 #import pdb;
 
 # Create your views here.
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-def start(request):   
+def start(request):
+           
     if not request.session :
         # if it doesn't have a session -> start again
-        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-    request.session['start_time'] = datetime.datetime.now() 
+        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))        
+        
+    logger.info('<start> : {}'.format(request.session.session_key)) 
     return render_to_response('start.html', context_instance=RequestContext(request))
-
-def climate(request):
-    # no data to show
-    if not request.session :
-        # if it doesn't have a session -> start again
-        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-    # save the information from the form into the session
-    #request.session
-            
-    logging.info('view climate w/ {}'.format(request.POST))
-    
-    if 'gender' in request.POST:
-        request.session['gender'] = request.POST['gender']
-    else:
-        request.session['gender'] = -1
-    if 'age' in request.POST:        
-        request.session['age'] = request.POST['age']
-    else: 
-        request.session['age'] = -1
-    return render_to_response('climate.html', {}, context_instance=RequestContext(request))
+    del request.session['type']
     
 def gender(request):
 
@@ -45,54 +29,121 @@ def gender(request):
         # if it doesn't have a session -> start again
         return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
 
+    if 'survey_id' in request.session:
+        del request.session['survey_id']
+
     if request.POST['type'] == 'Skip survey':
         request.session['type'] = 'skip'
-        return render_to_response('index.html', {}, context_instance=RequestContext(request)) 
+#        return render_to_response('index.html', {}, context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('openday.views.app'))
+ 
     
     request.session['type'] = 'survey'
     # no data to show    
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
 
+def climate(request):
+    # no data to show
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    # save the information from the form into the session                
+    logging.info('<climate> w/ {}'.format(request.POST))
+    
+    s = Survey()     
+    s.gender = request.POST['gender'] if 'gender' in request.POST else -1  
+    s.age = request.POST['age'] if 'age' in request.POST else -1
+    s.survey_date = datetime.datetime.now()
+    
+    s.save()
+    request.session['survey_id'] = s.id
+    
+    return render_to_response('climate.html', {}, context_instance=RequestContext(request))
+
+def prepower(request):
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    
+    if not 'cc' in request.POST or not 'it' in request.POST  or not 'cit' in request.POST : 
+            return render_to_response('climate.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+    
+    logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
+    
+    s = get_object_or_404(Survey, id=request.session['survey_id'])
+    s.cc = request.POST['cc']
+    s.it = request.POST['it'] 
+    s.cit = request.POST['cit'] 
+    s.save()
+    
+    return render_to_response('prepower.html', {}, context_instance=RequestContext(request))
 
 def app(request):
+     
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session
-    logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
-        #request.session
+    logging.info('<app> with {}'.format(request.session.session_key))
+
     
-    if request.session['type'] == 'survey' and not 'cc' in request.POST or not 'it' in request.POST : 
-        return render_to_response('climate.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
-    
-    request.session['cc_pre'] = request.POST['cc']
-    request.session['it_pre'] = request.POST['it'] 
-#    pdb.set_trace()    
+    if request.session['type'] == 'survey': 
+        if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]) \
+            or any([ re.search(request.POST[key], 'Please select....') for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]):
+            return render_to_response('prepower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+
+        s = get_object_or_404(Survey, id=request.session['survey_id'])
+        
+        s.pre_servers = request.POST['pre_servers']                        
+        s.pre_laptop = request.POST['pre_laptop']
+        s.pre_acc_net = request.POST['pre_acc_net']
+        s.pre_internet = request.POST['pre_internet']
+        s.pre_points = request.POST['pre_points']        
+        s.save()
+            
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
+def branch(request):
+    #store app data
+    return render_to_response('branch.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
-def review(request):
+
+def postpower(request):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-    # save the information from the form into the session
-    #request.session
     
-    logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
-    return render_to_response('review.html', {}, context_instance=RequestContext(request))
+    # if branched, go to thankyou
+    if request.POST['next'] == 'thankyou':
+        # go there
+        return HttpResponseRedirect(reverse('openday.views.thankyou', args=['skip_pp']))
+        
+    return render_to_response('postpower.html', {}, context_instance=RequestContext(request))
 
-def finish(request):
+def thankyou(request, nav=None):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-#     save the information from the form into the session
-    request.session['cc_post'] = request.POST['cc_post']
-    request.session['it_post'] = request.POST['it_post']
+
+    if nav == 'skip_pp':
+        logging.info('<thankyou> - post power question was skipped')
+    else:
+        if not all([ key in request.POST for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]) \
+            or any([ re.search(request.POST[key], 'Please select....') for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]):        
+            return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+        
+        logging.info('<thankyou> storing power power info')
+        s = get_object_or_404(Survey, id=request.session['survey_id'])        
+        s.post_servers = request.POST['post_servers']                        
+        s.post_laptop = request.POST['post_laptop']
+        s.post_acc_net = request.POST['post_acc_net']
+        s.post_internet = request.POST['post_internet']
+        s.post_points = request.POST['post_points']        
+        s.save()
+        # reset the session information
+    del request.session['survey_id']
     
-    # save the session information
-    s = Survey(cc_pre=request.session['cc_pre'], cc_post=request.session['cc_post'], it_pre=request.session['it_pre'], it_post=request.session['it_post'], age=request.session['age'], gender=request.session['gender'], survey_date=request.session['start_time'])
-    s.save()
-    return render_to_response('start.html', {}, context_instance=RequestContext(request))
+    return render_to_response('thankyou.html', {}, context_instance=RequestContext(request))
 
 def contact(request):
     if request.method == 'POST':

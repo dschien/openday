@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="about">
-	<p>The calculation is based on the following assumptions and data:</p>
-</div>
+<p>
+	The calculation is based on the following assumptions and data:
+</p>
+car direct emission factors (DEFRA) 0.20864 from
+{% autoescape on %}
+http://archive.defra.gov.uk/environment/business/reporting/pdf/110819-guidelines-ghg-conversion-factors.xls
+{% endautoescape %}
+
 {% endblock %} 

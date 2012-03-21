@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+{% if error_message %}
+<p>
+	<strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+<form action="thankyou" method="post" accept-charset="utf-8">
+	{% csrf_token %} <h2>Internet Carbon Footprint</h2>
+	<p>
+		<b>9: How would you rank each the energy consumption of each part of John's system now. Rank 1-4 (1 lowest energy, 4 highest energy)</b>
+	</p>
+	<p>
+		<table>
+			<tr>
+				<td align="right"><b>Content Servers<b></td>
+				<td>
+				<select name="post_servers">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>Internet</b></td>
+				<td>
+				<select name="post_internet">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>Laptop</b></td>
+				<td>
+				<select name="post_laptop">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right"><b>WiFi and Router</b></td>
+				<td>
+				<select name="post_acc_net">
+					<option>Please select.... </option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="0">No Opinion</option>
+				</select></td>
+			</tr>
+			<table>
+	</p>
+	<b>10: Roughly how much electricy overall do you now think John's 2 minutes of Guardian website browsing uses.</b>
+	</p>
+	<p>
+		Number of lightbulbs:
+		<input type="range" name="post_points" min="1" max="500" step="5" />
+	</p>
+	<p>
+		<input type="submit" value="Continue &rarr;"/>
+	</p>
+</form>
+{% endblock %} 

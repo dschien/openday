@@ -129,7 +129,11 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	carbon = .53 * e_total_kWh
 	$("div#carbon").text(Math.round(carbon * 10000) / 10000 + " kgCO2-eq");
 	power_lightBulb = 11
-	ratioLightBulb = e_total_Wh / power_lightBulb
-	$("div#lightBulb").text(Math.round(ratioLightBulb * 100) / 100 + " hours using a light bulb");
+	lightBulbs = e_total_Wh / (power_lightBulb * durationSecs )
+	$("div#lightBulb").text(Math.round(lightBulbs * 100) / 100 + " 11W light bulbs for " + durationSecs / 60 + " minutes");
+
+	// kg per km
+	carEmissions = 0.20864
+	$("div#carMeters").text(Math.round((carbon / carEmissions ) * 10000) / 10000 + " kms driving an average petrol car");
 
 }

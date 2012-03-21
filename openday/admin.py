@@ -9,12 +9,12 @@ from django.contrib import admin
 
     
 class SurveyAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None, {'fields': ['age', 'gender', 'it_pre', 'it_post', 'cc_pre', 'cc_post']}),
-        ('Date information', {'fields': ['survey_date'], 'classes': ['collapse']}),
-    ]
+#    fieldsets = [
+#        (None, {'fields': ['age', 'gender', 'it_pre', 'it_post', 'cc_pre', 'cc_post']}),
+#        ('Date information', {'fields': ['survey_date'], 'classes': ['collapse']}),
+#    ]
     
-    list_display = ('age', 'gender', 'it_pre', 'it_post' , 'cc_pre', 'cc_post' , 'survey_date', 'was_surveyed_recently')
+    list_display = ('survey_date', 'cc', 'it', 'cit')
     list_filter = ['survey_date']
     search_fields = ['it_pre']
     date_hierarchy = 'survey_date'  

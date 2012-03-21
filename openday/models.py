@@ -9,17 +9,30 @@ class Contact(models.Model):
 
 
 class Survey(models.Model):
-    cc_pre = models.IntegerField()
-    cc_post = models.IntegerField()
-    it_pre = models.IntegerField()
-    it_post = models.IntegerField()
-    age = models.IntegerField()
-    gender = models.IntegerField()
+    
+    cc = models.IntegerField(null=True)    
+    it = models.IntegerField(null=True)
+    cit = models.IntegerField(null=True)
+    age = models.IntegerField(null=True)
+    gender = models.IntegerField(null=True)
+    
+    pre_servers = models.IntegerField(null=True)
+    pre_laptop = models.IntegerField(null=True)
+    pre_acc_net = models.IntegerField(null=True)
+    pre_internet = models.IntegerField(null=True)
+    pre_points = models.IntegerField(null=True)
+
+    post_servers = models.IntegerField(null=True)
+    post_laptop = models.IntegerField(null=True)
+    post_acc_net = models.IntegerField(null=True)
+    post_internet = models.IntegerField(null=True)
+    post_points = models.IntegerField(null=True)
+    
     survey_date = models.DateTimeField('date surveyed')
     
     # to_string
     def __unicode__(self):
-        return "age: {}, gender: {}, cc_pre: {}, it_pre: {}, cc_post: {}, it_post:{}". format(self.age, self.gender, self.cc_pre, self.it_pre, self.cc_post, self.it_post)  
+        return "age: {}, gender: {}, cc: {}, it: {}, cit:{}". format(self.age, self.gender, self.cc, self.it, self.cit)  
 
     def was_surveyed_recently(self):
         return self.pub_date >= datetime.datetime.now() - datetime.timedelta(days=1)

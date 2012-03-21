@@ -13,12 +13,14 @@ urlpatterns = patterns('',
 #     url(r'^gender', 'openday.quest.views.gender'),
      url(r'^gender', 'openday.views.gender'),
      url(r'^climate', 'openday.views.climate'),
+     url(r'^prepower', 'openday.views.prepower'),
      url(r'^app', 'openday.views.app'),
-     url(r'^review', 'openday.views.review'),
-     url(r'^finish', 'openday.views.finish'),
+     url(r'^branch', 'openday.views.branch'),
+     url(r'^postpower', 'openday.views.postpower'),
+     url(r'^thankyou', 'openday.views.thankyou'),
      
-     
-#     url(r'^app', redirect_to, {'url': 'http://sympact.cs.bris.ac.uk/openday/godee/'}),
+          
+    
      url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

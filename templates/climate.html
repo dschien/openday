@@ -1,51 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="about">
-	<form action="app" method="post" accept-charset="utf-8">
-		{% csrf_token %}
-		{% if error_message %}
-		<p>
-			<strong>{{ error_message }}</strong>
-		</p>
-		{% endif %}
-		I am knowledgeable about climate change
+<form action="prepower" method="post" accept-charset="utf-8">
+	{% csrf_token %}
+	{% if error_message %}
+	<p>
+		<strong>{{ error_message }}</strong>
+	</p>
+	{% endif %} <h2>Your Background</h2>
+	<p>
+		<b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
 		<br>
 		<input type="radio" name="cc" value="5">
 		Strongly agree
 		<br>
 		<input type="radio" name="cc" value="4">
-		agree
+		Agree
 		<br>
 		<input type="radio" name="cc" value="3">
-		undecided
+		Undecided
 		<br>
 		<input type="radio" name="cc" value="2">
-		disagree
+		Disagree
 		<br>
 		<input type="radio" name="cc" value="1">
-		strongly disagree
+		Strongly disagree
 		<br>
-		I am knowledgeable about IT
+	</p>
+	<p>
+		<b>4: To what extent do you agree with the following statment? "I am knowledgeable about IT"</b>
 		<br>
 		<input type="radio" name="it" value="5">
 		Strongly agree
 		<br>
 		<input type="radio" name="it" value="4">
-		agree
+		Agree
 		<br>
 		<input type="radio" name="it" value="3">
-		undecided
+		Undecided
 		<br>
 		<input type="radio" name="it" value="2">
-		disagree
+		Disagree
 		<br>
 		<input type="radio" name="it" value="1">
-		strongly disagree
+		Strongly disagree
+	</p>
+	<p>
+		<b>5: How often have your previously thought about the climate imapcts of using the Internet?</b>
 		<br>
-		<p>
-			<input type="submit" value="Continue &rarr;"/>
-		</p>
-	</form>
-	</select>
-</div>
+		<input type="radio" name="cit" value="4">
+		Often
+		<br>
+		<input type="radio" name="cit" value="3">
+		Sometimes
+		<br>
+		<input type="radio" name="cit" value="2">
+		Seldom
+		<br>
+		<input type="radio" name="cit" value="1">
+		Never
+		<br>
+	</p>
+	<p>
+		<input type="submit" value="Continue &rarr;"/>
+	</p>
+</form>
+</select>
 {% endblock %} 
