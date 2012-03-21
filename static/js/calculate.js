@@ -31,12 +31,13 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 }
 
 function addSelectionToSession(selection) {
-	
-	if (!selections){
-		selections = new Array()		
-	}  	
+
+	if( typeof selections === 'undefined') {
+		// variable is undefined
+		selections = new Array()
+	}
 	selections.push(selection)
-	
+
 	var form = document.getElementById('postForm')
 
 	if(!form) {
@@ -44,13 +45,13 @@ function addSelectionToSession(selection) {
 		return;
 	}
 	// add the selection to the form
-	
+
 }
 
 function calc() {
-	
+
 	var selection = {}
-	
+
 	// duration
 	var durationMins = document.getElementById('duration')
 	var durationSecs = 60
@@ -60,7 +61,7 @@ function calc() {
 		durationSecs = durationMins.value * 60
 	selection['duration'] = durationMins.value
 	var deviceType = document.getElementById('device_selected').value
-	
+
 	String.prototype.trim = function() {
 		return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 	};
@@ -87,7 +88,7 @@ function calc() {
 	var serviceType = document.getElementById('service_selected').value
 	serviceType = serviceType.trim()
 	selection['service'] = serviceType
-	
+
 	// default for text
 	var dataVolume = 1800000
 
@@ -121,10 +122,10 @@ function calc() {
 	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> Wh</h1>"
 	// create percentages
-	var p_user = (e_user*100)/e_total
-	var p_network = (e_network*100)e_total
-	var p_serv = (e_serv*100)/e_total
-	var p_acc_net = (e_acc_net*100)/e_total
+	var p_user = (e_user * 100) / e_total
+	var p_network = (e_network * 100) + e_total
+	var p_serv = (e_serv * 100) / e_total
+	var p_acc_net = (e_acc_net * 100) / e_total
 	// create circles
 	var max_size=30
 	var circle_user= Math.round(Math.sqrt(max_size*e_user/3.1416))
@@ -144,15 +145,13 @@ function calc() {
 
 	*/
 	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, "+ p_user+" &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
+	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, " + p_user + " &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
-
-	
+	currentSelection = selection
 	addSelectionToSession(selection)
+	setBlurb()
 }
-
-
 
 function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// 	to kWh
@@ -167,5 +166,39 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// kg per km
 	carEmissions = 0.20864
 	$("div#carMeters").text(Math.round((carbon / carEmissions ) * 10) / 10 + " meter driving an average petrol car");
+}
+
+function setBlurb() {
+	text = 'Reading normal web pages (no video) changing page every minute'
+	if(currentSelection['service'] == 'video')
+		text = 'Watching video continuously '
+	switch(currentSelection['device']) {
+		case 'phone':
+			text = text + "using a mobile phone "
+			break;
+		case 'tablet':
+			text = text + "using a tablet such as iPad "
+			break;
+		case 'pc':
+			text = text + "using a desktop computer "
+			break;
+		default:
+			// default is laptop
+			text = text + "using a laptop computer "
+	}
+
+	if(currentSelection['connection'] == 'mobile') {
+		text = text + "connected to the Internet by a mobile networks (GPRS, 3G, etc.) "
+	} else {
+		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
+	}
+
+	if(currentSelection['service'] == 'video') {
+		text = text + "viewing for " + currentSelection['duration'] + " minutes"
+	} else {
+		text = text + "reading for " + currentSelection['duration'] + " minutes"
+	}
+
+	document.getElementById('blurb').innerHTML = text
 
 }
