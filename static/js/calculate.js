@@ -122,10 +122,10 @@ function calc() {
 	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> Wh</h1>"
 	// create percentages
-	var p_user = (e_user*100)/e_total
-	var p_network = (e_network*100)e_total
-	var p_serv = (e_serv*100)/e_total
-	var p_acc_net = (e_acc_net*100)/e_total
+	var p_user = (e_user * 100) / e_total
+	var p_network = (e_network * 100) + e_total
+	var p_serv = (e_serv * 100) / e_total
+	var p_acc_net = (e_acc_net * 100) / e_total
 	// create circles
 	/*
 	var size = round(sqrt($max*$impactAssessment['amount']/pi()));
@@ -142,7 +142,7 @@ function calc() {
 
 	*/
 	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, "+ p_user+" &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
+	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, " + p_user + " &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 	currentSelection = selection
