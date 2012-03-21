@@ -44,11 +44,7 @@ body{
 /*Items*/
 #selected_service .selected { background: #333; color: white; }
 #selected_service { list-style-type: none; margin: 0; padding: 0; width: 100%; }
-<<<<<<< HEAD:static/style.css
 .service{
-=======
-.connection{
->>>>>>> 86a2cd45fd5de09680783de590916738533eac8c:static/style.css
 	float:left;
 	width:60px;
 	height:60px;
