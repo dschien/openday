@@ -114,8 +114,8 @@ function calc() {
 	 } } ?>
 
 	 */
-	document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + Math.round(e_user / 36) / 100 + " Wh</p>" + "<p>Server: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>Access network (" + connectionType + "):" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>Network:" + Math.round(e_network / 36) / 100 + " Wh</p>"
+	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
+	document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + Math.round(e_user / 36) / 100 + " Wh</p>" + "<p>Server: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>Access network (" + connectionType + "):" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>Network:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 
