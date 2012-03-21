@@ -19,9 +19,9 @@
 					step : 60,
 					slide : function(event, ui) {
 						$("#amount").val(ui.value / 60);
-						if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
+						/*if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
 							calc();
-						}
+						}*/
 					}
 				});
 				$("#amount").val("" + $("#slider").slider("value"));
@@ -33,17 +33,17 @@
 					$(this).addClass("selected").siblings().removeClass("selected");
 					device = $(this).text();
 					$("#device_selected").val(device);
-					if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
+					/*if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
 						calc();
-					}
+					}*/
 				});
 				$("#selectable2 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					connection = $(this).text();
 					$("#device_selected").val(connection);
-					if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
+					/*if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
 						calc();
-					}
+					}*/
 				});
 			});
 
