@@ -3,13 +3,18 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- 		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" /> -->
 		<title>Guardian energy calculator</title>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
-		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script>
+<!-- 		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script> -->
+<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script> -->
+		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script>
+		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+<!-- 		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
+<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script> -->
+		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script>
 			$(function() {
 				$("#slider").slider({
@@ -18,32 +23,40 @@
 					max : 1800,
 					step : 60,
 					slide : function(event, ui) {
-						$("#amount").val(ui.value / 60);
+						$("#duration").val(ui.value / 60);
 						/*if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
-							calc();
-						}*/
+						 calc();
+						 }*/
 					}
 				});
-				$("#amount").val("" + $("#slider").slider("value"));
+				$("#duration").val("" + $("#slider").slider("value"));
 			});
 			$(function() {
 				var device = '';
 				var connection = '';
+				$("#selected_service li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					service = $(this).text();
+					$("#service_selected").val(service);
+					/*if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					 calc();
+					 }*/
+				});
 				$("#selectable li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					device = $(this).text();
 					$("#device_selected").val(device);
-					/*if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
-						calc();
-					}*/
+					/*if($("#device_selected").val() != '' & $("#duration").val() != 0) {
+					 calc();
+					 }*/
 				});
 				$("#selectable2 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					connection = $(this).text();
-					$("#device_selected").val(connection);
-					/*if($("#connection_selected").val() != '' & $("#amount").val() != 0) {
-						calc();
-					}*/
+					$("#connection_selected").val(connection);
+					/*if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					 calc();
+					 }*/
 				});
 			});
 
@@ -64,6 +77,16 @@
 				<p>
 					http://theguardian.co.uk
 				</p>
+				<h2>1. Select service</h2>
+				<ol id="selected_service">
+					<li class="service">
+						text
+					</li>
+					<li class="service">
+						video
+					</li>
+					<input id="service_selected" type="hidden" value="" runat="server" />
+				</ol>
 				<h2>2. Select device</h2>
 				<ol id="selectable">
 					<li class="device">
@@ -97,7 +120,7 @@
 				<h2>4. Browsing time</h2>
 				<div id="slider"></div>
 				<p>
-					<input type="text" id="amount" style="border:0; font-weight:bold;" />
+					<input type="text" id="duration" style="border:0; font-weight:bold;" />
 					Minutes
 				</p>
 				<h2>Calculate</h2>

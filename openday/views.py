@@ -5,6 +5,7 @@ from forms import ContactForm
 from models import Contact, Survey
 import logging
 import datetime
+#import pdb;
 
 # Create your views here.
 # Get an instance of a logger
@@ -49,7 +50,7 @@ def app(request):
         #request.session
     request.session['cc_pre'] = request.POST['cc']
     request.session['it_pre'] = request.POST['it'] 
-        
+#    pdb.set_trace()    
     return render_to_response('index.html', {}, context_instance=RequestContext(request))
 
 
