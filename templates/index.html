@@ -69,11 +69,11 @@
 	<body>
 		<div id="frame">
 			<div id="header">
-				<h1><a href="index.html"><img src="{{STATIC_URL}}img/logo1.png"/></a></h1>
+				<h1><a href="start"><img src="{{STATIC_URL}}img/logo1.png"/></a></h1>
 			</div>
 			<div id="menu">
 				<p>
-					<a href="about.html">ABOUT</a> | <a href="data.html">DATA</a>
+					<a href="about">ABOUT</a> | <a href="data">DATA</a>
 				</p>
 			</div>
 			<div id="column_left">
@@ -144,9 +144,9 @@
 			</div>
 		</div>
 		{%if type == 'survey'%}
-		<form action="branch" method="post" accept-charset="utf-8">
+		<form action="branch" method="post" accept-charset="utf-8" id='postForm'>
 			{% csrf_token %}
-			<input type="submit" value="Continue &rarr;"/>
+			<input type="submit" value="Continue &rarr;" onclick="submitSelections()"/>
 		</form></footer>
 		{% else %}
 		<form action="start" method="post" accept-charset="utf-8">
@@ -155,8 +155,7 @@
 		</form></footer>
 		{% endif %}
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
