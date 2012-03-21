@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" />
-		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
-		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<title>Guardian energy calculator</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script>
-<!-- 		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script> -->
-<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script> -->
-		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script>
-		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
-<!-- 		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
-<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script> -->
-		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script>
+		<!-- 		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" /> -->
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<!-- 		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
+		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+		<!-- 		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script> -->
+		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+		<!-- 		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script> -->
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<!-- 		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script> -->
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script>
 			$(function() {
 				$("#slider").slider({
@@ -143,8 +143,7 @@
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
