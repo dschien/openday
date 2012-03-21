@@ -6,16 +6,16 @@
 		<title>Guardian energy calculator</title>
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" />
-		<!-- 		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" /> -->
-		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
-		<!-- 		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
-		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script>
-		<!-- 		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script> -->
-		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script>
-		<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script> -->
-		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script>
-		<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script> -->
+		<!-- 		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" /> -->
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<!-- 		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
+		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+		<!-- 		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script> -->
+		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+		<!-- 		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script> -->
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<!-- 		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script> -->
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script>
 			$(function() {
 				$("#slider").slider({
@@ -78,54 +78,54 @@
 			</div>
 			<div id="column_left">
 				<div class="selection">
-				<h2>1. Select service</h2>
-				<ol id="selected_service">
-					<li class="service">
-						text
-					</li>
-					<li class="service">
-						video
-					</li>
-					<input id="service_selected" type="hidden" value="" runat="server" />
-				</ol>
+					<h2>1. Select service</h2>
+					<ol id="selected_service">
+						<li class="service">
+							text
+						</li>
+						<li class="service">
+							video
+						</li>
+						<input id="service_selected" type="hidden" value="" runat="server" />
+					</ol>
 				</div>
 				<div class="selection">
-				<h2>2. Select device</h2>
-				<ol id="selectable">
-					<li class="device">
-						phone
-					</li>
-					<li class="device">
-						tablet
-					</li>
-					<li class="device">
-						laptop
-					</li>
-					<li class="device">
-						pc
-					</li>
-					<input id="device_selected" type="hidden" value="" runat="server" />
-				</ol>
+					<h2>2. Select device</h2>
+					<ol id="selectable">
+						<li class="device">
+							phone
+						</li>
+						<li class="device">
+							tablet
+						</li>
+						<li class="device">
+							laptop
+						</li>
+						<li class="device">
+							pc
+						</li>
+						<input id="device_selected" type="hidden" value="" runat="server" />
+					</ol>
 				</div>
 				<div class="selection">
-				<h2>3. Select connection</h2>
-				<ol id="selectable2">
-					<li class="connection">
-						dsl
-					</li>
-					<li class="connection">
-						mobile
-					</li>
-					<input id="connection_selected" type="hidden" value="" runat="server" />
-				</ol>
+					<h2>3. Select connection</h2>
+					<ol id="selectable2">
+						<li class="connection">
+							dsl
+						</li>
+						<li class="connection">
+							mobile
+						</li>
+						<input id="connection_selected" type="hidden" value="" runat="server" />
+					</ol>
 				</div>
 				<div class="selection">
-				<h2>4. Browsing time</h2>
-				<div id="slider"></div>
-				<p>
-					<input type="text" id="duration" style="border:0; font-weight:bold;" />
-					Minutes
-				</p>
+					<h2>4. Browsing time</h2>
+					<div id="slider"></div>
+					<p>
+						<input type="text" id="duration" style="border:0; font-weight:bold;" />
+						Minutes
+					</p>
 				</div>
 			</div>
 			<!--Div that will hold the pie chart-->
@@ -145,7 +145,8 @@
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+			( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
