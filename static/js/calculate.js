@@ -126,6 +126,9 @@ function calc() {
 	var p_serv = (e_serv*100)/e_total
 	var p_acc_net = (e_acc_net*100)/e_total
 	// create circles
+	var max_size=30
+	var circle_user= Math.round(Math.sqrt(max_size*e_user/3.1416))
+	document.getElementById('circle1').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
 	/*
 	var size = round(sqrt($max*$impactAssessment['amount']/pi()));
 	if ($size > 82) { $size = 82;}
@@ -133,7 +136,7 @@ function calc() {
 	$margin = (100-$size)/2;
 	$margintop = (100-$size)/3;
 	// Create a circle
-	echo '<div class="circle"><div style="width:'.$size.'px; height:'.$size.'px;margin-left:'.$margin.'px;margin-top:'.$margintop.'px; background:'.$color.'; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div></div>';
+	echo '<div class="circle"></div>';
 	echo '<div class="nr"><h1 class="nr">' . round($impactAssessment['amount'],2) .' '. $impactAssessment['unit']["abbr"] .'</h1></div>';
 	echo '<div class="meta"><p class="category">Category: <b>'. $impactAssessment['impactCategory']['label'] . "</b><br/>";
 	echo 'Indicator: <b>'. $impactAssessment['impactCategoryIndicator']['label'] . "</b></p></div>";
