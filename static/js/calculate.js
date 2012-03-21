@@ -31,17 +31,19 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 }
 
 function addSelectionToSession(selection) {
+	
+	if (!selections){
+		selections = new Array()		
+	}  	
+	selections.push(selection)
+	
 	var form = document.getElementById('postForm')
 
 	if(!form) {
 		// this is not the survey mode - don't store interaction
 		return;
 	}
-	
-	if (!selections){
-		selections = new Array()		
-	}  	
-	selections.push(selection)
+	// add the selection to the form
 	
 }
 
@@ -141,6 +143,8 @@ function calc() {
 	
 	addSelectionToSession(selection)
 }
+
+
 
 function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// 	to kWh
