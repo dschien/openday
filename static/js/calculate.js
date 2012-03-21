@@ -114,8 +114,8 @@ function calc() {
 	} } ?>
 	
 	*/
-	document.getElementById('details').innerHTML = "<p>Device: "+ deviceType + ":" + e_user/3600 + " wh</p>" + "<p>Server: " + e_serv/3600 + " wh</p>" + "<p>Access network: "+ connectionType + ":" + e_network/3600 + " wh</p>"
-	//drawChart(e_serv, e_network, e_acc_net, e_user)
+	document.getElementById('details').innerHTML = "<p>Device ("+ deviceType + "):" + Math.round(e_user/36)/100 + " wh</p>" + "<p>Server: " + Math.round(e_serv/36)/100 + " wh</p>" + "<p>Access network ("+ connectionType + "):" + Math.round(e_acc_net/36)/100 + " wh</p>" + "<p>Network:" + Math.round(e_network/36)/100 + " wh</p>"
+	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total, duration)
 	// save session
 	saveSelectionToSession()
