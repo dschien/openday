@@ -30,12 +30,27 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 	chart.draw(data, options);
 }
 
-function saveSelectionToSession() {
+function addSelectionToSession(selection) {
+	
+	if (!selections){
+		selections = new Array()		
+	}  	
+	selections.push(selection)
+	
+	var form = document.getElementById('postForm')
 
+	if(!form) {
+		// this is not the survey mode - don't store interaction
+		return;
+	}
+	// add the selection to the form
+	
 }
 
 function calc() {
-
+	
+	var selection = {}
+	
 	// duration
 	var durationMins = document.getElementById('duration')
 	var durationSecs = 60
@@ -43,11 +58,14 @@ function calc() {
 	// power user device
 	if(durationMins.value != "")
 		durationSecs = durationMins.value * 60
+	selection['duration'] = durationMins.value
 	var deviceType = document.getElementById('device_selected').value
+	
 	String.prototype.trim = function() {
 		return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 	};
 	deviceType = deviceType.trim()
+	selection['device'] = deviceType
 
 	var p_device = 0
 	switch(deviceType) {
@@ -68,6 +86,8 @@ function calc() {
 	// service type
 	var serviceType = document.getElementById('service_selected').value
 	serviceType = serviceType.trim()
+	selection['service'] = serviceType
+	
 	// default for text
 	var dataVolume = 1800000
 
@@ -79,6 +99,7 @@ function calc() {
 	// power access network
 	var connectionType = document.getElementById('connection_selected').value
 	connectionType = connectionType.trim()
+	selection['connection'] = connectionType
 	var e_acc_net = 0
 	switch(connectionType) {
 		case 'mobile':
@@ -124,21 +145,24 @@ function calc() {
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 
-	saveSelectionToSession()
+	
+	addSelectionToSession(selection)
 }
+
+
 
 function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// 	to kWh
 	e_total_Wh = e_total_joule / 3600
 	e_total_kWh = e_total_Wh / 1000
-	carbon = .53 * e_total_kWh
-	$("div#carbon").text(Math.round(carbon * 10000) / 10000 + " kgCO2-eq");
+	carbon = .53 * e_total_Wh
+	$("div#carbon").text(Math.round(carbon * 10) / 10 + " gCO2-eq");
 	power_lightBulb = 11
-	lightBulbs = e_total_Wh / (power_lightBulb * durationSecs )
+	lightBulbs = e_total_joule / (power_lightBulb * durationSecs )
 	$("div#lightBulb").text(Math.round(lightBulbs * 100) / 100 + " 11W light bulbs for " + durationSecs / 60 + " minutes");
 
 	// kg per km
 	carEmissions = 0.20864
-	$("div#carMeters").text(Math.round((carbon / carEmissions ) * 10000) / 10000 + " kms driving an average petrol car");
+	$("div#carMeters").text(Math.round((carbon / carEmissions ) * 10) / 10 + " meter driving an average petrol car");
 
 }
