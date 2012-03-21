@@ -6,16 +6,16 @@
 		<title>Guardian energy calculator</title>
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<!-- 		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" /> -->
-		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
-		<!-- 		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
-		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
-		<!-- 		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script> -->
-		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<!-- 		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script> -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
-		<!-- 		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script> -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" />
+		<!-- 		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" /> -->
+		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+		<!-- 		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
+		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script>
+		<!-- 		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script> -->
+		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script>
+		<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script> -->
+		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script>
+		<!-- 		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script> -->
 		<script>
 			$(function() {
 				$("#slider").slider({
@@ -25,7 +25,7 @@
 					step : 60,
 					slide : function(event, ui) {
 						$("#duration").val(ui.value / 60);
-						if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
+						if($("#connection_selected").val() != '' & $("#device_selected").val() != '' & $("#service_selected").val() != '') {
 							calc();
 						}
 					}
@@ -35,27 +35,30 @@
 			$(function() {
 				var device = '';
 				var connection = '';
+				//service
 				$("#selected_service li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					service = $(this).text();
 					$("#service_selected").val(service);
-					if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#connection_selected").val() != '' & $("#duration").val() != 0 & $("#device_selected").val() != '') {
 						calc();
 					}
 				});
+				//device_selected
 				$("#selectable li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					device = $(this).text();
 					$("#device_selected").val(device);
-					if($("#device_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#connection_selected").val() != '' & $("#duration").val() != 0 & $("#service_selected").val() != '') {
 						calc();
 					}
 				});
+				//connection_selected
 				$("#selectable2 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					connection = $(this).text();
 					$("#connection_selected").val(connection);
-					if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#device_selected").val() != '' & $("#duration").val() != 0 & $("#service_selected").val() != '') {
 						calc();
 					}
 				});
@@ -142,8 +145,7 @@
 			<input type="submit" value="Continue &rarr;"/>
 		</form></footer>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)

@@ -73,7 +73,7 @@ function calc() {
 
 	if(serviceType == 'video') {
 		// average for video
-		dataVolume = 57492000
+		dataVolume = durationSecs * 450000
 	}
 
 	// power access network
@@ -98,23 +98,24 @@ function calc() {
 	e_total = e_total_joule / 3600
 	e_total = Math.round(e_total * 100) / 100
 	// update the page to show the results
-	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
+	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> Wh</h1>"
 	// create circles
 	/*
-		var size = round(sqrt($max*$impactAssessment['amount']/pi()));
-		if ($size > 82) { $size = 82;}
-		if ($size < 20) { $size = 20;}
-		$margin = (100-$size)/2;
-		$margintop = (100-$size)/3;
-		// Create a circle
-		echo '<div class="circle"><div style="width:'.$size.'px; height:'.$size.'px;margin-left:'.$margin.'px;margin-top:'.$margintop.'px; background:'.$color.'; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div></div>';
-		echo '<div class="nr"><h1 class="nr">' . round($impactAssessment['amount'],2) .' '. $impactAssessment['unit']["abbr"] .'</h1></div>';
-		echo '<div class="meta"><p class="category">Category: <b>'. $impactAssessment['impactCategory']['label'] . "</b><br/>";
-		echo 'Indicator: <b>'. $impactAssessment['impactCategoryIndicator']['label'] . "</b></p></div>"; 				
-	} } ?>
-	
-	*/
-	document.getElementById('details').innerHTML = "<p>Device ("+ deviceType + "):" + Math.round(e_user/36)/100 + " wh</p>" + "<p>Server: " + Math.round(e_serv/36)/100 + " wh</p>" + "<p>Access network ("+ connectionType + "):" + Math.round(e_acc_net/36)/100 + " wh</p>" + "<p>Network:" + Math.round(e_network/36)/100 + " wh</p>"
+	 var size = round(sqrt($max*$impactAssessment['amount']/pi()));
+	 if ($size > 82) { $size = 82;}
+	 if ($size < 20) { $size = 20;}
+	 $margin = (100-$size)/2;
+	 $margintop = (100-$size)/3;
+	 // Create a circle
+	 echo '<div class="circle"><div style="width:'.$size.'px; height:'.$size.'px;margin-left:'.$margin.'px;margin-top:'.$margintop.'px; background:'.$color.'; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div></div>';
+	 echo '<div class="nr"><h1 class="nr">' . round($impactAssessment['amount'],2) .' '. $impactAssessment['unit']["abbr"] .'</h1></div>';
+	 echo '<div class="meta"><p class="category">Category: <b>'. $impactAssessment['impactCategory']['label'] . "</b><br/>";
+	 echo 'Indicator: <b>'. $impactAssessment['impactCategoryIndicator']['label'] . "</b></p></div>";
+	 } } ?>
+
+	 */
+	document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
+	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + Math.round(e_user / 36) / 100 + " Wh</p>" + "<p>Server: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>Access network (" + connectionType + "):" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>Network:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 
