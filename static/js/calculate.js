@@ -93,9 +93,9 @@ function calc() {
 	var e_serv = e_3rdp + e_origin
 	var e_network = 5.8616855E-6 * dataVolume
 	var e_user = p_device * durationSecs
-	var e_total = e_serv + e_network + e_acc_net + e_user
+	var e_total_joule = e_serv + e_network + e_acc_net + e_user
 	// convert to watthour
-	e_total /= 3600
+	e_total = e_total_joule / 3600
 	e_total = Math.round(e_total * 100) / 100
 	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
@@ -116,8 +116,8 @@ function calc() {
 	*/
 	document.getElementById('details').innerHTML = "<p>Device ("+ deviceType + "):" + Math.round(e_user/36)/100 + " wh</p>" + "<p>Server: " + Math.round(e_serv/36)/100 + " wh</p>" + "<p>Access network ("+ connectionType + "):" + Math.round(e_acc_net/36)/100 + " wh</p>" + "<p>Network:" + Math.round(e_network/36)/100 + " wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
-	calcLightBulbsAndCarbon(e_total, duration)
-	// save session
+	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
+
 	saveSelectionToSession()
 }
 
@@ -127,6 +127,7 @@ function calcLightBulbsAndCarbon(e_total, duration) {
 	carbon = .53 * e_kWh
 	$("div#carbon").text(carbon + "CO2");
 	lightBulb = 11 * duration
-	percentLightBulb = e_total / lightBulb / 100
-	$("div#lightBulb").text(percentLightBulb + " hours using a light bulb");
+	ratioLightBulb = e_total / lightBulb
+	$("div#lightBulb").text(ratioLightBulb + " hours using a light bulb");
+
 }
