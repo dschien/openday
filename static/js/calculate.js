@@ -130,6 +130,13 @@ function calc() {
 	var max_size=300
 	var circle_user= Math.round(Math.sqrt(max_size*(e_user/3600)/3.1416))
 	document.getElementById('circle1').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	var circle_network= Math.round(Math.sqrt(max_size*(e_network/3600)/3.1416))
+	document.getElementById('circle2').innerHTML = '<div style="width:'+circle_network+'px; height:'+circle_network+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	var circle_serv= Math.round(Math.sqrt(max_size*(p_serv/3600)/3.1416))
+	document.getElementById('circle3').innerHTML = '<div style="width:'+circle_serv+'px; height:'+circle_serv+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	var circle_acc_net= Math.round(Math.sqrt(max_size*(p_acc_net/3600)/3.1416))
+	document.getElementById('circle4').innerHTML = '<div style="width:'+acc_net+'px; height:'+acc_net+'px;margin-left:0px;margin-top:0px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	
 	/*
 	var size = round(sqrt($max*$impactAssessment['amount']/pi()));
 	if ($size > 82) { $size = 82;}
