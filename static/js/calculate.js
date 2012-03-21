@@ -102,7 +102,7 @@ function calc() {
 
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
-	calcLightBulbsAndCarbon(e_total, duration)
+	calcLightBulbsAndCarbon(e_total, durationSecs)
 
 	saveSelectionToSession()
 }
