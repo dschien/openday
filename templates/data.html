@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-	<head>
-		<title>Guardian energy calculator data</title>
-		<link href="style.css" media="screen" rel="stylesheet" type="text/css" />
-		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
- 		<div id="frame">
-			<div id="header">
-				<h1><a href="index.html"><img src="img/logo1.png"/></a></h1>
-				<p><a href="about.html">ABOUT</a> | <a href="data.html">DATA</a></p>
-			</div>
-			<div id="about">
-				<p>The calculation is based on the following assumptions and data:</p>
-			</div>
-		</div>
-		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
-				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-				s.parentNode.insertBefore(g, s)
-			}(document, 'script'));
-
-		</script>
-	</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div id="about">
+	<p>The calculation is based on the following assumptions and data:</p>
+</div>
+{% endblock %} 
