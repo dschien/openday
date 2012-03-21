@@ -99,7 +99,22 @@ function calc() {
 	e_total = Math.round(e_total * 100) / 100
 	// update the page to show the results
 	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> wh</h1>"
-	document.getElementById('details').innerHTML = "<h1>Device: " + deviceType + ":" + e_serv / 3600 + " wh</h1>"
+	// create circles
+	/*
+		var size = round(sqrt($max*$impactAssessment['amount']/pi()));
+		if ($size > 82) { $size = 82;}
+		if ($size < 20) { $size = 20;}
+		$margin = (100-$size)/2;
+		$margintop = (100-$size)/3;
+		// Create a circle
+		echo '<div class="circle"><div style="width:'.$size.'px; height:'.$size.'px;margin-left:'.$margin.'px;margin-top:'.$margintop.'px; background:'.$color.'; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div></div>';
+		echo '<div class="nr"><h1 class="nr">' . round($impactAssessment['amount'],2) .' '. $impactAssessment['unit']["abbr"] .'</h1></div>';
+		echo '<div class="meta"><p class="category">Category: <b>'. $impactAssessment['impactCategory']['label'] . "</b><br/>";
+		echo 'Indicator: <b>'. $impactAssessment['impactCategoryIndicator']['label'] . "</b></p></div>"; 				
+	} } ?>
+	
+	*/
+	document.getElementById('details').innerHTML = "<p>Device ("+ deviceType + "):" + Math.round(e_user/36)/100 + " wh</p>" + "<p>Server: " + Math.round(e_serv/36)/100 + " wh</p>" + "<p>Access network ("+ connectionType + "):" + Math.round(e_acc_net/36)/100 + " wh</p>" + "<p>Network:" + Math.round(e_network/36)/100 + " wh</p>"
 	drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 
@@ -110,8 +125,9 @@ function calcLightBulbsAndCarbon(e_total, duration) {
 	// 	to kWh
 	e_kWh = e_total / 1000
 	carbon = .53 * e_kWh
-	$("div#carbon").text(carbon);
+	$("div#carbon").text(carbon + "CO2");
 	lightBulb = 11 * duration
 	ratioLightBulb = e_total / lightBulb
-	$("div#lightBulb").text(ratioLightBulb);
+	$("div#lightBulb").text(ratioLightBulb + " hours using a light bulb");
+
 }
