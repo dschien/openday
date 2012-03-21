@@ -25,9 +25,9 @@
 					step : 60,
 					slide : function(event, ui) {
 						$("#duration").val(ui.value / 60);
-						/*if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
+						if($("#connection_selected").val() != '' & $("#device_selected").val() != '') {
 						 calc();
-						 }*/
+						 }
 					}
 				});
 				$("#duration").val("" + $("#slider").slider("value"));
@@ -39,25 +39,25 @@
 					$(this).addClass("selected").siblings().removeClass("selected");
 					service = $(this).text();
 					$("#service_selected").val(service);
-					/*if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
 					 calc();
-					 }*/
+					 }
 				});
 				$("#selectable li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					device = $(this).text();
 					$("#device_selected").val(device);
-					/*if($("#device_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#device_selected").val() != '' & $("#duration").val() != 0) {
 					 calc();
-					 }*/
+					 }
 				});
 				$("#selectable2 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
 					connection = $(this).text();
 					$("#connection_selected").val(connection);
-					/*if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
+					if($("#connection_selected").val() != '' & $("#duration").val() != 0) {
 					 calc();
-					 }*/
+					 }
 				});
 			});
 
@@ -80,38 +80,22 @@
 				</p>
 				<h2>1. Select service</h2>
 				<ol id="selected_service">
-					<li class="service">
-						text
-					</li>
-					<li class="service">
-						video
-					</li>
+					<li class="service">text</li>
+					<li class="service">video</li>
 					<input id="service_selected" type="hidden" value="" runat="server" />
 				</ol>
 				<h2>2. Select device</h2>
 				<ol id="selectable">
-					<li class="device">
-						phone
-					</li>
-					<li class="device">
-						tablet
-					</li>
-					<li class="device">
-						laptop
-					</li>
-					<li class="device">
-						pc
-					</li>
+					<li class="device">phone</li>
+					<li class="device">tablet</li>
+					<li class="device">laptop</li>
+					<li class="device">pc</li>
 					<input id="device_selected" type="hidden" value="" runat="server" />
 				</ol>
 				<h2>3. Select connection</h2>
 				<ol id="selectable2">
-					<li class="connection">
-						dsl
-					</li>
-					<li class="connection">
-						mobile
-					</li>
+					<li class="connection">dsl</li>
+					<li class="connection">mobile</li>
 					<input id="connection_selected" type="hidden" value="" runat="server" />
 				</ol>
 				<br/>
@@ -125,9 +109,7 @@
 					Minutes
 				</p>
 				<h2>Calculate</h2>
-				<button value="calc" name="calculate" onclick="calc()">
-					Go
-				</button>
+				<button value="calc" name="calculate" onclick="calc()">Go</button>
 			</div>
 			<!--Div that will hold the pie chart-->
 			<div id="column_right">
