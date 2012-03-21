@@ -6,16 +6,16 @@
 		<title>Guardian energy calculator</title>
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<!-- 		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" /> -->
-		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
-		<!-- 		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" /> -->
+<!-- 		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
 		<link type="text/css" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
-		<!-- 		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script> -->
 		<script src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
-		<!-- 		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script> -->
 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
-		<!-- 		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script> -->
-		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="{{STATIC_URL}}js/jquery-ui-1.8.18.custom.min.js"></script> -->
+		<link href="http://localhost/static/style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="http://localhost/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
+		<script src="http://localhost/static/js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="http://localhost/static/js/calculate.js"></script>
+		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script>
 			$(function() {
 				$("#slider").slider({
@@ -141,6 +141,8 @@
 				<div id="lightBulb"></div>
 				<div id="carbon"></div>
 				<div id="carMeters"></div>
+				<div id="blurb"></div>
+				
 			</div>
 		</div>
 		{%if type == 'survey'%}

@@ -32,7 +32,8 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 
 function addSelectionToSession(selection) {
 
-	if(!selections) {
+	if( typeof selections === 'undefined') {
+		// variable is undefined
 		selections = new Array()
 	}
 	selections.push(selection)
@@ -141,6 +142,7 @@ function calc() {
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 	currentSelection = selection
 	addSelectionToSession(selection)
+	setBlurb()
 }
 
 function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
@@ -158,7 +160,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	$("div#carMeters").text(Math.round((carbon / carEmissions ) * 10) / 10 + " meter driving an average petrol car");
 }
 
-function getBlurb() {
+function setBlurb() {
 	text = 'Reading normal web pages (no video) changing page every minute'
 	if(currentSelection['service'] == 'video')
 		text = 'Watching video continuously '
@@ -178,17 +180,17 @@ function getBlurb() {
 	}
 
 	if(currentSelection['connection'] == 'mobile') {
-		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
-	} else {
 		text = text + "connected to the Internet by a mobile networks (GPRS, 3G, etc.) "
+	} else {
+		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
 	}
 
 	if(currentSelection['service'] == 'video') {
-		text = text + "viewing for "
-		currentSelection['duration'] + " minutes"
+		text = text + "viewing for " + currentSelection['duration'] + " minutes"
 	} else {
-		text = text + "reading for "
-		currentSelection['duration'] + " minutes"
+		text = text + "reading for " + currentSelection['duration'] + " minutes"
 	}
-	return text
+
+	document.getElementById('blurb').innerHTML = text
+
 }
