@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-{% if error_message %}
-<p>
-	<strong>{{ error_message }}</strong>
-</p>
-{% endif %}
 <div id="about">
-<form action="climate" method="post" accept-charset="utf-8">
-	{% csrf_token %}
-	Are you?
-	<br>
-	<input type="radio" name="gender" value="0" id='male'>
-	<label for="male">Male</label>
-	<input type="radio" name="gender" value="1" id='female'>
-	<label for="female">Female</label>
-	<br>
-	What is your age group?
-	<br>
-	<input type="radio" name="age" value="17">
-	<label for="17">under 18</label>
-	<input type="radio" name="age" value="18">
-	<label for="18">18-25</label>
-	<input type="radio" name="age" value="26">
-	<label for="26">26-35</label>
-	<input type="radio" name="age" value="36">
-	<label for="26">36-45</label>
-	<input type="radio" name="age" value="46">
-	<label for="46">45-55</label>
-	<input type="radio" name="age" value="55">
-	<label for="55">over 55</label>
-	<br>
-	<input type="submit" value="Continue &rarr;"/>
-</form>
+	<form action="climate" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		{% if error_message %}
+		<p>
+			<strong>{{ error_message }}</strong>
+		</p>
+		{% endif %}
+		Are you?
+		<br>
+		<input type="radio" name="gender" value="0" id='male'>
+		<label for="male">Male</label>
+		<input type="radio" name="gender" value="1" id='female'>
+		<label for="female">Female</label>
+		<br>
+		What is your age group?
+		<br>
+		<input type="radio" name="age" value="17">
+		<label for="17">under 18</label>
+		<input type="radio" name="age" value="18">
+		<label for="18">18-25</label>
+		<input type="radio" name="age" value="26">
+		<label for="26">26-35</label>
+		<input type="radio" name="age" value="36">
+		<label for="26">36-45</label>
+		<input type="radio" name="age" value="46">
+		<label for="46">45-55</label>
+		<input type="radio" name="age" value="55">
+		<label for="55">over 55</label>
+		<br>
+		<input type="submit" value="Continue &rarr;"/>
+	</form>
 </div>
 {% endblock %} 

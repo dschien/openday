@@ -26,19 +26,24 @@ def climate(request):
     # save the information from the form into the session
     #request.session
             
-    logging.info('view climate w/ {}'.format(request.POST))    
-    request.session['gender'] = request.POST['gender']
-    request.session['age'] = request.POST['age']
+    logging.info('view climate w/ {}'.format(request.POST))
+    
+    if 'gender' in request.POST:
+        request.session['gender'] = request.POST['gender']
+    else:
+        request.session['gender'] = -1
+    if 'age' in request.POST:        
+        request.session['age'] = request.POST['age']
+    else: 
+        request.session['age'] = -1
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
     
 def gender(request):
     # no data to show    
     if not request.session :
         # if it doesn't have a session -> start again
-        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-             
+        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
-
 
 
 def app(request):
@@ -48,6 +53,9 @@ def app(request):
     # save the information from the form into the session
     logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
         #request.session
+    if not 'cc' in request.POST or not 'it' in request.POST : 
+        return render_to_response('climate.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+    
     request.session['cc_pre'] = request.POST['cc']
     request.session['it_pre'] = request.POST['it'] 
 #    pdb.set_trace()    
@@ -95,10 +103,3 @@ def contact(request):
     return render_to_response('form.html', {'form': form}, context_instance=RequestContext(request))
 
     
-def gender2(request):
-    # no data to show    
-    if not request.session :
-        # if it doesn't have a session -> start again
-        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))    
-    return render_to_response('gender.html', {}, context_instance=RequestContext(request))
-
