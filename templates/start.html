@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% if error_message %}
+<div id="about">
 <p>
 	<strong>{{ error_message }}</strong>
 </p>
@@ -51,4 +52,5 @@ specific individual responses once the survey is complete.</h2>
 	</p>
 </form>
 </p>
+</div>
 {% endblock %} 
