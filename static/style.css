@@ -108,9 +108,11 @@ body{
 	float:left;
 	position:relative;
 	width:120px;
+	z-index:-1;
 }
 .circle{
 	float:left;
+	position:relative;
 	width:120px;
 	height:120px;
 	opacity:0.8;
@@ -118,8 +120,10 @@ body{
 }
 .details_text{
 	float:left;
+	position:relative;
 	width:120px;
 	height:120px;
+	z-index:-2;
 }
 
 /* Typography */
