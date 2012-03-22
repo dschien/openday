@@ -6,7 +6,7 @@
 	<p>
 		<strong>{{ error_message }}</strong>
 	</p>
-	{% endif %} <h2>Your Background</h2>
+	{% endif %} <div id="about"><h2>Your Background</h2>
 	<p>
 		{% if error_cc %} <font color="red">Please select one</font> {% endif %} <b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
 		<br>
@@ -66,4 +66,5 @@
 	</p>
 </form>
 </select>
+</div>
 {% endblock %} 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="climate" method="post" accept-charset="utf-8">
+<div id="about"><form action="climate" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 	{% if error_message %}
 	<p>
@@ -40,5 +40,5 @@
 	</p>
 	<br>
 	<input type="submit" value="Continue &rarr;"/>
-</form>
+</form></div>
 {% endblock %} 

@@ -5,7 +5,7 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<form action="thankyou" method="post" accept-charset="utf-8">
+<div id="about"><form action="thankyou" method="post" accept-charset="utf-8">
 	{% csrf_token %} <h2>Internet Carbon Footprint</h2>
 	<p>
 		<b>9: How would you rank each the energy consumption of each part of John's system now. Rank 1-4 (1 lowest energy, 4 highest energy)</b>
@@ -71,5 +71,5 @@
 	<p>
 		<input type="submit" value="Continue &rarr;"/>
 	</p>
-</form>
+</form></div>
 {% endblock %} 
