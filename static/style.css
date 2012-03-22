@@ -88,18 +88,20 @@ body{
 
 /* Bubbles*/
 .details{
+	float:left;
 	position:relative;
-	width:500px;
+	width:200px;
 }
 .circle{
 	float:left;
 	width:200px;
-	height:150px;
+	height:120px;
 }
 .details_text{
 	float:left;
-	width:250px;
-	height:150px;
+	width:190px;
+	height:120px;
+	text-align:center;
 }
 
 /* Typography */
