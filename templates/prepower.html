@@ -100,13 +100,12 @@
 			// });
 			// $("#duration").val("" + $("#slider").slider("value"));
 			function addValuesToForm(){
-				$("#form")['pre_points'] = $("#slider").slider("value")
+				$("#pre_points").val($("#slider").slider("value"))
 			}
 			
 		</script>
-		Number of light bulbs:
-		<div class="selection">
-			<h2>4. Viewing/reading time</h2>
+		
+		<div class="selection">		
 			<div id="slider"></div>
 			<div id="opt_out">
 				<input type="checkbox"name="opt_out" value="1">
@@ -120,6 +119,7 @@
 		</div>
 	</p>
 	<p>
+		<input type="hidden" name="pre_points" id="pre_points"/>
 		<input type="submit" value="Continue &rarr;" name="type"/>
 		<input type="submit" value="Skip page" name="type"/>
 	</p>
