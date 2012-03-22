@@ -170,14 +170,14 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	e_total_Wh = e_total_joule / 3600
 	e_total_kWh = e_total_Wh / 1000
 	carbon = .525 * e_total_Wh
-	$("div#carbon").text("<p><number>" + Math.round(carbon * 10) / 10 + "</number></p><p> grams carbon dioxide</p>");
+	$("div#carbon").innerHTML("<p><number>" + Math.round(carbon * 10) / 10 + "</number></p><p> grams carbon dioxide</p>");
 	power_lightBulb = 11
 	lightBulbs = e_total_joule / (power_lightBulb * durationSecs )
-	$("div#lightBulb").text("<p><number>"+Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " minutes</number></p>");
+	$("div#lightBulb").innerHTML("<p><number>"+Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " minutes</number></p>");
 
 	// kg per km
 	carEmissions = 0.20864
-	$("div#carMeters").text("<p><number>" +Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meter driving an average petrol car</p>");
+	$("div#carMeters").innerHTML("<p><number>" +Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meter driving an average petrol car</p>");
 }
 
 function setBlurb() {
