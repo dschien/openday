@@ -32,7 +32,7 @@ body{
 #column_right{
 	position:relative;
 	float:right;
-	width:500px;
+	width:700px;
 	padding:20px;
 }
 #about{
@@ -90,18 +90,17 @@ body{
 .details{
 	float:left;
 	position:relative;
-	width:200px;
+	width:180px;
 }
 .circle{
 	float:left;
-	width:200px;
+	width:180px;
 	height:120px;
 }
 .details_text{
 	float:left;
-	width:190px;
+	width:180px;
 	height:120px;
-	text-align:center;
 }
 
 /* Typography */
