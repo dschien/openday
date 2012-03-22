@@ -14,6 +14,14 @@ body{
 	padding:20px;
 	padding-top:0px;
 }
+#header2{
+	float:left;
+	position:relative;
+	width:350px;
+	height:100px;
+	padding:20px;
+	padding-top:0px;
+}
 #menu{
 	float:right;
 	width:140px;
@@ -34,7 +42,7 @@ body{
 	float:right;
 	width:550px;
 	padding:10px;
-	padding-top:0px;
+	padding-top:20px;
 }
 #about{
 	position:relative;
