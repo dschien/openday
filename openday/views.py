@@ -139,7 +139,7 @@ def postpower(request):
     # if branched, go to thankyou
     if request.POST['next'] == 'thankyou':
         # go there
-        return HttpResponseRedirect(reverse('openday.views.thankyou', args=['skip_pp']))
+        return thankyou(request, nav='skip_pp')
         
     return render_to_response('postpower.html', {}, context_instance=RequestContext(request))
 
