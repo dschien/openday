@@ -131,40 +131,28 @@ function calc() {
 	var circle_user= Math.round(Math.sqrt(max_size*(e_user/3600)/3.1416))
 	margin = (100-circle_user)/2
 	margintop = (100-circle_user)/3
-	document.getElementById('circle1').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 60px; -webkit-border-radius:60px;"></div>'
+	document.getElementById('circle_device').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 80px; -webkit-border-radius:80px;"></div>'
+	document.getElementById('text_access').innerHTML = "<h2>" + deviceType + "</h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 	
 	var circle_network= Math.round(Math.sqrt(max_size*(e_network/3600)/3.1416))
 	margin = (100-circle_network)/2
 	margintop = (100-circle_network)/3
-	document.getElementById('circle2').innerHTML = '<div style="width:'+circle_network+'px; height:'+circle_network+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('circle_infra').innerHTML = '<div style="width:'+circle_network+'px; height:'+circle_network+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('text_infra').innerHTML = "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
 	
 	var circle_serv= Math.round(Math.sqrt(max_size*(p_serv/3600)/3.1416))
 	margin = (100-circle_serv)/2
 	margintop = (100-circle_serv)/3
-	document.getElementById('circle3').innerHTML = '<div style="width:'+circle_serv+'px; height:'+circle_serv+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('circle_server').innerHTML = '<div style="width:'+circle_serv+'px; height:'+circle_serv+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('text_server').innerHTML = "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>"
 	
 	var circle_acc_net= Math.round(Math.sqrt(max_size*(p_acc_net/3600)/3.1416))
 	margin = (100-circle_acc_net)/2
 	margintop = (100-circle_acc_net)/3
-	document.getElementById('circle4').innerHTML = '<div style="width:'+circle_acc_net+'px; height:'+circle_acc_net+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
-	
-	/*
-	var size = round(sqrt($max*$impactAssessment['amount']/pi()));
-	if ($size > 82) { $size = 82;}
-	if ($size < 20) { $size = 20;}
-	$margin = (100-$size)/2;
-	$margintop = (100-$size)/3;
-	// Create a circle
-	echo '<div class="circle"></div>';
-	echo '<div class="nr"><h1 class="nr">' . round($impactAssessment['amount'],2) .' '. $impactAssessment['unit']["abbr"] .'</h1></div>';
-	echo '<div class="meta"><p class="category">Category: <b>'. $impactAssessment['impactCategory']['label'] . "</b><br/>";
-	echo 'Indicator: <b>'. $impactAssessment['impactCategoryIndicator']['label'] . "</b></p></div>";
-	} } ?>
+	document.getElementById('circle_access').innerHTML = '<div style="width:'+circle_acc_net+'px; height:'+circle_acc_net+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('text_access').innerHTML =  "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>"
 
-	*/
-	// document.getElementById('details').innerHTML = "<p>Device (" + deviceType + "):" + e_user + " Wh</p>" + "<p>Server: " + e_serv + " Wh</p>" + "<p>Access network (" + connectionType + "):" + e_acc_net + " Wh</p>" + "<p>Network:" + e_network + " Wh</p>"
-	document.getElementById('details').innerHTML = "<p>" + deviceType + ":" + Math.round(e_user / 36) / 100 + " Wh, " + Math.round(p_user) + " &#37;</p>" + "<p>servers: " + Math.round(e_serv / 36) / 100 + " Wh</p>" + "<p>" + connectionType + ":" + Math.round(e_acc_net / 36) / 100 + " Wh</p>" + "<p>internet:" + Math.round(e_network / 36) / 100 + " Wh</p>"
-	drawChart(e_serv, e_network, e_acc_net, e_user)
+	//drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 	currentSelection = selection
 	addSelectionToSession(selection)

@@ -86,6 +86,24 @@ body{
 	margin-bottom:6px;
 }
 
+/* Bubbles*/
+.details{
+	position:relative;
+	width:500px;
+}
+.circle{
+	float:left;
+	width:300px;
+	height:300px;
+}
+.details_text{
+	float:left;
+	width:200px;
+	height:200px;
+	background-color:#333;
+	color:#fff;
+}
+
 /* Typography */
 big{
 	font-size:145px;
