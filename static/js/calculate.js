@@ -173,7 +173,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	document.getElementById('carbon').innerHTML ="<p><number>" + Math.round(carbon * 10) / 10 + "</number></p><p> grams carbon dioxide</p>";
 	power_lightBulb = 11
 	lightBulbs = e_total_joule / (power_lightBulb * durationSecs )
-	document.getElementById('lightBulb').innerHTML = "<p><number>"+Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " minutes</number></p>";
+	document.getElementById('lightBulb').innerHTML = "<p><number>"+Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " </number>minutes</p>";
 
 	// kg per km
 	carEmissions = 0.20864
