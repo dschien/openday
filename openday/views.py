@@ -115,7 +115,7 @@ def app(request):
             s.pre_internet = request.POST['pre_internet']
     
             # has opt'ed out?        
-            if request.POST['opt_out'] == 1:
+            if 'opt_out' in request.POST and request.POST['opt_out'] == 1:
                 s.pre_points = -1
             s.pre_points = request.POST['pre_points']
                     
