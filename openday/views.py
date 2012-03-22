@@ -27,6 +27,7 @@ def gender(request):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
+    logging.info('<gender> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if 'survey_id' in request.session:
         del request.session['survey_id']
@@ -47,7 +48,7 @@ def climate(request):
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session                
-    logging.info('<climate> w/ {}'.format(request.POST))
+    logging.info('<climate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     s = Survey()     
     s.gender = request.POST['gender'] if 'gender' in request.POST else -1  
@@ -67,7 +68,7 @@ def prepower(request):
     if not 'cc' in request.POST or not 'it' in request.POST  or not 'cit' in request.POST : 
             return render_to_response('climate.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
     
-    logging.info('gender:{}, age: {}'.format(request.session['gender'], request.session['age']))
+    logging.info('<prepower> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     s.cc = request.POST['cc']
@@ -83,7 +84,7 @@ def app(request):
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session
-    logging.info('<app> with {}'.format(request.session.session_key))
+    logging.info('<app> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     
     if request.session['type'] == 'survey': 
@@ -102,8 +103,9 @@ def app(request):
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
-def branch(request):
+def branch(request):    
     #store app data
+    logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     return render_to_response('branch.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 
@@ -111,6 +113,8 @@ def postpower(request):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    
+    logging.info('<postpower> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     # if branched, go to thankyou
     if request.POST['next'] == 'thankyou':
@@ -123,6 +127,8 @@ def thankyou(request, nav=None):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    
+    logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if nav == 'skip_pp':
         logging.info('<thankyou> - post power question was skipped')
