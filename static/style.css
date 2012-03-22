@@ -121,7 +121,7 @@ body{
 	float:left;
 	width:120px;
 	height:120px;
-	z-index:-2;
+	z-index:-1;
 }
 
 /* Typography */
