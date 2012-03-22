@@ -6,14 +6,20 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
 		<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+<!-- 		<link type="text/css" href="{{ STATIC_URL }}css/jquery.mobile-1.1.0-rc.1.min.css" rel="stylesheet" /> -->
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+<!-- 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.mobile-1.1.0-rc.1.min.js"></script> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 	</head>
 	<body>
 		<div id="frame">
 			<div id="header">
 				<h1><a href="start"><img src="{{ STATIC_URL }}img/logo1.png"/></a></h1>
 			</div>
-			<div id="menu">
-			</div>
+			<div id="menu"></div>
 			{% block content %}
 			{% endblock %}
 		</div>
