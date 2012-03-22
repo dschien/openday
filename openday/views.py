@@ -10,8 +10,7 @@ import re
 #import pdb;
 
 # Create your views here.
-# Get an instance of a logger
-logger = logging.getLogger(__name__)
+
 
 def start(request):
            
@@ -19,7 +18,7 @@ def start(request):
         # if it doesn't have a session -> start again
         return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))        
         
-    logger.info('<start> : {}'.format(request.session.session_key)) 
+    logging.info('<start> : {}'.format(request.session.session_key)) 
     return render_to_response('start.html', context_instance=RequestContext(request))
     del request.session['type']
     
