@@ -39,7 +39,7 @@ body{
 #about{
 	position:relative;
 	float:left;
-	width:750px;
+	width:900px;
 	padding:20px;
 }
 /*Items*/
@@ -139,7 +139,7 @@ smaller{
 	font-size:14px;
 }
 #about p{
-	font-size:24px;
+	font-size:16px;
 }
 #blurb p{
 	font-size:12px;
