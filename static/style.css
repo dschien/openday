@@ -108,13 +108,14 @@ body{
 	float:left;
 	position:relative;
 	width:120px;
+	z-index:-1;
 }
 .circle{
 	float:left;
 	width:120px;
 	height:120px;
-	opacity:0.6;
-	z-index:-1;
+	opacity:0.8;
+	z-index:-2;
 }
 .details_text{
 	float:left;
@@ -133,7 +134,7 @@ smaller{
 	font-size:24px;
 }
 #blurb p{
-	font-size:8px;
+	font-size:12px;
 }
 #column_left h2{
 	font-size:16px;
