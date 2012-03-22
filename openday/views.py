@@ -100,8 +100,7 @@ def app(request):
     logging.info('<app> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
     
     if request.session['type'] == 'survey':
-        t = request.POST['type']
-        logging.debug(t)
+        
         if not re.search('Skip', request.POST['type']): 
             if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]) \
                 or any([ re.search('Please select', request.POST[key]) for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]):
@@ -153,23 +152,24 @@ def thankyou(request, nav=None):
     if nav == 'skip_pp':
         logging.info('<thankyou> - post power question was skipped')
     else:
-        if not all([ key in request.POST for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]) \
-            or any([ re.search('Please select', request.POST[key]) for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]):        
-            return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
-        
-        logging.info('<thankyou> storing power power info')
-        s = get_object_or_404(Survey, id=request.session['survey_id'])        
-        s.post_servers = request.POST['post_servers']                        
-        s.post_laptop = request.POST['post_laptop']
-        s.post_acc_net = request.POST['post_acc_net']
-        s.post_internet = request.POST['post_internet']
-        
-        # has opt'ed out?        
-        if request.POST['opt_out'] == 1:
-            s.pre_points = -1        
-        s.post_points = request.POST['post_points']
-                
-        s.save()
+        if not re.search('Skip', request.POST['type']):
+            if not all([ key in request.POST for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]) \
+                or any([ re.search('Please select', request.POST[key]) for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]):        
+                return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+            
+            logging.info('<thankyou> storing info')
+            s = get_object_or_404(Survey, id=request.session['survey_id'])        
+            s.post_servers = request.POST['post_servers']                        
+            s.post_laptop = request.POST['post_laptop']
+            s.post_acc_net = request.POST['post_acc_net']
+            s.post_internet = request.POST['post_internet']
+            
+            # has opt'ed out?        
+            if 'opt_out' in request.POST and request.POST['opt_out'] == 1:
+                s.pre_points = -1        
+            s.post_points = request.POST['post_points']
+                    
+            s.save()
         # reset the session information
     del request.session['survey_id']
     
