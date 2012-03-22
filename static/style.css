@@ -16,7 +16,7 @@ body {
 	width: 800px;
 	height: 60px;
 	padding: 20px;
-	padding-top: 0px;
+	padding-top: 10px;
 }
 #header2 {
 	float: left;
@@ -24,7 +24,7 @@ body {
 	width: 350px;
 	height: 60px;
 	padding: 20px;
-	padding-top: 0px;
+	padding-top: 10px;
 }
 #menu {
 	float: right;
@@ -200,6 +200,9 @@ a {
 	border-bottom: 1px dotted #333;
 }
 #header a{
+	border-bottom: none;	
+}
+#header2 a{
 	border-bottom: none;	
 }
 /*#sliders {
