@@ -32,8 +32,9 @@ body{
 #column_right{
 	position:relative;
 	float:right;
-	width:500px;
-	padding:20px;
+	width:550px;
+	padding:10px;
+	padding-top:0px;
 }
 #about{
 	position:relative;
@@ -88,7 +89,7 @@ body{
 /* Results*/
 #bignr{
 	float:left;
-	width:300px;
+	width:320px;
 	height:200px;
 }#blurb{
 	float:left;
@@ -121,13 +122,16 @@ body{
 
 /* Typography */
 big{
-	font-size:115px;
+	font-size:100px;
 }
 smaller{
 	font-size:16px;
 }
 #about p{
 	font-size:24px;
+}
+#blurb p{
+	font-size:14px;
 }
 #column_left h2{
 	font-size:16px;
