@@ -113,6 +113,8 @@ body{
 	float:left;
 	width:120px;
 	height:120px;
+	opacity:0.6;
+	z-index:-1;
 }
 .details_text{
 	float:left;
@@ -131,7 +133,7 @@ smaller{
 	font-size:24px;
 }
 #blurb p{
-	font-size:10px;
+	font-size:8px;
 }
 #column_left h2{
 	font-size:16px;
