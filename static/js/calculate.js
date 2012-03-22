@@ -92,11 +92,14 @@ function calc() {
 	// default for text
 	var dataVolume = 1800000
 
+	// change page every minute
+	pageLoads = durationMins
 	if(serviceType == 'video') {
 		// average for video
 		dataVolume = durationSecs * 450000
-	}
-
+		// when watching video =- only one page
+		pageLoads = 1
+	} 
 	// power access network
 	var connectionType = document.getElementById('connection_selected').value
 	connectionType = connectionType.trim()
@@ -104,16 +107,16 @@ function calc() {
 	var e_acc_net = 0
 	switch(connectionType) {
 		case 'mobile':
-			e_acc_net = dataVolume * 1.8144144197598379e-05
+			e_acc_net = dataVolume * 1.8144144197598379e-05 * pageLoads
 			break;
 		default:
 			// default is dsl
 			e_acc_net = 10 * durationSecs
 	}
-	var e_origin = 102
-	var e_3rdp = 5.3490346705157022e-06 * dataVolume
+	var e_origin = 102 * pageLoads
+	var e_3rdp = 5.3490346705157022e-06 * dataVolume * pageLoads
 	var e_serv = e_3rdp + e_origin
-	var e_network = 5.8616855E-6 * dataVolume
+	var e_network = 5.8616855E-6 * dataVolume * pageLoads
 	var e_user = p_device * durationSecs
 	var e_total_joule = e_serv + e_network + e_acc_net + e_user
 	// convert to watthour
@@ -127,30 +130,30 @@ function calc() {
 	var p_serv = (e_serv * 100) / e_total_joule
 	var p_acc_net = (e_acc_net * 100) / e_total_joule
 	// create circles
-	var max_size=3000
-	var circle_user= Math.round(Math.sqrt(max_size*(e_user/3600)/3.1416))
-	margin = (100-circle_user)/2
-	margintop = (100-circle_user)/3
-	document.getElementById('circle_device').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 80px; -webkit-border-radius:80px;"></div>'
+	var max_size = 3000
+	var circle_user = Math.round(Math.sqrt(max_size * (e_user / 3600) / 3.1416))
+	margin = (100 - circle_user) / 2
+	margintop = (100 - circle_user) / 3
+	document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#000; -moz-border-radius: 80px; -webkit-border-radius:80px;"></div>'
 	document.getElementById('text_device').innerHTML = "<h2>" + deviceType + "</h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
-	
-	var circle_network= Math.round(Math.sqrt(max_size*(e_network/3600)/3.1416))
-	margin = (100-circle_network)/2
-	margintop = (100-circle_network)/3
-	document.getElementById('circle_infra').innerHTML = '<div style="width:'+circle_network+'px; height:'+circle_network+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+
+	var circle_network = Math.round(Math.sqrt(max_size * (e_network / 3600) / 3.1416))
+	margin = (100 - circle_network) / 2
+	margintop = (100 - circle_network) / 3
+	document.getElementById('circle_infra').innerHTML = '<div style="width:' + circle_network + 'px; height:' + circle_network + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
 	document.getElementById('text_infra').innerHTML = "<h2>Internet infrastructure</h2><p>" + Math.round(e_network / 36) / 100 + " Wh</p>"
-	
-	var circle_serv= Math.round(Math.sqrt(max_size*(p_serv/3600)/3.1416))
-	margin = (100-circle_serv)/2
-	margintop = (100-circle_serv)/3
-	document.getElementById('circle_server').innerHTML = '<div style="width:'+circle_serv+'px; height:'+circle_serv+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+
+	var circle_serv = Math.round(Math.sqrt(max_size * (p_serv / 3600) / 3.1416))
+	margin = (100 - circle_serv) / 2
+	margintop = (100 - circle_serv) / 3
+	document.getElementById('circle_server').innerHTML = '<div style="width:' + circle_serv + 'px; height:' + circle_serv + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
 	document.getElementById('text_server').innerHTML = "<h2>Servers</h2><p>" + Math.round(e_serv / 36) / 100 + " Wh</p>"
-	
-	var circle_acc_net= Math.round(Math.sqrt(max_size*(p_acc_net/3600)/3.1416))
-	margin = (100-circle_acc_net)/2
-	margintop = (100-circle_acc_net)/3
-	document.getElementById('circle_access').innerHTML = '<div style="width:'+circle_acc_net+'px; height:'+circle_acc_net+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
-	document.getElementById('text_access').innerHTML =  "<h2>" + connectionType + " connection</h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p>"
+
+	var circle_acc_net = Math.round(Math.sqrt(max_size * (p_acc_net / 3600) / 3.1416))
+	margin = (100 - circle_acc_net) / 2
+	margintop = (100 - circle_acc_net) / 3
+	document.getElementById('circle_access').innerHTML = '<div style="width:' + circle_acc_net + 'px; height:' + circle_acc_net + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#000; -moz-border-radius: 40px; -webkit-border-radius:40px;"></div>'
+	document.getElementById('text_access').innerHTML = "<h2>" + connectionType + " connection</h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p>"
 
 	//drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)

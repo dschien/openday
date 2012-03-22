@@ -10,6 +10,9 @@ medium -prepower.html - change to 60W - @dan
 medium -postpower.html - change to 60W - @dan
 medium -postpower.html - slider 'add "dont know option"' - @dan
 medium -postpower.html - slider text 'How many 60W light bulbs can you light with the same amount of energy?' - @dan
+medium -postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
+medium -postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
+
 medium - climate.html - undecided > 'neither agree nor disagree' - @dan
 medium - questionaires - 'carbon' to 'energy' - @dan
 medium - app - record interaction start/end time  - @dan
