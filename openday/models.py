@@ -22,6 +22,7 @@ class Survey(models.Model):
     pre_internet = models.IntegerField(null=True)
     pre_points = models.IntegerField(null=True)
 
+
     post_servers = models.IntegerField(null=True)
     post_laptop = models.IntegerField(null=True)
     post_acc_net = models.IntegerField(null=True)

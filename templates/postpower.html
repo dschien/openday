@@ -5,71 +5,129 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<div id="about"><form action="thankyou" method="post" accept-charset="utf-8">
-	{% csrf_token %} <h2>Internet Carbon Footprint</h2>
+<form id="form" action="thankyou" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+	{% csrf_token %} <h2>Internet Energy Footprint</h2>
 	<p>
-		<b>9: How would you rank each the energy consumption of each part of John's system now. Rank 1-4 (1 lowest energy, 4 highest energy)</b>
+		John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
+		<br>
+		His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
 	</p>
 	<p>
-		<table>
-			<tr>
-				<td align="right"><b>Content Servers<b></td>
-				<td>
-				<select name="post_servers">
-					<option>Please select.... </option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="0">No Opinion</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td align="right"><b>Internet</b></td>
-				<td>
-				<select name="post_internet">
-					<option>Please select.... </option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="0">No Opinion</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td align="right"><b>Laptop</b></td>
-				<td>
-				<select name="post_laptop">
-					<option>Please select.... </option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="0">No Opinion</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td align="right"><b>Wi-Fi and Router</b></td>
-				<td>
-				<select name="post_acc_net">
-					<option>Please select.... </option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="0">No Opinion</option>
-				</select></td>
-			</tr>
-			<table>
-	</p>
-	<b>10: Roughly how much electricy overall do you now think John's 2 minutes of Guardian website browsing uses.</b>
+		<b>6: Please rank each part of John's system according to the amount of electrical energy it consumes.	</b>
 	</p>
 	<p>
-		Number of light bulbs:
-		<input type="range" name="post_points" min="1" max="500" step="5" />
+		<script type="text/javascript" charset="utf-8">
+			$(function() {
+
+				var sliders = $("#sliders .slider");
+
+				sliders.each(function() {
+					var value = parseInt($(this).text(), 25), availableTotal = 100;
+
+					$(this).empty().slider({
+						value : 25,
+						min : 1,
+						max : 97,
+						range : "max",
+						step : 1,
+						animate : 100,
+						slide : function(event, ui) {
+							// Update display to current value
+							$(this).siblings().text(ui.value + "%");
+
+							// get current  value
+							var cur_val = ui.value
+
+							// Get current total of the other sliders
+							var total = 0;
+
+							sliders.not(this).each(function() {
+								total += $(this).slider("option", "value");
+							});
+							var availableOthers = availableTotal - cur_val;
+
+							// Update each slider
+							sliders.not(this).each(function() {
+								var t = $(this), value = t.slider("option", "value");
+
+								var newVal = availableOthers * value / total
+								if(isNaN(newVal)) {
+									newVal = 1
+								}
+								t.slider('value', newVal).siblings().text(Math.round(newVal) + "%");
+							});
+						}
+					});
+				});
+			});
+
+		</script>
+		<ul id="sliders">
+			<b>Content Servers<b>
+			<li>
+				<div class="slider" id="sl_servers"></div>
+				<span class="value">25%</span>
+			</li> <b>Internet</b>
+			<li>
+				<div class="slider" id="sl_internet"></div>
+				<span class="value">25%</span>
+			</li> <b>Laptop</b>
+			<li>
+				<div class="slider" id="sl_laptop"></div>
+				<span class="value">25%</span>
+			</li> <b>Wi-Fi and Router</b>
+			<li>
+				<div class="slider" id="sl_acc_net"></div>
+				<span class="value">25%</span>
+			</li>
+		</ul>
 	</p>
 	<p>
-		<input type="submit" value="Continue &rarr;"/>
+		<b>7: How many 60W light bulbs can you light with the same amount of energy?</b>
+	</p>
+	<p>
+		<script>
+			$(function() {
+				$("#light_slider").slider({
+					value : 1,
+					min : 1,
+					max : 30,
+					step : 1,
+					slide : function(event, ui) {
+						$("#bulbs").val(ui.value);
+					}
+				});
+				$("#bulbs").val("" + $("#light_slider").slider("value"));
+			});
+			function addValuesToForm() {
+				$("#post_servers").val($("#sl_servers").slider("value"))
+				$("#post_laptop").val($("#sl_laptop").slider("value"))
+				$("#post_acc_net").val($("#sl_acc_net").slider("value"))
+				$("#post_internet").val($("#sl_internet").slider("value"))
+				$("#post_points").val($("#light_slider").slider("value"))
+			}
+		</script>
+		<div class="selection">
+			<div id="light_slider"></div>
+			<div id="opt_out">
+				<input type="checkbox"name="opt_out" value="1">
+				Don't know
+				</input>
+			</div>
+			<p>
+				<input type="text" id="bulbs" style="border:0; font-weight:bold;" />
+				Minutes
+			</p>
+		</div>
+	</p>
+	<p>
+		<input type="hidden" name="post_servers" id="post_servers"/>
+		<input type="hidden" name="post_laptop" id="post_laptop"/>
+		<input type="hidden" name="post_acc_net" id="post_acc_net"/>
+		<input type="hidden" name="post_internet" id="post_internet"/>
+		<input type="hidden" name="post_points" id="post_points"/>
+		<input type="submit" value="Continue &rarr;" name="type"/>
+		<input type="submit" value="Skip page" name="type"/>
 	</p>
 </form></div>
 {% endblock %} 

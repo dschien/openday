@@ -109,7 +109,7 @@ function calc() {
 	selection['connection'] = connectionType
 	var e_acc_net = 0
 	switch(connectionType) {
-		case 'mobile':
+		case '3G mobile':
 			e_acc_net = dataVolume * 1.8144144197598379e-05 * pageLoads
 			break;
 		default:
