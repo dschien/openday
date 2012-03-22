@@ -5,12 +5,16 @@ body {
 /* Basic layout */
 #frame {
 	width: 1024px;
+	position:relative;
+	top:0px;
+	left:0px;
+	
 }
 #header {
 	float: left;
 	position: relative;
 	width: 800px;
-	height: 100px;
+	height: 60px;
 	padding: 20px;
 	padding-top: 0px;
 }
@@ -18,7 +22,7 @@ body {
 	float: left;
 	position: relative;
 	width: 350px;
-	height: 100px;
+	height: 60px;
 	padding: 20px;
 	padding-top: 0px;
 }
@@ -194,6 +198,9 @@ a {
 	color: #0776A0;
 	text-decoration: none;
 	border-bottom: 1px dotted #333;
+}
+#header a{
+	border-bottom: none;	
 }
 /*#sliders {
  width: 200px;
