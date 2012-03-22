@@ -169,7 +169,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	// 	to kWh
 	e_total_Wh = e_total_joule / 3600
 	e_total_kWh = e_total_Wh / 1000
-	carbon = .53 * e_total_Wh
+	carbon = .525 * e_total_Wh
 	$("div#carbon").text(Math.round(carbon * 10) / 10 + " gCO2-eq");
 	power_lightBulb = 11
 	lightBulbs = e_total_joule / (power_lightBulb * durationSecs )

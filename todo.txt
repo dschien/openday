@@ -1,5 +1,5 @@
 high - prepower.html - connect sliders - @dan
-high -postpower.html - connect sliders - @dan
+high - postpower.html - connect sliders - @dan
 medium -questionaires  - highlight unanswered questions - @dan
 medium -questionaires  - add 'skip these questions' button - @dan
 medium -postpower.html - change drop down list for sliders - @dan
