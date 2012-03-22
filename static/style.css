@@ -109,9 +109,9 @@ body{
 .comparison{
 	float:left;
 	width:160px;
-	height:60px;
+	height:70px;
 	margin-right:10px;
-	margin-bottom:10px;
+	margin-bottom:20px;
 }
 /* Bubbles*/
 .details{
@@ -144,11 +144,14 @@ big{
 smaller{
 	font-size:16px;
 }
+number{
+	font-size:24px;	
+}
 .details h2{
 	font-size:14px;
 }
 #about p{
-	font-size:16px;
+	font-size:18px;
 }
 #about h1{
 	font-size:20px;
