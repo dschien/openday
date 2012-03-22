@@ -5,8 +5,8 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<form action="app" method="post" accept-charset="utf-8">
-	{% csrf_token %} <h2>Internet Carbon Footprint</h2>
+<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+	{% csrf_token %} <h2>Internet Energy Footprint</h2>
 	<p>
 		John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
 		<br>
@@ -68,11 +68,56 @@
 			<table>
 	</p>
 	<p>
-		<b>7: How much electricity overall do you think John's 2 minutes of Guardian website browsing uses. Use the slider below to indicate roughly how many standard 11-Watt low energy light bulbs (also used for 2 minutes) you think this would be equivalent too.</b>
+		<b>7: How many 60W light bulbs can you light with the same amount of energy?</b>
 	</p>
 	<p>
+		<script>
+			// $(function() {
+			// $("#slider").bind("slidechange", function(event, ui) {
+			// $("#bulbs").val(ui.value)
+			// })
+			// });
+			$(function() {
+				$("#slider").slider({
+					value : 1,
+					min : 1,
+					max : 30,
+					step : 1,
+					slide : function(event, ui) {
+						$("#bulbs").val(ui.value);
+					}
+				});
+				$("#bulbs").val("" + $("#slider").slider("value"));
+			});
+			// $("#slider").change(function(event) {
+			//
+			// slide : function(event, ui) {
+			// $("#duration").val(ui.value);
+			// if($("#connection_selected").val() != '' & $("#device_selected").val() != '' & $("#service_selected").val() != '') {
+			// calc();
+			// }
+			// }
+			// });
+			// $("#duration").val("" + $("#slider").slider("value"));
+			function addValuesToForm(){
+				$("#form")['pre_points'] = $("#slider").slider("value")
+			}
+			
+		</script>
 		Number of light bulbs:
-		<input type="range" name="pre_points" min="1" max="500" step="5" />
+		<div class="selection">
+			<h2>4. Viewing/reading time</h2>
+			<div id="slider"></div>
+			<div id="opt_out">
+				<input type="checkbox"name="opt_out" value="1">
+				Don't know
+				</input>
+			</div>
+			<p>
+				<input type="text" id="bulbs" style="border:0; font-weight:bold;" />
+				Minutes
+			</p>
+		</div>
 	</p>
 	<p>
 		<input type="submit" value="Continue &rarr;"/>

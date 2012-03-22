@@ -8,7 +8,7 @@
 	</p>
 	{% endif %} <h2>Your Background</h2>
 	<p>
-		<b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
+		{% if error_cc %} <font color="red">Please select one</font> {% endif %} <b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
 		<br>
 		<input type="radio" name="cc" value="5">
 		Strongly agree
@@ -27,7 +27,7 @@
 		<br>
 	</p>
 	<p>
-		<b>4: To what extent do you agree with the following statment? "I am knowledgeable about IT"</b>
+		{% if error_it %}<font color="red">Please select one</font> {% endif %} <b>4: To what extent do you agree with the following statment? "I am knowledgeable about IT"</b>
 		<br>
 		<input type="radio" name="it" value="5">
 		Strongly agree
@@ -45,7 +45,7 @@
 		Strongly disagree
 	</p>
 	<p>
-		<b>5: How often have your previously thought about the climate imapcts of using the Internet?</b>
+		{% if error_cit %} <font color="red">Please select one</font> {% endif %} <b>5: How often have your previously thought about the climate imapcts of using the Internet?</b>
 		<br>
 		<input type="radio" name="cit" value="4">
 		Often
@@ -61,7 +61,8 @@
 		<br>
 	</p>
 	<p>
-		<input type="submit" value="Continue &rarr;"/>
+		<input type="submit" value="Continue &rarr;" name="type"/>
+		<input type="submit" value="Skip page" name="type"/>
 	</p>
 </form>
 </select>
