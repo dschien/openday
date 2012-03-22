@@ -41,6 +41,7 @@ body{
 	float:left;
 	width:900px;
 	padding:20px;
+	padding-top:0px;
 }
 /*Items*/
 #selected_service .selected { background: #0776A0; color: white; }
