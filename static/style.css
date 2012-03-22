@@ -85,7 +85,23 @@ body{
 	height: 110px;
 	margin-bottom:6px;
 }
-
+/* Results*/
+#bignr{
+	float:left;
+	width:300px;
+	height:200px;
+}#blurb{
+	float:left;
+	width:180px;
+	margin-left:20px;
+	height:200px;
+}
+.comparison{
+	float:left;
+	width:180px;
+	height:60px;
+	margin-right:10px;
+}
 /* Bubbles*/
 .details{
 	float:left;
@@ -105,7 +121,7 @@ body{
 
 /* Typography */
 big{
-	font-size:145px;
+	font-size:115px;
 }
 smaller{
 	font-size:16px;
