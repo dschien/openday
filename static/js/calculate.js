@@ -132,7 +132,7 @@ function calc() {
 	margin = (100-circle_user)/2
 	margintop = (100-circle_user)/3
 	document.getElementById('circle_device').innerHTML = '<div style="width:'+circle_user+'px; height:'+circle_user+'px;margin-left:'+margin+'px;margin-top:'+margintop+'px; background:#000; -moz-border-radius: 80px; -webkit-border-radius:80px;"></div>'
-	document.getElementById('text_access').innerHTML = "<h2>" + deviceType + "</h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
+	document.getElementById('text_device').innerHTML = "<h2>" + deviceType + "</h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 	
 	var circle_network= Math.round(Math.sqrt(max_size*(e_network/3600)/3.1416))
 	margin = (100-circle_network)/2
