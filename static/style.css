@@ -99,7 +99,7 @@ body{
 }
 .comparison{
 	float:left;
-	width:180px;
+	width:160px;
 	height:60px;
 	margin-right:10px;
 }
@@ -131,7 +131,7 @@ smaller{
 	font-size:24px;
 }
 #blurb p{
-	font-size:12px;
+	font-size:10px;
 }
 #column_left h2{
 	font-size:16px;
