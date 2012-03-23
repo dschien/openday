@@ -33,6 +33,8 @@ body {
 	text-align: right;
 }
 #footer{
+	float:left;
+	width: 1024px;
 	float: left;
 	padding:10px;
 }
