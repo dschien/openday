@@ -36,7 +36,20 @@
 		connection = $(this).text();
 		$("#pre_acc_net").val(connection);
 	});
-
+	
+	$(function() {
+		$("#light_slider").slider({
+			value : 50,
+			min : .5,
+			max : 50,
+			step : .5,
+			slide : function(event, ui) {
+				$("#bulbs").val(ui.value);
+				$("#pre_points").val($("#light_slider").slider("value"))
+			}
+		});
+		$("#bulbs").val("" + $("#light_slider").slider("value"));
+	});
 </script>
 </head>
 <body>
@@ -95,23 +108,6 @@
 			</div>
 		</p>
 		<b>7: How many 11W light bulbs can you light with the same power?</b>
-		<script>
-			$(function() {
-				$("#light_slider").slider({
-					value : 50,
-					min : .5,
-					max : 50,
-					step : .5,
-					slide : function(event, ui) {
-						$("#bulbs").val(ui.value);
-					}
-				});
-				$("#bulbs").val("" + $("#light_slider").slider("value"));
-			});
-			function addValuesToForm() {
-				$("#pre_points").val($("#light_slider").slider("value"))
-			}
-		</script>
 		<div class="light_selection">
 			<div id="light_slider"></div>
 			<div id="opt_out">
@@ -142,7 +138,7 @@
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
 			}(document, 'script'));
-
+			
 		</script>
 	</body>
 </html>

@@ -85,6 +85,7 @@ body {
 	padding: 0;
 	width: 100%;
 }
+
 .device {
 	float: left;
 	width: 60px;
@@ -121,7 +122,7 @@ body {
 	height: 110px;
 	margin-bottom: 6px;
 }
-/**/
+/* Priority boxes*/
 .prio{
 	position:relative;
 	height:80px;
@@ -148,7 +149,46 @@ body {
 	font-size: 36px;
 	text-align: center;
 }
-
+#prio1 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio1 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio2 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio2 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio3 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio3 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio4 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio4 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
 /* Results*/
 #bignr {
 	float: left;
