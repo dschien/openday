@@ -48,11 +48,7 @@ class Survey(models.Model):
     pre_points = models.FloatField(null=True)
 
 
-    post_servers = models.IntegerField(null=True)
-    post_laptop = models.IntegerField(null=True)
-    post_acc_net = models.IntegerField(null=True)
-    post_internet = models.IntegerField(null=True)
-    post_points = models.IntegerField(null=True)
+    expect = models.IntegerField(null=True)    
     
     selections = models.ManyToManyField(Selection)
     

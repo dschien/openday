@@ -13,145 +13,209 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jqueryipad.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-<script>
-$(function() {
-	$("#prio1 li").click(function() {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		connection = $(this).text();
-		$("#pre_laptop").val(connection);
-	});
-	$("#prio2 li").click(function() {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		connection = $(this).text();
-		$("#pre_internet").val(connection);
-	});
-	$("#prio3 li").click(function() {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		connection = $(this).text();
-		$("#pre_servers").val(connection);
-	});
-	$("#prio4 li").click(function() {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		connection = $(this).text();
-		$("#pre_acc_net").val(connection);
-	});
-});	
-	$(function() {
-		$("#light_slider").slider({
-			value : 50,
-			min : .5,
-			max : 50,
-			step : .5,
-			slide : function(event, ui) {
-				$("#bulbs").val(ui.value);
-				$("#pre_points").val($("#light_slider").slider("value"))
-			}
-		});
-		$("#bulbs").val("" + $("#light_slider").slider("value"));
-	});
-</script>
-</head>
-<body>
-	<div id="header2">
-		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
-	</div>
-<div id="about">
-	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
-	{% csrf_token %}
-		 <h2>Internet Energy Footprint</h2>
-		<p>
-			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
-			<br>
-			His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
-		</p>
-
-		<div id="question_left">
-		<p><b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b></p>
-
-
-			<div class="prio">
-				<div class="priotext"><h2>Laptop</h2></div>
-				<ol id="prio1">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Internet infrastructure</h2></div>
-				<ol id="prio2">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Content servers</h2></div>
-				<ol id="prio3">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-					
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Wifi and router</h2></div>
-				<ol id="prio4">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-					
-				</ol>
-			</div>
-		</div>
-		<div id="question_right">
-		<b>7: How many 11W light bulbs can you light with the same power?</b>		
-		<div class="light_selection">
-			<div id="light_slider"></div>
-			<br>
-			<div>
-				<input type="text" id="bulbs" style="border:0px; font-weight:bold; width:32px; font-size:16px;" />
-				bulbs
-			</div>
-			<br/><br/>
-			<div id="opt_out">
-				<input type="checkbox"name="opt_out" value="1">
-				Don't know
-			</div>
-		</div>
-		</div>
-		<p>
-			<input id="pre_internet" type="hidden" value="" runat="server" />
-			<input id="pre_laptop" type="hidden" value="" runat="server" />
-			<input id="pre_acc_net" type="hidden" value="" runat="server" />
-			<input id="pre_servers" type="hidden" value="" runat="server" />
-			<input type="hidden" name="pre_points" id="pre_points"/>
-			<div id="OK_button">
-				<input type="submit" value="Continue" name="type"/>
-			</div>
-			<div id="skip_button">
-				<input type="submit" value="Skip page" name="type"/>
-			</div>
-		</p>
-	</form>
-</div>
-<div id="footer">
-		<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/> 
-		<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
-</div>
-</div>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+			$(function() {
+				$("#prio1 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#pre_laptop").val(connection);
+				});
+				$("#prio2 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#pre_internet").val(connection);
+				});
+				$("#prio3 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#pre_servers").val(connection);
+				});
+				$("#prio4 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#pre_acc_net").val(connection);
+				});
+			});
+			$(function() {
+				$("#light_slider").slider({
+					value : 50,
+					min : .5,
+					max : 50,
+					step : .5,
+					slide : function(event, ui) {
+						$("#bulbs").val(ui.value);
+						$("#pre_points").val($("#light_slider").slider("value"))
+					}
+				});
+				$("#bulbs").val("" + $("#light_slider").slider("value"));
+			});
+
+		</script>
+	</head>
+	<body>
+		<div id="header2">
+			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
+		</div>
+		<div id="about">
+			<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+				{% csrf_token %} <h2>Internet Energy Footprint</h2>
+				<p>
+					John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
+					<br>
+					His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
+				</p>
+				<div id="question_left">
+					<p>
+						<b>6: The four parts of John's system each use electrical energy to provide his web experience. Please can you guess the ranking of the four parts as to which uses most (1st) to least (4th). If you think two are roughly the same, you can give them the same rank. </b>
+					</p>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Laptop</h2>
+						</div>
+						<ol id="prio1">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Internet infrastructure</h2>
+						</div>
+						<ol id="prio2">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Content servers</h2>
+						</div>
+						<ol id="prio3">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Wifi and router</h2>
+						</div>
+						<ol id="prio4">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+				</div>
+				<div>
+					<b>Q6a: How confident are you about your choice? </b>
+					<br>
+					<input type="radio" name="confidence" value="4" id='very'>
+					<label for="very">Very confident</label>
+					<input type="radio" name="confidence" value="3" id='fair'>
+					<label for="fair">Fairly confident</label>
+					<input type="radio" name="confidence" value="2" id='nvery'>
+					<label for="nvery">Not very confident</label>
+					<input type="radio" name="confidence" value="1" id='naall'>
+					<label for="naall">Not at all confident</label>
+				</div>
+				<div id="question_right">
+					<b>7: If the energy used by John were instead used to light some 11W low energy bulbs for those 10 minutes, guess how many bulbs it could light. Use the slider below to make your choice. </b>
+					<div class="light_selection">
+						<div id="light_slider"></div>
+						<br>
+						<div>
+							<input type="text" id="bulbs" style="border:0px; font-weight:bold; width:32px; font-size:16px;" />
+							bulbs
+						</div>
+						<br/>
+						<br/>
+						<div id="opt_out">
+							<input type="checkbox"name="opt_out" value="1">
+							Don't know
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<b>Q7a: How confident are you about your choice? </b>
+						<br>
+						<input type="radio" name="confidenceb" value="4" id='very'>
+						<label for="very">Very confident</label>
+						<input type="radio" name="confidenceb" value="3" id='fair'>
+						<label for="fair">Fairly confident</label>
+						<input type="radio" name="confidenceb" value="2" id='nvery'>
+						<label for="nvery">Not very confident</label>
+						<input type="radio" name="confidenceb" value="1" id='naall'>
+						<label for="naall">Not at all confident</label>
+					</div>
+				</div>
+				<p>
+					<input id="pre_internet" type="hidden" value="" runat="server" />
+					<input id="pre_laptop" type="hidden" value="" runat="server" />
+					<input id="pre_acc_net" type="hidden" value="" runat="server" />
+					<input id="pre_servers" type="hidden" value="" runat="server" />
+					<input type="hidden" name="pre_points" id="pre_points"/>
+					<div id="OK_button">
+						<input type="submit" value="Continue" name="type"/>
+					</div>
+					<div id="skip_button">
+						<input type="submit" value="Skip page" name="type"/>
+					</div>
+				</p>
+			</form>
+		</div>
+		<div id="footer">
+			<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
+			<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
+		</div>
+		</div>
+		<script>
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+			( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
 			}(document, 'script'));
-			
+
 		</script>
 	</body>
 </html>

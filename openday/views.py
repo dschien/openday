@@ -137,48 +137,21 @@ def branch(request):
     return render_to_response('branch.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 
-def postpower(request):
-    if not request.session :
-        # if it doesn't have a session -> start again
-        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
-    
-    logging.info('<postpower> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
-    
-    # if branched, go to thankyou
-    if request.POST['next'] == 'thankyou':
-        # go there
-        return thankyou(request, nav='skip_pp')
-        
-    return render_to_response('postpower.html', {}, context_instance=RequestContext(request))
-
-def thankyou(request, nav=None):
+def thankyou(request):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     
     logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
-    if nav == 'skip_pp':
-        logging.info('<thankyou> - post power question was skipped')
-    else:
-        if not re.search('Skip', request.POST['type']):
-            if not all([ key in request.POST for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]) \
-                or any([ re.search('Please select', request.POST[key]) for key in ['post_servers', 'post_laptop', 'post_acc_net', 'post_internet', 'post_points']]):        
-                return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+    if not 'expect' in request.POST:        
+        return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+    
+    logging.info('<thankyou> storing info')
+    s = get_object_or_404(Survey, id=request.session['survey_id'])                    
+    s.expect = request.POST['expect']                        
             
-            logging.info('<thankyou> storing info')
-            s = get_object_or_404(Survey, id=request.session['survey_id'])        
-            s.post_servers = request.POST['post_servers']                        
-            s.post_laptop = request.POST['post_laptop']
-            s.post_acc_net = request.POST['post_acc_net']
-            s.post_internet = request.POST['post_internet']
-            
-            # has opt'ed out?        
-            if 'opt_out' in request.POST and request.POST['opt_out'] == 1:
-                s.pre_points = -1        
-            s.post_points = request.POST['post_points']
-                    
-            s.save()
+    s.save()
         # reset the session information
     del request.session['survey_id']
     
