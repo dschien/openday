@@ -57,6 +57,8 @@ $(function() {
 		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
 	</div>
 <div id="about">
+	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+	{% csrf_token %}
 		 <h2>Internet Energy Footprint</h2>
 		<p>
 			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
@@ -65,8 +67,7 @@ $(function() {
 		</p>
 		<div id="question_left">
 		<p><b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b></p>
-			<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
-			{% csrf_token %}
+
 			<div class="prio">
 				<div class="priotext"><h2>Laptop</h2></div>
 				<ol id="prio1">
@@ -74,7 +75,6 @@ $(function() {
 					<li class="priobox">3</li>
 					<li class="priobox">2</li>
 					<li class="priobox">1</li>
-					<input id="pre_laptop" type="hidden" value="" runat="server" />
 				</ol>
 			</div>
 			<div class="prio">
@@ -84,7 +84,6 @@ $(function() {
 					<li class="priobox">3</li>
 					<li class="priobox">2</li>
 					<li class="priobox">1</li>
-					<input id="pre_internet" type="hidden" value="" runat="server" />
 				</ol>
 			</div>
 			<div class="prio">
@@ -94,7 +93,7 @@ $(function() {
 					<li class="priobox">3</li>
 					<li class="priobox">2</li>
 					<li class="priobox">1</li>
-					<input id="pre_servers" type="hidden" value="" runat="server" />
+					
 				</ol>
 			</div>
 			<div class="prio">
@@ -104,7 +103,7 @@ $(function() {
 					<li class="priobox">3</li>
 					<li class="priobox">2</li>
 					<li class="priobox">1</li>
-					<input id="pre_acc_net" type="hidden" value="" runat="server" />
+					
 				</ol>
 			</div>
 		</div>
@@ -124,6 +123,10 @@ $(function() {
 		</div>
 		</div>
 		<p>
+			<input id="pre_internet" type="hidden" value="" runat="server" />
+			<input id="pre_laptop" type="hidden" value="" runat="server" />
+			<input id="pre_acc_net" type="hidden" value="" runat="server" />
+			<input id="pre_servers" type="hidden" value="" runat="server" />
 			<input type="hidden" name="pre_points" id="pre_points"/>
 			<div id="OK_button">
 				<input type="submit" value="Continue" name="type"/>
