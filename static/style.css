@@ -130,6 +130,7 @@ body {
 .priotext{
 	float: left;
 	width: 180px;
+	padding-right: 10px;
 }
 .priotext h2{
  font-size:18px;
@@ -144,6 +145,8 @@ body {
 	margin-bottom: 10px;
 	background-color: #333;
 	color: white;
+	font-size: 36px;
+	text-align: center;
 }
 
 /* Results*/

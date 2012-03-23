@@ -1,11 +1,21 @@
-{% extends "base.html" %}
-{% block content %}
-{% if error_message %}
-<p>
-	<strong>{{ error_message }}</strong>
-</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Guardian energy calculator</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jqueryipad.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 <script>
+
 	$("#prio1 li").click(function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
 		connection = $(this).text();
@@ -28,6 +38,8 @@
 	});
 
 </script>
+</head>
+<body>
 <div id="about">
 	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
 		{% csrf_token %} <h2>Internet Energy Footprint</h2>
@@ -123,4 +135,14 @@
 		</p>
 	</form>
 </div>
-{% endblock %} 
+</div>
+		<script>
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g, s)
+			}(document, 'script'));
+
+		</script>
+	</body>
+</html>
