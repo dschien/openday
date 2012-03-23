@@ -152,7 +152,7 @@ function calc() {
 	margin = (100 - circle_serv) / 2
 	margintop = (100 - circle_serv) / 3
 	document.getElementById('circle_server').innerHTML = '<div style="width:' + circle_serv + 'px; height:' + circle_serv + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#4998CE; -moz-border-radius: 80px; -webkit-border-radius:80px;"></div>'
-	document.getElementById('text_server').innerHTML = "<h2>servers<br/><br/><p>" + Math.round(e_serv / 36) / 100 + " Wh</p><p> " + Math.round(p_serv) + " &#37;</p>"
+	document.getElementById('text_server').innerHTML = "<h2>servers<br/><br/></h2><p>" + Math.round(e_serv / 36) / 100 + " Wh</p><p> " + Math.round(p_serv) + " &#37;</p>"
 
 	var circle_acc_net = Math.round(Math.sqrt(max_size * (e_acc_net / 3600) / 3.1416))
 	margin = (100 - circle_acc_net) / 2
