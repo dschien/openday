@@ -32,6 +32,10 @@ body {
 	margin-top: 20px;
 	text-align: right;
 }
+#footer{
+	float: left;
+	padding:10px;
+}
 #column_left {
 	position: relative;
 	float: left;
