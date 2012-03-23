@@ -192,7 +192,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 
 function setBlurb() {
 	text = '<p>Reading normal web pages (no video) changing page every minute'
-	if(currentSelection['service'] == 'video')
+	if(currentSelection['service'] == 'V')
 		text = '<p>Watching video continuously '
 	switch(currentSelection['device']) {
 		case 'phone':
@@ -209,13 +209,13 @@ function setBlurb() {
 			text = text + "using a laptop computer "
 	}
 
-	if(currentSelection['connection'] == '3G mobile') {
+	if(currentSelection['connection'] == 'M') {
 		text = text + "connected to the Internet by a mobile networks (GPRS, 3G, etc.) "
 	} else {
 		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
 	}
 
-	if(currentSelection['service'] == 'video') {
+	if(currentSelection['service'] == 'V') {
 		text = text + "viewing for " + currentSelection['duration'] + " minutes"
 	} else {
 		text = text + "reading for " + currentSelection['duration'] + " minutes"
