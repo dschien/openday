@@ -54,8 +54,7 @@
 </head>
 <body>
 <div id="about">
-	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
-		{% csrf_token %} <h2>Internet Energy Footprint</h2>
+		 <h2>Internet Energy Footprint</h2>
 		<p>
 			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
 			<br>
@@ -120,6 +119,8 @@
 				bulbs
 			</div>
 		</div>
+		<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+		{% csrf_token %}	
 		<p>
 			<input type="hidden" name="pre_points" id="pre_points"/>
 			<div id="OK_button">
