@@ -6,64 +6,70 @@
 	<p>
 		<strong>{{ error_message }}</strong>
 	</p>
-	{% endif %} <div id="about"><h2>Your Background</h2>
-	<p>
-		{% if error_cc %} <font color="red">Please select one</font> {% endif %} <b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
-		<br>
-		<input type="radio" name="cc" value="5">
-		Strongly agree
-		<br>
-		<input type="radio" name="cc" value="4">
-		Agree
-		<br>
-		<input type="radio" name="cc" value="3">
-		Undecided
-		<br>
-		<input type="radio" name="cc" value="2">
-		Disagree
-		<br>
-		<input type="radio" name="cc" value="1">
-		Strongly disagree
-		<br>
-	</p>
-	<p>
-		{% if error_it %}<font color="red">Please select one</font> {% endif %} <b>4: To what extent do you agree with the following statment? "I am knowledgeable about IT"</b>
-		<br>
-		<input type="radio" name="it" value="5">
-		Strongly agree
-		<br>
-		<input type="radio" name="it" value="4">
-		Agree
-		<br>
-		<input type="radio" name="it" value="3">
-		Undecided
-		<br>
-		<input type="radio" name="it" value="2">
-		Disagree
-		<br>
-		<input type="radio" name="it" value="1">
-		Strongly disagree
-	</p>
-	<p>
-		{% if error_cit %} <font color="red">Please select one</font> {% endif %} <b>5: How often have your previously thought about the climate imapcts of using the Internet?</b>
-		<br>
-		<input type="radio" name="cit" value="4">
-		Often
-		<br>
-		<input type="radio" name="cit" value="3">
-		Sometimes
-		<br>
-		<input type="radio" name="cit" value="2">
-		Seldom
-		<br>
-		<input type="radio" name="cit" value="1">
-		Never
-		<br>
-	</p>
-	<p>
-		<input type="submit" value="Continue &rarr;" name="type"/>
-		<input type="submit" value="Skip page" name="type"/>
-	</p>
+	{% endif %}
+	<div id="about">
+		<h2>Your Background</h2>
+		<p>
+			{% if error_cc %} <font color="red">Please select one</font> {% endif %} <b>3: To what extent do you agree with the following statment? "I am knowledgeable about climate change"</b>
+			<br>
+			<input type="radio" name="cc" value="5">
+			Strongly agree
+			<br>
+			<input type="radio" name="cc" value="4">
+			Agree
+			<br>
+			<input type="radio" name="cc" value="3">
+			Neither agree or disagree
+			<br>
+			<input type="radio" name="cc" value="2">
+			Disagree
+			<br>
+			<input type="radio" name="cc" value="1">
+			Strongly disagree
+			<br>
+		</p>
+		<p>
+			{% if error_it %}<font color="red">Please select one</font> {% endif %} <b>4: To what extent do you agree with the following statment? "I am knowledgeable about IT"</b>
+			<br>
+			<input type="radio" name="it" value="5">
+			Strongly agree
+			<br>
+			<input type="radio" name="it" value="4">
+			Agree
+			<br>
+			<input type="radio" name="it" value="3">
+			Neither agree or disagree
+			<br>
+			<input type="radio" name="it" value="2">
+			Disagree
+			<br>
+			<input type="radio" name="it" value="1">
+			Strongly disagree
+		</p>
+		<p>
+			{% if error_cit %} <font color="red">Please select one</font> {% endif %} <b>5: How often have your previously thought about the climate impacts of using the Internet?</b>
+			<br>
+			<input type="radio" name="cit" value="4">
+			Often
+			<br>
+			<input type="radio" name="cit" value="3">
+			Sometimes
+			<br>
+			<input type="radio" name="cit" value="2">
+			Seldom
+			<br>
+			<input type="radio" name="cit" value="1">
+			Never
+			<br>
+		</p>
+		<p>
+			<div id="OK_button">
+				<input type="submit" value="Continue" name="type"/>
+			</div>
+			<div id="skip_button">
+				<input type="submit" value="Skip page" name="type"/>
+			</div>
+		</p>
 </form>
 </select>
 </div>

@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="http://localhost/static/js/jquery-ui-1.8.18.custom.min.js"></script> -->
 		<!-- jquery standard -->
 		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
-<!-- 		<link type="text/css" href="{{ STATIC_URL }}css/jquery.mobile-1.1.0-rc.1.min.css" rel="stylesheet" /> -->
+		<!-- 		<link type="text/css" href="{{ STATIC_URL }}css/jquery.mobile-1.1.0-rc.1.min.css" rel="stylesheet" /> -->
 		<!-- jquery standard -->
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 		<!-- jquery standard -->
@@ -25,7 +25,6 @@
 		<!-- 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.mobile-1.1.0-rc.1.min.js"></script> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
-		
 			$('#slider').draggable();
 			$(function() {
 				$("#slider").slider({
@@ -42,7 +41,6 @@
 				});
 				$("#duration").val("" + $("#slider").slider("value"));
 			});
-			
 			$(function() {
 				var device = '';
 				var connection = '';
@@ -84,7 +82,7 @@
 			</div>	
 			<div id="column_right">
 				<div id="bignr">
-					<h1>How much electricity does visiting The Guardian website consumes?</h1>
+					<h1>How much energy does visiting The Guardian website consumes?</h1>
 					<h2>It depends on your device, they way you connect and how much time you spent in the site. Choose in the left column and experiment how the energy consumption changes!</h2>
 				</div>
 				<div id="blurb"></div>
@@ -162,24 +160,22 @@
 					</p>
 				</div>
 				<div id="continue">
-				{%if type == 'survey'%}
-				<form action="branch" method="post" accept-charset="utf-8" id='postForm'>
-					{% csrf_token %}
-					<input type="submit" value="Finish &rarr;" onclick="submitSelections()"/>
-				</form>
-				{% else %}
-				<form action="start" method="post" accept-charset="utf-8">
-					{% csrf_token %}
-					<input type="submit" value="Restart"/>
-				</form>
-				{% endif %}
+					{%if type == 'survey'%}
+					<form action="branch" method="post" accept-charset="utf-8" id='postForm'>
+						{% csrf_token %}
+						<input type="submit" value="Finish" onclick="submitSelections()"/>
+					</form>
+					{% else %}
+					<form action="start" method="post" accept-charset="utf-8">
+						{% csrf_token %}
+						<input type="submit" value="Restart"/>
+					</form>
+					{% endif %}
 				</div>
-			</div>			
+			</div>
 		</div>
-
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)

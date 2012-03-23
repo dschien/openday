@@ -1,25 +1,8 @@
-high - prepower.html - connect sliders - @dan
-high - postpower.html - connect sliders - @dan
 
-medium -questionaires  - highlight unanswered questions - @dan
-medium -questionaires  - add 'skip these questions' button - @dan
 
-medium -postpower.html - change drop down list for sliders - @dan
-medium -prepower.html - change drop down list for sliders - @dan
 medium -prepower.html - add image of light bulb - @dan
 medium -postpower.html - add image of light bulb - @dan
 
-medium -prepower.html - change to 60W - @dan
-medium -postpower.html - change to 60W - @dan
-
-medium - postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
-medium - postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
-
-medium - climate.html - undecided > 'neither agree nor disagree' - @dan
-medium - questionaires - 'carbon' to 'energy' - @dan
-
 medium - app - record interaction start/end time  - @dan
-medium - app - 60W ref  - @dan
-
-medium - questionaire - position headline - @jorge
+medium - app - record interaction scenarios  - @dan
 
