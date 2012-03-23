@@ -2,11 +2,12 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from forms import ContactForm
-from models import Contact, Survey
+from models import Contact, Survey, Selection
 import logging
 import datetime
 from django.core.urlresolvers import reverse
 import re
+import json
 #import pdb;
 
 # Create your views here.
@@ -52,9 +53,8 @@ def climate(request):
     
     s = Survey()     
     s.gender = request.POST['gender'] if 'gender' in request.POST else -1  
-    s.age = request.POST['age'] if 'age' in request.POST else -1
+    s.age = request.POST['age'] if 'age' in request.POST else -1    
     s.survey_date = datetime.datetime.now()
-    
     s.save()
     request.session['survey_id'] = s.id
     
@@ -112,7 +112,7 @@ def app(request):
             s.pre_laptop = request.POST['pre_laptop']
             s.pre_acc_net = request.POST['pre_acc_net']
             s.pre_internet = request.POST['pre_internet']
-    
+            s.survey_date = datetime.datetime.now()
             # has opt'ed out?        
             if 'opt_out' in request.POST and request.POST['opt_out'] == 1:
                 s.pre_points = -1
@@ -124,6 +124,15 @@ def app(request):
 
 def branch(request):    
     #store app data
+    
+    logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    s = get_object_or_404(Survey, id=request.session['survey_id'])
+    now = datetime.datetime.now()
+    s.duration = (now - s.survey_date).total_seconds()
+        
+    s.selections = createSelections(json.loads(request.POST['selections']))
+    s.save()
+    
     logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     return render_to_response('branch.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
@@ -192,4 +201,24 @@ def contact(request):
         form = ContactForm()
     return render_to_response('form.html', {'form': form}, context_instance=RequestContext(request))
 
+    
+
+def createSelections(jsonArray):
+    # iterate over all
+    list = []
+    for json in jsonArray:
+        s = Selection(time=json['duration'], connection=json['connection'], device=get_device(json), content=json['service'])
+        s.save()    
+        list.append(s)
+    return list    
+                
+def get_device(json):
+    if json['device'] == 'phone':
+        return 'P'
+    if json['device'] == 'tablet':
+        return 'T'
+    if json['device'] == 'laptop':
+        return 'L'
+    if json['device'] == 'pc':
+        return 'D'
     

@@ -3,10 +3,14 @@ Created on 20 Mar 2012
 
 @author: schien
 '''
-from openday.models import Survey#,Page, Questionaire
+from openday.models import Survey, Selection#,Page, Questionaire
 
 from django.contrib import admin
 
+class SelectionAdmin(admin.ModelAdmin):
+    list_display = ('device', 'connection', 'content', 'time')
+    list_filter = ['device', 'connection', 'content', 'time']
+    search_fields = ['device', 'connection', 'content', 'time']
     
 class SurveyAdmin(admin.ModelAdmin):
 #    fieldsets = [
@@ -20,6 +24,6 @@ class SurveyAdmin(admin.ModelAdmin):
     date_hierarchy = 'survey_date'  
 
 
-#admin.site.register(Page)
+admin.site.register(Selection, SelectionAdmin)
 #admin.site.register(Questionaire)
 admin.site.register(Survey, SurveyAdmin)
