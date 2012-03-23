@@ -5,6 +5,7 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
+<div id="about">
 <form id="form" action="thankyou" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
 	{% csrf_token %} <h2>Internet Energy Footprint</h2>
 	<p>
@@ -115,7 +116,7 @@
 				</input>
 			</div>
 			<p>
-				<input type="text" id="bulbs" style="border:0; font-weight:bold;" />
+				<input type="text" id="bulbs" style="border:0; font-weight:bold; width:25px; font-size:16px" />
 				Minutes
 			</p>
 		</div>
