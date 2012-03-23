@@ -102,6 +102,8 @@ function calc() {
 		dataVolume = durationSecs * 450000
 		// when watching video =- only one page
 		pageLoads = 1
+		
+		p_device = p_device * 1.15
 	}
 	// power access network
 	var connectionType = document.getElementById('connection_selected').value
