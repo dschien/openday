@@ -8,6 +8,7 @@ body {
 	position: relative;
 	top: 0px;
 	left: 0px;
+	height: 728px;
 }
 #header {
 	float: left;
@@ -33,10 +34,12 @@ body {
 	text-align: right;
 }
 #footer{
+	position:relative;
+	bottom:0px;
 	float:left;
-	width: 1024px;
+	width: 900px;
 	float: left;
-	padding:10px;
+	padding:20px;
 }
 #column_left {
 	position: relative;
