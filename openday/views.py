@@ -37,15 +37,19 @@ def gender(request):
         request.session['type'] = 'skip'
 #        return render_to_response('index.html', {}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('openday.views.app'))
- 
     
+    # create new survey
+    s = Survey() 
+    s.survey_date = datetime.datetime.now()
+    s.save()
+    request.session['survey_id'] = s.id
     request.session['type'] = 'survey'
     # no data to show    
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
 
 def climate(request):
     # no data to show
-    if not request.session :
+    if not request.session:
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session                
@@ -61,14 +65,12 @@ def climate(request):
         errors.append('error_age')                                
     
     if len(errors) > 0:
-        return render_to_response('climate.html', {k : True for k in errors}, context_instance=RequestContext(request))
+        return render_to_response('gender.html', {'error_message':'Please answer each question.'}, context_instance=RequestContext(request))
     
-    s = Survey()     
+    s = get_object_or_404(Survey, id=request.session['survey_id'])   
     s.gender = request.POST['gender'] if 'gender' in request.POST else -1  
     s.age = request.POST['age'] if 'age' in request.POST else -1    
-    s.survey_date = datetime.datetime.now()
     s.save()
-    request.session['survey_id'] = s.id
     
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
 
@@ -92,9 +94,7 @@ def rank(request):
     
     if len(errors) > 0:
         return render_to_response('climate.html', {k : True for k in errors}, context_instance=RequestContext(request))
-        
-    
-    
+            
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     s.cc = request.POST['cc']
     s.it = request.POST['it'] 
@@ -113,8 +113,10 @@ def rate(request):
     if request.session['type'] == 'survey':
         
         if not re.search('Skip', request.POST['answer']): 
-            if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]):
-                return render_to_response('rank.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+            if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
+                or all([  request.POST[key] > 0 for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
+                    or not 'confidence' in request.POST:
+                        return render_to_response('rank.html', {'error_message':'Please make all selections'}, context_instance=RequestContext(request))
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
@@ -141,8 +143,8 @@ def app(request):
     if request.session['type'] == 'survey':
                 
         if not re.search('Skip', request.POST['answer']): 
-            if not 'pre_points' in request.POST :
-                return render_to_response('rank.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+            if not 'pre_points' in request.POST or request.POST['pre_points'] == -1:
+                return render_to_response('rate.html', {'error_message':'Please answer each question.'}, context_instance=RequestContext(request))
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
@@ -157,6 +159,7 @@ def review(request):
     #store app data
     
     logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     now = datetime.datetime.now()
     s.duration = (now - s.survey_date).total_seconds()

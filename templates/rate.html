@@ -40,6 +40,11 @@
 		<div id="about">
 			<form action="app" method="post" accept-charset="utf-8">
 				<h2>Internet Energy Footprint</h2>
+				{% if error_message %}
+				<p>
+					<font color="red">{{ error_message }}</font>
+				</p>
+				{% endif %}
 				<p>
 					John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
 					<br>
@@ -77,7 +82,7 @@
 					</div>
 				</div>
 				{% csrf_token %}
-				<input id="pre_points" type="hidden" value="50" runat="server" name="pre_points"/>
+				<input id="pre_points" type="hidden" value="-1" runat="server" name="pre_points"/>
 				<div class="frame">
 					<input id="pre_internet" type="hidden" value="0" runat="server" name="pre_internet"/>
 					<input id="pre_laptop" type="hidden" value="0" runat="server" name="pre_laptop"/>
@@ -98,8 +103,7 @@
 		</div>
 		</div>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)

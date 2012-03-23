@@ -5,31 +5,37 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<div id="about"><form action="thankyou" method="post" accept-charset="utf-8">
-	{% csrf_token %}
-	<br>
-	<h2>Review</h2>
-	<p>
-		<b>8: Based on your interaction with this 'energy explorer' App, do you think the energy footprint of browsing the internet is:  </b>
+<div id="about">
+	<form action="thankyou" method="post" accept-charset="utf-8">
+		{% csrf_token %}
 		<br>
-		<input type="radio" name="expect" value="5" id='lot'>
-		<label for="lot">A lot more than you would expect</label>
-		<br>
-		<input type="radio" name="expect" value="4" id='slight'>
-		<label for="slight">Slightly more than you would expect</label>
-		<br>
-		<input type="radio" name="expect" value="3" id='expect'>
-		<label for="expect">About what you you would expect</label>
-		<br>
-		<input type="radio" name="expect" value="2" id='less'>
-		<label for="less">Slightly less than you would expect</label>
-		<br>
-		<input type="radio" name="expect" value="1" id='lotless'>
-		<label for="lotless">A lot less than you would expect</label>
-	</p>
-	<p>
-		<input type="submit" value="Continue"/>
-	</p>
-</form>
+		<h2>Review</h2>
+		<p>
+			<b>8: Based on your interaction with this 'energy explorer' App, do you think the energy footprint of browsing the internet is: </b>
+			<br>
+			<input type="radio" name="expect" value="5" id='lot'>
+			<label for="lot">A lot more than you would expect</label>
+			<br>
+			<input type="radio" name="expect" value="4" id='slight'>
+			<label for="slight">Slightly more than you would expect</label>
+			<br>
+			<input type="radio" name="expect" value="3" id='expect'>
+			<label for="expect">About what you you would expect</label>
+			<br>
+			<input type="radio" name="expect" value="2" id='less'>
+			<label for="less">Slightly less than you would expect</label>
+			<br>
+			<input type="radio" name="expect" value="1" id='lotless'>
+			<label for="lotless">A lot less than you would expect</label>
+		</p>
+		<p>
+			<div id="OK_button">
+				<input type="submit" value="Continue" name="answer"/>
+			</div>
+			<div id="skip_button">
+				<input type="submit" value="Skip page" name="answer"/>
+			</div>
+		</p>
+	</form>
 </div>
 {% endblock %} 

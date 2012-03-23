@@ -62,6 +62,11 @@
 		<form action="rate" method="post" accept-charset="utf-8">
 			<div id="about">
 				<h2>Internet Energy Footprint</h2>
+				{% if error_message %}
+				<p>
+					<font color="red">{{ error_message }}</font>
+				</p>
+				{% endif %}
 				<p>
 					John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
 					<br>
