@@ -59,8 +59,8 @@
 		<div id="header2">
 			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
 		</div>
-		<div id="about">
-			<form action="app" method="post" accept-charset="utf-8">
+		<form action="rate" method="post" accept-charset="utf-8">
+			<div id="about">
 				<h2>Internet Energy Footprint</h2>
 				<p>
 					John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
@@ -76,6 +76,25 @@
 							<h2>Laptop</h2>
 						</div>
 						<ol id="prio1">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Wifi and router</h2>
+						</div>
+						<ol id="prio4">
 							<li class="priobox">
 								4
 							</li>
@@ -128,95 +147,47 @@
 							</li>
 						</ol>
 					</div>
-					<div class="prio">
-						<div class="priotext">
-							<h2>Wifi and router</h2>
-						</div>
-						<ol id="prio4">
-							<li class="priobox">
-								4
-							</li>
-							<li class="priobox">
-								3
-							</li>
-							<li class="priobox">
-								2
-							</li>
-							<li class="priobox">
-								1
-							</li>
-						</ol>
-					</div>
-				</div>
-				<div>
-					<b>Q6a: How confident are you about your choice? </b>
-					<br>
-					<input type="radio" name="confidence" value="4" id='very'>
-					<label for="very">Very confident</label>
-					<input type="radio" name="confidence" value="3" id='fair'>
-					<label for="fair">Fairly confident</label>
-					<input type="radio" name="confidence" value="2" id='nvery'>
-					<label for="nvery">Not very confident</label>
-					<input type="radio" name="confidence" value="1" id='naall'>
-					<label for="naall">Not at all confident</label>
 				</div>
 				<div id="question_right">
-					<b>7: If the energy used by John were instead used to light some 11W low energy bulbs for those 10 minutes, guess how many bulbs it could light. Use the slider below to make your choice. </b>
-					<div class="light_selection">
-						<div id="light_slider"></div>
+					<div id="confidence_rank">
+						<b>Q6a: How confident are you about your choice? </b>
 						<br>
-						<div>
-							<input type="text" id="bulbs" style="border:0px; font-weight:bold; width:32px; font-size:16px;" />
-							bulbs
-						</div>
-						<br/>
-						<br/>
-						<div id="opt_out">
-							<input type="checkbox"name="opt_out" value="1">
-							Don't know
+						<div id="confidence_rate_options">
+							<input type="radio" name="confidence" value="4" id='very'>
+							<label for="very">Very</label>
+							<br>
+							<input type="radio" name="confidence" value="3" id='fair'>
+							<label for="fair">Fairly</label>
+							<br>
+							<input type="radio" name="confidence" value="2" id='nvery'>
+							<label for="nvery">Not very</label>
+							<br>
+							<input type="radio" name="confidence" value="1" id='naall'>
+							<label for="naall">Not at all</label>
 						</div>
 					</div>
 				</div>
-				<div>
-					<div>
-						<b>Q7a: How confident are you about your choice? </b>
-						<br>
-						<input type="radio" name="confidenceb" value="4" id='very'>
-						<label for="very">Very confident</label>
-						<input type="radio" name="confidenceb" value="3" id='fair'>
-						<label for="fair">Fairly confident</label>
-						<input type="radio" name="confidenceb" value="2" id='nvery'>
-						<label for="nvery">Not very confident</label>
-						<input type="radio" name="confidenceb" value="1" id='naall'>
-						<label for="naall">Not at all confident</label>
-					</div>
+				{% csrf_token %}
+			</div>
+			<div class="frame">
+				<input id="pre_internet" type="hidden" value="0" runat="server" name="pre_internet"/>
+				<input id="pre_laptop" type="hidden" value="0" runat="server" name="pre_laptop"/>
+				<input id="pre_acc_net" type="hidden" value="0" runat="server" name="pre_acc_net"/>
+				<input id="pre_servers" type="hidden" value="0" runat="server" name="pre_servers"/>
+				<div id="OK_button">
+					<input type="submit" value="Continue" name="answer"/>
 				</div>
-		</div>
-		</div>
-		<p>
-			{% csrf_token %}
-			<input id="pre_internet" type="hidden" value="0" runat="server" name="pre_internet"/>
-			<input id="pre_laptop" type="hidden" value="0" runat="server" name="pre_laptop"/>
-			<input id="pre_acc_net" type="hidden" value="0" runat="server" name="pre_acc_net"/>
-			<input id="pre_servers" type="hidden" value="0" runat="server" name="pre_servers"/>
-			<input id="pre_points" type="hidden" value="50" runat="server" name="pre_points"/>
-			<div id="OK_button">
-				<input type="submit" value="Continue" name="type"/>
+				<div id="skip_button">
+					<input type="submit" value="Skip page" name="answer"/>
+				</div>
 			</div>
-			<div id="skip_button">
-				<input type="submit" value="Skip page" name="type"/>
-			</div>
-		</p>
 		</form>
-		</div>
 		<div id="footer">
 			<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
 			<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
 		</div>
-		</div>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-			( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)

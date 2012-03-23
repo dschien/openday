@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="about">
-	<form action="climate" method="post" accept-charset="utf-8">
+	<form action="climate" method="post" accept-charset="utf-8" onsubmit="check()">
 		{% csrf_token %}
 		{% if error_message %}
 		<p>
@@ -10,41 +10,44 @@
 		{% endif %} <h2>About You</h2>
 		<p>
 			<b>1: Are you? </b>
-			<br>
-			<input type="radio" name="gender" value="0" id='male'>
-			<label for="male">Male</label>
-			<br>
-			<input type="radio" name="gender" value="1" id='female'>
-			<label for="female">Female</label>
+			<div id="genderGroup">
+				<input type="radio" name="gender" value="0" id='male'>
+				<label for="male">Male</label>
+				<br>
+				<input type="radio" name="gender" value="1" id='female'>
+				<label for="female">Female</label>
+			</div>
 		</p>
 		<p>
-			<b>2: What is your age group? </b>
-			<br>
-			<input type="radio" name="age" value="17">
-			<label for="17">under 18</label>
-			<br>
-			<input type="radio" name="age" value="18">
-			<label for="18">18-25</label>
-			<br>
-			<input type="radio" name="age" value="26">
-			<label for="26">26-35</label>
-			<br>
-			<input type="radio" name="age" value="36">
-			<label for="26">36-45</label>
-			<br>
-			<input type="radio" name="age" value="46">
-			<label for="46">45-55</label>
-			<br>
-			<input type="radio" name="age" value="55">
-			<label for="55">over 55</label>
-			<br>
+			<div id="ageGroup">
+				<b>2: What is your age group? </b>
+				<br>
+				<input type="radio" name="age" value="17">
+				<label for="17">under 18</label>
+				<br>
+				<input type="radio" name="age" value="18">
+				<label for="18">18-25</label>
+				<br>
+				<input type="radio" name="age" value="26">
+				<label for="26">26-35</label>
+				<br>
+				<input type="radio" name="age" value="36">
+				<label for="26">36-45</label>
+				<br>
+				<input type="radio" name="age" value="46">
+				<label for="46">45-55</label>
+				<br>
+				<input type="radio" name="age" value="55">
+				<label for="55">over 55</label>
+				<br>
+			</div>
 		</p>
 		<br>
 		<div id="OK_button">
-			<input type="submit" value="Continue" name="type"/>
+			<input type="submit" value="Continue" name="answer"/>
 		</div>
 		<div id="skip_button">
-			<input type="submit" value="Skip page" name="type"/>
+			<input type="submit" value="Skip page" name="answer"/>
 		</div>
 	</form>
 </div>

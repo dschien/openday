@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="prepower" method="post" accept-charset="utf-8">
+<form action="rank" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 	{% if error_message %}
 	<p>
@@ -64,10 +64,10 @@
 		</p>
 		<p>
 			<div id="OK_button">
-				<input type="submit" value="Continue" name="type"/>
+				<input type="submit" value="Continue" name="answer"/>
 			</div>
 			<div id="skip_button">
-				<input type="submit" value="Skip page" name="type"/>
+				<input type="submit" value="Skip page" name="answer"/>
 			</div>
 		</p>
 </form>

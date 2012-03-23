@@ -33,7 +33,7 @@ def gender(request):
     if 'survey_id' in request.session:
         del request.session['survey_id']
 
-    if request.POST['type'] == 'Skip survey':
+    if request.POST['answer'] == 'Skip survey':
         request.session['type'] = 'skip'
 #        return render_to_response('index.html', {}, context_instance=RequestContext(request))
         return HttpResponseRedirect(reverse('openday.views.app'))
@@ -51,6 +51,18 @@ def climate(request):
     # save the information from the form into the session                
     logging.info('<climate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))        
     
+    if re.search('Skip', request.POST['answer']):
+        return render_to_response('climate.html', {}, context_instance=RequestContext(request))
+    
+    errors = []
+    if not 'gender' in request.POST : 
+        errors.append('error_gender')
+    if not 'age' in request.POST : 
+        errors.append('error_age')                                
+    
+    if len(errors) > 0:
+        return render_to_response('climate.html', {k : True for k in errors}, context_instance=RequestContext(request))
+    
     s = Survey()     
     s.gender = request.POST['gender'] if 'gender' in request.POST else -1  
     s.age = request.POST['age'] if 'age' in request.POST else -1    
@@ -60,15 +72,15 @@ def climate(request):
     
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
 
-def prepower(request):
+def rank(request):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     
-    logging.info('<prepower> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logging.info('<rank> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
-    if re.search('Skip', request.POST['type']):
-        return render_to_response('prepower.html', {}, context_instance=RequestContext(request))
+    if re.search('Skip', request.POST['answer']):
+        return render_to_response('rank.html', {}, context_instance=RequestContext(request))
     
     errors = []
     if not 'cc' in request.POST : 
@@ -89,7 +101,34 @@ def prepower(request):
     s.cit = request.POST['cit'] 
     s.save()
     
-    return render_to_response('prepower.html', {}, context_instance=RequestContext(request))
+    return render_to_response('rank.html', {}, context_instance=RequestContext(request))
+
+def rate(request):
+    if not request.session :
+        # if it doesn't have a session -> start again
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
+    # save the information from the form into the session
+    logging.info('<rate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
+    
+    if request.session['type'] == 'survey':
+        
+        if not re.search('Skip', request.POST['answer']): 
+            if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]):
+                return render_to_response('rank.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+
+            s = get_object_or_404(Survey, id=request.session['survey_id'])
+            
+            s.servers = request.POST['pre_servers']                        
+            s.laptop = request.POST['pre_laptop']
+            s.acc_net = request.POST['pre_acc_net']
+            s.internet = request.POST['pre_internet']
+            s.rate_confidence = request.POST['confidence']
+                    
+            s.save()
+            
+    return render_to_response('rate.html', {}, context_instance=RequestContext(request))
+
+    
 
 def app(request):
      
@@ -100,24 +139,16 @@ def app(request):
     logging.info('<app> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
     
     if request.session['type'] == 'survey':
-        
-        if not re.search('Skip', request.POST['type']): 
-            if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]) \
-                or any([ re.search('Please select', request.POST[key]) for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet', 'pre_points']]):
-                    return render_to_response('prepower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+                
+        if not re.search('Skip', request.POST['answer']): 
+            if not 'pre_points' in request.POST :
+                return render_to_response('rank.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
-            s.pre_servers = request.POST['pre_servers']                        
-            s.pre_laptop = request.POST['pre_laptop']
-            s.pre_acc_net = request.POST['pre_acc_net']
-            s.pre_internet = request.POST['pre_internet']
-            s.survey_date = datetime.datetime.now()
-            # has opt'ed out?        
-            if 'opt_out' in request.POST and request.POST['opt_out'] == 1:
-                s.pre_points = -1
-            s.pre_points = request.POST['pre_points']
-                    
+            s.survey_date = datetime.datetime.now()            
+            s.rating = request.POST['pre_points']
+            s.rank_confidence = request.POST['confidence']
             s.save()
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
@@ -129,8 +160,8 @@ def branch(request):
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     now = datetime.datetime.now()
     s.duration = (now - s.survey_date).total_seconds()
-        
-    s.selections = createSelections(json.loads(request.POST['selections']))
+    if 'selections' in request.POST and request.POST['selections'] != '':
+        s.selections = createSelections(json.loads(request.POST['selections']))
     s.save()
     
     logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
@@ -145,7 +176,7 @@ def thankyou(request):
     logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if not 'expect' in request.POST:        
-        return render_to_response('postpower.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+        return render_to_response('branch.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
     
     logging.info('<thankyou> storing info')
     s = get_object_or_404(Survey, id=request.session['survey_id'])                    

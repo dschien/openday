@@ -342,3 +342,7 @@ ul#sliders {
 	width: 250px;
 	height: 10px;
 }
+
+#confidence_rate_options {
+	width: 200px; 
+}

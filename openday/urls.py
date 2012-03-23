@@ -13,13 +13,11 @@ urlpatterns = patterns('',
 #     url(r'^gender', 'openday.quest.views.gender'),
      url(r'^gender', 'openday.views.gender'),
      url(r'^climate', 'openday.views.climate'),
-     url(r'^prepower', 'openday.views.prepower'),
+     url(r'^rank', 'openday.views.rank'),
+     url(r'^rate', 'openday.views.rate'),
      url(r'^app', 'openday.views.app'),
-     url(r'^branch', 'openday.views.branch'),
-     url(r'^postpower', 'openday.views.postpower'),
+     url(r'^branch', 'openday.views.branch'),     
      url(r'^thankyou', 'openday.views.thankyou'),
-     
-          
     
      url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
