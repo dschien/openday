@@ -123,6 +123,22 @@ body {
 	margin-bottom: 6px;
 }
 /* Priority boxes*/
+#question_right{
+	position: relative;
+	float: left;
+	width: 340px;
+	padding: 10px;
+	/*border-right: 1px dotted #333;*/
+	padding-top: 0px;
+}
+#question_left{
+	position: relative;
+	float: left;
+	width: 500px;
+	padding: 10px;
+	/*border-right: 1px dotted #333;*/
+	padding-top: 0px;
+}
 .prio{
 	position:relative;
 	height:80px;

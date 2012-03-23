@@ -53,6 +53,9 @@ $(function() {
 </script>
 </head>
 <body>
+	<div id="header2">
+		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
+	</div>
 <div id="about">
 		 <h2>Internet Energy Footprint</h2>
 		<p>
@@ -60,10 +63,8 @@ $(function() {
 			<br>
 			His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
 		</p>
-		<p>
-			<b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b>
-		</p>
-		<p>
+		<div id="question_left">
+		<p><b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b></p>
 			<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
 			{% csrf_token %}
 			<div class="prio">
@@ -106,8 +107,8 @@ $(function() {
 					<input id="pre_acc_net" type="hidden" value="" runat="server" />
 				</ol>
 			</div>
-		</p>
-		<b>7: How many 11W light bulbs can you light with the same power?</b>
+		<div id="question_right">
+		<p><b>7: How many 11W light bulbs can you light with the same power?</b></p>
 		<div class="light_selection">
 			<div id="light_slider"></div>
 			<div id="opt_out">
@@ -120,7 +121,7 @@ $(function() {
 				bulbs
 			</div>
 		</div>
-	
+		</div>
 		<p>
 			<input type="hidden" name="pre_points" id="pre_points"/>
 			<div id="OK_button">
