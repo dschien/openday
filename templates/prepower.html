@@ -18,70 +18,100 @@
 		</p>
 		<p>
 			<script type="text/javascript" charset="utf-8">
-				$(function() {
-
-					var sliders = $("#sliders .slider");
-
-					sliders.each(function() {
-						var value = parseInt($(this).text(), 25), availableTotal = 100;
-
-						$(this).empty().slider({
-							value : 25,
-							min : 1,
-							max : 97,
-							range : "max",
-							step : 1,
-							animate : 100,
-							slide : function(event, ui) {
-								// Update display to current value
-								$(this).siblings().text(ui.value + "%");
-
-								// get current  value
-								var cur_val = ui.value
-
-								// Get current total of the other sliders
-								var total = 0;
-
-								sliders.not(this).each(function() {
-									total += $(this).slider("option", "value");
-								});
-								var availableOthers = availableTotal - cur_val;
-
-								// Update each slider
-								sliders.not(this).each(function() {
-									var t = $(this), value = t.slider("option", "value");
-
-									var newVal = availableOthers * value / total
-									if(isNaN(newVal)) {
-										newVal = 1
-									}
-									t.slider('value', newVal).siblings().text(Math.round(newVal) + "%");
-								});
-							}
-						});
-					});
+				$("#prio1 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#prio_device").val(connection);
+				});
+				$("#prio2 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#prio_internet").val(connection);
+				});
+				$("#prio3 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#prio_server").val(connection);
+				});
+				$("#prio4 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text();
+					$("#prio_wifi").val(connection);
 				});
 
 			</script>
-			<ul id="sliders">
-				<b>Content Servers<b>
-				<li>
-					<div class="slider" id="sl_servers"></div>
-					<span class="value">25%</span>
-				</li> <b>Internet infrastructure</b>
-				<li>
-					<div class="slider" id="sl_internet"></div>
-					<span class="value">25%</span>
-				</li> <b>Laptop</b>
-				<li>
-					<div class="slider" id="sl_laptop"></div>
-					<span class="value">25%</span>
-				</li> <b>Wi-Fi and Router</b>
-				<li>
-					<div class="slider" id="sl_acc_net"></div>
-					<span class="value">25%</span>
-				</li>
-			</ul>
+			<div class="selection">
+				<h2>Laptop</h2>
+				<ol id="prio1">
+					<li class="device">
+						1
+					</li>
+					<li class="device">
+						2
+					</li>
+					<li class="device">
+						3
+					</li>
+					<li class="device">
+						4
+					</li>
+					<input id="prio_device" type="hidden" value="" runat="server" />
+				</ol>
+			</div>
+			<div class="selection">
+				<h2>Internet infrastructure</h2>
+				<ol id="prio2">
+					<li class="device">
+						1
+					</li>
+					<li class="device">
+						2
+					</li>
+					<li class="device">
+						3
+					</li>
+					<li class="device">
+						4
+					</li>
+					<input id="prio_internet" type="hidden" value="" runat="server" />
+				</ol>
+			</div>
+			<div class="selection">
+				<h2>Content servers</h2>
+				<ol id="prio3">
+					<li class="device">
+						1
+					</li>
+					<li class="device">
+						2
+					</li>
+					<li class="device">
+						3
+					</li>
+					<li class="device">
+						4
+					</li>
+					<input id="prio_server" type="hidden" value="" runat="server" />
+				</ol>
+			</div>
+			<div class="selection">
+				<h2>Wifi and router</h2>
+				<ol id="prio4">
+					<li class="device">
+						1
+					</li>
+					<li class="device">
+						2
+					</li>
+					<li class="device">
+						3
+					</li>
+					<li class="device">
+						4
+					</li>
+					<input id="prio_wifi" type="hidden" value="" runat="server" />
+				</ol>
+			</div>
 		</p>
 		<b>7: How many 11W light bulbs can you light with the same power?</b>
 		<script>
