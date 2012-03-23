@@ -27,17 +27,20 @@
 				None of the data collected will be shared with any other third party.
 			</p>
 		</div>
-		<form action="gender" method="POST">
-			{% csrf_token %}
-			<p>
-				<div id="OK_button">
-					<input type="submit" value="Continue" name="answer"/>
-				</div>
-				<div id="skip_button">
-					<input type="submit" value="Skip survey" name="answer"/>
-				</div>
-			</p>
-		</form>
+
 		</p>
+	</div>
+	<div class="submit_button">
+	<form action="gender" method="POST">
+		{% csrf_token %}
+		<p>
+			<div id="OK_button">
+				<input type="submit" value="Continue" name="answer"/>
+			</div>
+			<div id="skip_button">
+				<input type="submit" value="Skip survey" name="answer"/>
+			</div>
+		</p>
+	</form>
 	</div>
 {% endblock %} 

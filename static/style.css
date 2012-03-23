@@ -10,6 +10,11 @@ body {
 	left: 0px;
 	height: 680px;
 }
+.submit_button{
+	width: 1000px;
+	padding-left:20px;
+	padding-right:20px;
+}
 #header {
 	float: left;
 	position: relative;
