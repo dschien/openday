@@ -153,10 +153,10 @@ def app(request):
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
-def branch(request):    
+def review(request):    
     #store app data
     
-    logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     now = datetime.datetime.now()
     s.duration = (now - s.survey_date).total_seconds()
@@ -164,8 +164,8 @@ def branch(request):
         s.selections = createSelections(json.loads(request.POST['selections']))
     s.save()
     
-    logging.info('<branch> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
-    return render_to_response('branch.html', {'type':request.session['type']}, context_instance=RequestContext(request))
+    logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    return render_to_response('review.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 
 def thankyou(request):
@@ -176,7 +176,7 @@ def thankyou(request):
     logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if not 'expect' in request.POST:        
-        return render_to_response('branch.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+        return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
     
     logging.info('<thankyou> storing info')
     s = get_object_or_404(Survey, id=request.session['survey_id'])                    

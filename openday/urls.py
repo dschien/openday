@@ -16,7 +16,7 @@ urlpatterns = patterns('',
      url(r'^rank', 'openday.views.rank'),
      url(r'^rate', 'openday.views.rate'),
      url(r'^app', 'openday.views.app'),
-     url(r'^branch', 'openday.views.branch'),     
+     url(r'^review', 'openday.views.review'),     
      url(r'^thankyou', 'openday.views.thankyou'),
     
      url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
