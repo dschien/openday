@@ -143,8 +143,9 @@ def app(request):
     if request.session['type'] == 'survey':
                 
         if not re.search('Skip', request.POST['answer']): 
-            if not 'pre_points' in request.POST or request.POST['pre_points'] == -1:
-                return render_to_response('rate.html', {'error_message':'Please answer each question.'}, context_instance=RequestContext(request))
+            if not 'pre_points' in request.POST or request.POST['pre_points'] == -1 \
+                or not 'confidence' in request.POST:
+                    return render_to_response('rate.html', {'error_message':'Please answer each question.'}, context_instance=RequestContext(request))
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
