@@ -216,9 +216,9 @@ function setBlurb() {
 	}
 
 	if(currentSelection['service'] == 'V') {
-		text = text + "viewing for " + currentSelection['duration'] + " minutes"
+		text = text + "viewing for " + currentSelection['duration'] + " minutes "
 	} else {
-		text = text + "reading for " + currentSelection['duration'] + " minutes"
+		text = text + "reading for " + currentSelection['duration'] + " minutes "
 	}
 	text = text + "</p>"
 	document.getElementById('blurb').innerHTML = text
