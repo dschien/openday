@@ -15,7 +15,7 @@ body {
 	width: 800px;
 	height: 60px;
 	padding: 20px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 #header2 {
 	float: left;
@@ -23,7 +23,7 @@ body {
 	width: 350px;
 	height: 60px;
 	padding: 20px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 #menu {
 	float: right;
