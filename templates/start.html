@@ -5,7 +5,6 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<div id="frame">
 	<div id="column_left">
 		<h1>How much energy does visiting The Guardian website consume?</h1>
 		<p>
@@ -14,6 +13,17 @@
 		<p>
 			We'd like you to take a quick survey. Your participation in the survey is entirely voluntary.
 		</p>
+		<form action="gender" method="POST">
+			{% csrf_token %}
+			<p>
+				<div id="OK_button">
+					<input type="submit" value="Continue" name="type"/>
+				</div>
+				<div id="skip_button">
+					<input type="submit" value="Skip survey" name="type"/>
+				</div>
+			</p>
+		</form>
 	</div>
 	<div id="column_right">
 		<div id="privacy">
@@ -28,18 +38,7 @@
 				None of the data collected will be shared with any other third party.
 			</p>
 		</div>
-		<form action="gender" method="POST">
-			{% csrf_token %}
-			<p>
-				<div id="OK_button">
-					<input type="submit" value="Continue" name="type"/>
-				</div>
-				<div id="skip_button">
-					<input type="submit" value="Skip survey" name="type"/>
-				</div>
-			</p>
-		</form>
+
 		</p>
 	</div>
-</div>
 {% endblock %} 

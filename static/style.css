@@ -8,22 +8,23 @@ body {
 	position: relative;
 	top: 0px;
 	left: 0px;
+	height: 680px;
 }
 #header {
 	float: left;
 	position: relative;
 	width: 800px;
-	height: 60px;
+	height: 30px;
 	padding: 20px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 #header2 {
 	float: left;
 	position: relative;
 	width: 350px;
-	height: 60px;
+	height: 30px;
 	padding: 20px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 #menu {
 	float: right;
@@ -31,6 +32,14 @@ body {
 	height: 60px;
 	margin-top: 20px;
 	text-align: right;
+}
+#footer{
+	position:absolute;
+	bottom:0px;
+	float:left;
+	width: 900px;
+	float: left;
+	padding:20px;
 }
 #column_left {
 	position: relative;
@@ -85,6 +94,7 @@ body {
 	padding: 0;
 	width: 100%;
 }
+
 .device {
 	float: left;
 	width: 60px;
@@ -120,6 +130,89 @@ body {
 	width: 380px;
 	height: 110px;
 	margin-bottom: 6px;
+}
+/* Priority boxes*/
+#question_right{
+	position: relative;
+	float: left;
+	width: 340px;
+	padding: 10px;
+	/*border-right: 1px dotted #333;*/
+	padding-top: 0px;
+}
+#question_left{
+	position: relative;
+	float: left;
+	width: 500px;
+	padding: 10px;
+	/*border-right: 1px dotted #333;*/
+	padding-top: 0px;
+}
+.prio{
+	position:relative;
+	height:80px;
+	width:480px;
+}
+.priotext{
+	float: left;
+	width: 180px;
+	padding-right: 10px;
+}
+.priotext h2{
+ font-size:18px;
+}
+.priobox{
+	float: left;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-color: #333;
+	color: white;
+	font-size: 36px;
+	text-align: center;
+}
+#prio1 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio1 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio2 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio2 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio3 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio3 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#prio4 .selected {
+	background: #0776A0;
+	color: white;
+}
+#prio4 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 /* Results*/
 #bignr {
@@ -170,6 +263,9 @@ big {
 smaller {
 	font-size: 16px;
 }
+tiny {
+	font-size: 8px;
+}
 number {
 	font-size: 24px;
 }
@@ -187,6 +283,9 @@ number {
 }
 #blurb p {
 	font-size: 12px;
+}
+#privacy {
+	width:380px;
 }
 #privacy p {
 	font-size: 10px;

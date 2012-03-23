@@ -1,88 +1,115 @@
-{% extends "base.html" %}
-{% block content %}
-{% if error_message %}
-<p>
-	<strong>{{ error_message }}</strong>
-</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Guardian energy calculator</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jqueryipad.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+<script>
+$(function() {
+	$("#prio1 li").click(function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+		connection = $(this).text();
+		$("#pre_laptop").val(connection);
+	});
+	$("#prio2 li").click(function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+		connection = $(this).text();
+		$("#pre_internet").val(connection);
+	});
+	$("#prio3 li").click(function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+		connection = $(this).text();
+		$("#pre_servers").val(connection);
+	});
+	$("#prio4 li").click(function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+		connection = $(this).text();
+		$("#pre_acc_net").val(connection);
+	});
+});	
+	$(function() {
+		$("#light_slider").slider({
+			value : 50,
+			min : .5,
+			max : 50,
+			step : .5,
+			slide : function(event, ui) {
+				$("#bulbs").val(ui.value);
+				$("#pre_points").val($("#light_slider").slider("value"))
+			}
+		});
+		$("#bulbs").val("" + $("#light_slider").slider("value"));
+	});
+</script>
+</head>
+<body>
+	<div id="header2">
+		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
+	</div>
 <div id="about">
 	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
-		{% csrf_token %} <h2>Internet Energy Footprint</h2>
+	{% csrf_token %}
+		 <h2>Internet Energy Footprint</h2>
 		<p>
 			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
 			<br>
 			His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
 		</p>
-		<p>
-			<b>6: The four parts of John's system each use electrical energy to provide his web experience. Please can you guess the ranking of the four parts as to which uses most (1st) to least (4th). If you think two are roughly the same, you can give them the same rank.</b>
-		</p>
-		<p>
-			<script type="text/javascript" charset="utf-8">
-				$(function() {
 
-					var sliders = $("#sliders .slider");
+		<div id="question_left">
+		<p><b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b></p>
 
-					sliders.each(function() {
-						var value = parseInt($(this).text(), 25), availableTotal = 100;
 
-						$(this).empty().slider({
-							value : 25,
-							min : 1,
-							max : 97,
-							range : "max",
-							step : 1,
-							animate : 100,
-							slide : function(event, ui) {
-								// Update display to current value
-								$(this).siblings().text(ui.value + "%");
-
-								// get current  value
-								var cur_val = ui.value
-
-								// Get current total of the other sliders
-								var total = 0;
-
-								sliders.not(this).each(function() {
-									total += $(this).slider("option", "value");
-								});
-								var availableOthers = availableTotal - cur_val;
-
-								// Update each slider
-								sliders.not(this).each(function() {
-									var t = $(this), value = t.slider("option", "value");
-
-									var newVal = availableOthers * value / total
-									if(isNaN(newVal)) {
-										newVal = 1
-									}
-									t.slider('value', newVal).siblings().text(Math.round(newVal) + "%");
-								});
-							}
-						});
-					});
-				});
-
-			</script>
-			<ul id="sliders">
-				<b>Content Servers<b>
-				<li>
-					<div class="slider" id="sl_servers"></div>
-					<span class="value">25%</span>
-				</li> <b>Internet infrastructure</b>
-				<li>
-					<div class="slider" id="sl_internet"></div>
-					<span class="value">25%</span>
-				</li> <b>Laptop</b>
-				<li>
-					<div class="slider" id="sl_laptop"></div>
-					<span class="value">25%</span>
-				</li> <b>Wi-Fi and Router</b>
-				<li>
-					<div class="slider" id="sl_acc_net"></div>
-					<span class="value">25%</span>
-				</li>
-			</ul>
-		</p>
+			<div class="prio">
+				<div class="priotext"><h2>Laptop</h2></div>
+				<ol id="prio1">
+					<li class="priobox">4</li>
+					<li class="priobox">3</li>
+					<li class="priobox">2</li>
+					<li class="priobox">1</li>
+				</ol>
+			</div>
+			<div class="prio">
+				<div class="priotext"><h2>Internet infrastructure</h2></div>
+				<ol id="prio2">
+					<li class="priobox">4</li>
+					<li class="priobox">3</li>
+					<li class="priobox">2</li>
+					<li class="priobox">1</li>
+				</ol>
+			</div>
+			<div class="prio">
+				<div class="priotext"><h2>Content servers</h2></div>
+				<ol id="prio3">
+					<li class="priobox">4</li>
+					<li class="priobox">3</li>
+					<li class="priobox">2</li>
+					<li class="priobox">1</li>
+					
+				</ol>
+			</div>
+			<div class="prio">
+				<div class="priotext"><h2>Wifi and router</h2></div>
+				<ol id="prio4">
+					<li class="priobox">4</li>
+					<li class="priobox">3</li>
+					<li class="priobox">2</li>
+					<li class="priobox">1</li>
+					
+				</ol>
+			</div>
+		</div>
+		<div id="question_right">
 		<b>7: How many 11W light bulbs can you light with the same power?</b>
 		<script>
 			$(function() {
@@ -107,6 +134,7 @@
 		</script>
 		<div class="light_selection">
 			<div id="light_slider"></div>
+			<br/><br/>
 			<div id="opt_out">
 				<input type="checkbox"name="opt_out" value="1">
 				Don't know
@@ -117,11 +145,12 @@
 				bulbs
 			</div>
 		</div>
+		</div>
 		<p>
-			<input type="hidden" name="pre_servers" id="pre_servers"/>
-			<input type="hidden" name="pre_laptop" id="pre_laptop"/>
-			<input type="hidden" name="pre_acc_net" id="pre_acc_net"/>
-			<input type="hidden" name="pre_internet" id="pre_internet"/>
+			<input id="pre_internet" type="hidden" value="" runat="server" />
+			<input id="pre_laptop" type="hidden" value="" runat="server" />
+			<input id="pre_acc_net" type="hidden" value="" runat="server" />
+			<input id="pre_servers" type="hidden" value="" runat="server" />
 			<input type="hidden" name="pre_points" id="pre_points"/>
 			<div id="OK_button">
 				<input type="submit" value="Continue" name="type"/>
@@ -132,4 +161,18 @@
 		</p>
 	</form>
 </div>
-{% endblock %} 
+<div id="footer">
+		<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/> 
+		<img src="{{ STATIC_URL }}/img/CESC.png" width="80px"/>
+</div>
+</div>
+		<script>
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g, s)
+			}(document, 'script'));
+			
+		</script>
+	</body>
+</html>
