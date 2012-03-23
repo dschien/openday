@@ -199,7 +199,7 @@ function setBlurb() {
 			text = text + "using a laptop computer "
 	}
 
-	if(currentSelection['connection'] == 'mobile') {
+	if(currentSelection['connection'] == '3G mobile') {
 		text = text + "connected to the Internet by a mobile networks (GPRS, 3G, etc.) "
 	} else {
 		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
