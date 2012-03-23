@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 <script>
-
+$(function() {
 	$("#prio1 li").click(function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
 		connection = $(this).text();
@@ -36,7 +36,7 @@
 		connection = $(this).text();
 		$("#pre_acc_net").val(connection);
 	});
-	
+});	
 	$(function() {
 		$("#light_slider").slider({
 			value : 50,
@@ -64,7 +64,8 @@
 			<b>6: Please rank each part of John's system according to the amount of electrical energy it consumes.</b>
 		</p>
 		<p>
-
+			<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+			{% csrf_token %}
 			<div class="prio">
 				<div class="priotext"><h2>Laptop</h2></div>
 				<ol id="prio1">
@@ -119,8 +120,7 @@
 				bulbs
 			</div>
 		</div>
-		<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
-		{% csrf_token %}	
+	
 		<p>
 			<input type="hidden" name="pre_points" id="pre_points"/>
 			<div id="OK_button">
