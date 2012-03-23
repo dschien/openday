@@ -226,3 +226,20 @@ ul#sliders {
 #OK_button {
 	float: left;
 }
+.light_selection {
+	position: relative;
+	width: 500px;
+	height: 110px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+#light_slider {
+	float: left;
+	width: 250px;
+	height: 15px;
+}
+#opt_out {
+	float: right;
+	width: 250px;
+	height: 10px;
+}
