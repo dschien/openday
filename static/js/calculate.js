@@ -191,7 +191,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 }
 
 function setBlurb() {
-	text = '<p>Reading normal web pages (no video) changing page every minute'
+	text = '<p>Reading normal web pages (no video) changing page every minute '
 	if(currentSelection['service'] == 'V')
 		text = '<p>Watching video continuously '
 	switch(currentSelection['device']) {
@@ -216,9 +216,9 @@ function setBlurb() {
 	}
 
 	if(currentSelection['service'] == 'V') {
-		text = text + "viewing for " + currentSelection['duration'] + " minutes "
+		text = text + "viewing for " + currentSelection['duration'] + " minutes"
 	} else {
-		text = text + "reading for " + currentSelection['duration'] + " minutes "
+		text = text + "reading for " + currentSelection['duration'] + " minutes"
 	}
 	text = text + "</p>"
 	document.getElementById('blurb').innerHTML = text
