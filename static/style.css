@@ -284,6 +284,9 @@ number {
 #blurb p {
 	font-size: 12px;
 }
+#privacy {
+	width:380px;
+}
 #privacy p {
 	font-size: 10px;
 }
