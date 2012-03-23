@@ -14,25 +14,28 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jqueryipad.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
+			String.prototype.trim = function() {
+				return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+			};
 			$(function() {
 				$("#prio1 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
-					connection = $(this).text();
+					connection = $(this).text().trim();
 					$("#pre_laptop").val(connection);
 				});
 				$("#prio2 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
-					connection = $(this).text();
+					connection = $(this).text().trim();
 					$("#pre_internet").val(connection);
 				});
 				$("#prio3 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
-					connection = $(this).text();
+					connection = $(this).text().trim();
 					$("#pre_servers").val(connection);
 				});
 				$("#prio4 li").click(function() {
 					$(this).addClass("selected").siblings().removeClass("selected");
-					connection = $(this).text();
+					connection = $(this).text().trim();
 					$("#pre_acc_net").val(connection);
 				});
 			});
@@ -49,64 +52,101 @@
 				});
 				$("#bulbs").val("" + $("#light_slider").slider("value"));
 			});
-});
-</script>
-</head>
-<body>
-	<div id="header2">
-		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
-	</div>
-<div id="about">
-		 <h2>Internet Energy Footprint</h2>
-		<p>
-			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
-			<br>
-			His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
-		</p>
 
-		<div id="question_left">
-		<p><b>6: Please rank each part of John's system according to the amount of electrical energy it consumes (1 is highest).</b></p>
-
-
-			<div class="prio">
-				<div class="priotext"><h2>Laptop</h2></div>
-				<ol id="prio1">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Internet infrastructure</h2></div>
-				<ol id="prio2">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Content servers</h2></div>
-				<ol id="prio3">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-					
-				</ol>
-			</div>
-			<div class="prio">
-				<div class="priotext"><h2>Wifi and router</h2></div>
-				<ol id="prio4">
-					<li class="priobox">4</li>
-					<li class="priobox">3</li>
-					<li class="priobox">2</li>
-					<li class="priobox">1</li>
-					
-				</ol>
-			</div>
-		
+		</script>
+	</head>
+	<body>
+		<div id="header2">
+			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
+		</div>
+		<div id="about">
+			<form action="app" method="post" accept-charset="utf-8">
+				<h2>Internet Energy Footprint</h2>
+				<p>
+					John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
+					<br>
+					His <b>LAPTOP</b>, his home <b>WI-FI and ROUTER</b>, the rest of the <b>INTERNET</b>, and the computers acting as <b>CONTENT SERVERS</b>
+				</p>
+				<div id="question_left">
+					<p>
+						<b>6: The four parts of John's system each use electrical energy to provide his web experience. Please can you guess the ranking of the four parts as to which uses most (1st) to least (4th). If you think two are roughly the same, you can give them the same rank.</b>
+					</p>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Laptop</h2>
+						</div>
+						<ol id="prio1">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Internet infrastructure</h2>
+						</div>
+						<ol id="prio2">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Content servers</h2>
+						</div>
+						<ol id="prio3">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Wifi and router</h2>
+						</div>
+						<ol id="prio4">
+							<li class="priobox">
+								4
+							</li>
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
 				</div>
 				<div>
 					<b>Q6a: How confident are you about your choice? </b>
@@ -151,17 +191,15 @@
 						<label for="naall">Not at all confident</label>
 					</div>
 				</div>
-			</form>
 		</div>
 		</div>
 		<p>
-		<form action="app" method="post" accept-charset="utf-8">
 			{% csrf_token %}
-			<input id="pre_internet" type="hidden" value="" runat="server" />
-			<input id="pre_laptop" type="hidden" value="" runat="server" />
-			<input id="pre_acc_net" type="hidden" value="" runat="server" />
-			<input id="pre_servers" type="hidden" value="" runat="server" />
-			<input id="pre_points" type="hidden" value="" runat="server" />
+			<input id="pre_internet" type="hidden" value="" runat="server" name="pre_internet"/>
+			<input id="pre_laptop" type="hidden" value="" runat="server" name="pre_laptop"/>
+			<input id="pre_acc_net" type="hidden" value="" runat="server" name="pre_acc_net"/>
+			<input id="pre_servers" type="hidden" value="" runat="server" name="pre_servers"/>
+			<input id="pre_points" type="hidden" value="" runat="server" name="pre_points"/>
 			<div id="OK_button">
 				<input type="submit" value="Continue" name="type"/>
 			</div>
@@ -169,13 +207,13 @@
 				<input type="submit" value="Skip page" name="type"/>
 			</div>
 		</p>
-	</form>
-</div>
-<div id="footer">
-		<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/> 
-		<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
-</div>
-</div>
+		</form>
+		</div>
+		<div id="footer">
+			<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
+			<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
+		</div>
+		</div>
 		<script>
 			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
 			( function(d, t) {
