@@ -30,22 +30,27 @@ function drawChart(e_serv, e_network, e_acc_net, e_user) {
 	chart.draw(data, options);
 }
 
-function addSelectionToSession(selection) {
+function submitSelections() {
 
-	if( typeof selections === 'undefined') {
-		// variable is undefined
-		selections = new Array()
-	}
-	selections.push(selection)
-
-	var form = document.getElementById('postForm')
-
-	if(!form) {
-		// this is not the survey mode - don't store interaction
+	var selectionsField = document.getElementById('selections')
+	// are we in non-survey mode?
+	if(selectionsField == null) {
 		return;
 	}
-	// add the selection to the form
+	if( typeof selectionsArr === 'undefined') {
+		// variable is undefined  - no interactions, previously
+		return;
+	}
+	
+	selectionsField.value = JSON.stringify(selectionsArr)
+}
 
+function addSelectionToSession() {
+	if( typeof selectionsArr === 'undefined') {
+		// variable is undefined
+		selectionsArr = new Array()
+	}
+	selectionsArr.push(currentSelection)
 }
 
 function calc() {
@@ -90,8 +95,8 @@ function calc() {
 	// service type
 	var serviceType = document.getElementById('service_selected').value
 	serviceType = serviceType.trim()
-	selection['service'] = serviceType
-
+	selection['service'] = 'W'
+	
 	// default for text
 	var dataVolume = 1800000
 
@@ -102,17 +107,18 @@ function calc() {
 		dataVolume = durationSecs * 450000
 		// when watching video =- only one page
 		pageLoads = 1
-		
-		p_device = p_device * 1.15
+		p_device = p_device * 1.15	
+		selection['service'] = 'V'
 	}
 	// power access network
 	var connectionType = document.getElementById('connection_selected').value
 	connectionType = connectionType.trim()
-	selection['connection'] = connectionType
+	selection['connection'] = 'W'
 	var e_acc_net = 0
 	switch(connectionType) {
 		case '3G mobile':
 			e_acc_net = dataVolume * 1.8144144197598379e-05 * pageLoads
+			selection['connection'] = 'M'
 			break;
 		default:
 			// default is dsl
@@ -166,7 +172,6 @@ function calc() {
 	//drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
 	currentSelection = selection
-	addSelectionToSession(selection)
 	setBlurb()
 }
 
@@ -175,14 +180,14 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 	e_total_Wh = e_total_joule / 3600
 	e_total_kWh = e_total_Wh / 1000
 	carbon = .525 * e_total_Wh
-	document.getElementById('carbon').innerHTML ="<p><number>" + Math.round(carbon * 10) / 10 + "</number></p><p> grams carbon dioxide</p>";
+	document.getElementById('carbon').innerHTML = "<p><number>" + Math.round(carbon * 10) / 10 + "</number></p><p> grams carbon dioxide</p>";
 	power_lightBulb = 11
 	lightBulbs = e_total_joule / (power_lightBulb * durationSecs )
-	document.getElementById('lightBulb').innerHTML = "<p><number>"+Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " </number>minutes</p>";
+	document.getElementById('lightBulb').innerHTML = "<p><number>" + Math.round(lightBulbs) + "</number></p><p> 11W light bulbs for <number>" + durationSecs / 60 + " </number>minutes</p>";
 
 	// kg per km
 	carEmissions = 0.20864
-	document.getElementById('carMeters').innerHTML ="<p><number>" +Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meters driving an average petrol car</p>";
+	document.getElementById('carMeters').innerHTML = "<p><number>" + Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meters driving an average petrol car</p>";
 }
 
 function setBlurb() {

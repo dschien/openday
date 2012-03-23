@@ -26,9 +26,16 @@
 						if($("#connection_selected").val() != '' & $("#device_selected").val() != '' & $("#service_selected").val() != '') {
 							calc();
 						}
+					},
+					// called after the slide stops
+					change : function() {
+						if($("#connection_selected").val() != '' & $("#device_selected").val() != '' & $("#service_selected").val() != '') {
+							addSelectionToSession();
+						}
 					}
 				});
 				$("#duration").val("" + $("#slider").slider("value"));
+
 			});
 			$(function() {
 				var device = '';
@@ -40,6 +47,7 @@
 					$("#service_selected").val(service);
 					if($("#connection_selected").val() != '' & $("#duration").val() != 0 & $("#device_selected").val() != '') {
 						calc();
+						addSelectionToSession();
 					}
 				});
 				//device_selected
@@ -49,6 +57,7 @@
 					$("#device_selected").val(device);
 					if($("#connection_selected").val() != '' & $("#duration").val() != 0 & $("#service_selected").val() != '') {
 						calc();
+						addSelectionToSession();
 					}
 				});
 				//connection_selected
@@ -58,6 +67,7 @@
 					$("#connection_selected").val(connection);
 					if($("#device_selected").val() != '' & $("#duration").val() != 0 & $("#service_selected").val() != '') {
 						calc();
+						addSelectionToSession();
 					}
 				});
 			});
@@ -153,6 +163,7 @@
 					<form action="branch" method="post" accept-charset="utf-8" id='postForm'>
 						{% csrf_token %}
 						<input type="submit" value="Finish" onclick="submitSelections()"/>
+						<input type="hidden" name="selections" id="selections"/>
 					</form>
 					{% else %}
 					<form action="start" method="post" accept-charset="utf-8">
@@ -168,7 +179,8 @@
 			</div>	
 		</div>
 		<script>
-			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {
+			var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+			( function(d, t) {
 				var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
 				g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g, s)
