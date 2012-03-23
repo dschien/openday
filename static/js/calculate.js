@@ -126,7 +126,7 @@ function calc() {
 	e_total = e_total_joule / 3600
 	e_total = Math.round(e_total * 100) / 100
 	// update the page to show the results
-	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big> Wh</h1>"
+	document.getElementById('bignr').innerHTML = "<h1><big>" + e_total + "</big><br/> watt hour</h1>"
 	// create percentages
 	var p_user = (e_user * 100) / e_total_joule
 	var p_network = (e_network * 100) / e_total_joule
