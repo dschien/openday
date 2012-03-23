@@ -57,7 +57,7 @@ $(function() {
 		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
 	</div>
 <div id="about">
-	<form id="form" action="app" method="post" accept-charset="utf-8" onsubmit="addValuesToForm()">
+	<form action="app" method="post" accept-charset="utf-8">
 	{% csrf_token %}
 		 <h2>Internet Energy Footprint</h2>
 		<p>
