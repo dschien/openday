@@ -114,7 +114,7 @@ def rate(request):
         
         if not re.search('Skip', request.POST['answer']): 
             if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
-                or all([  request.POST[key] > 0 for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
+                or not all([  request.POST[key] > 0 for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
                     or not 'confidence' in request.POST:
                         return render_to_response('rank.html', {'error_message':'Please make all selections'}, context_instance=RequestContext(request))
 
