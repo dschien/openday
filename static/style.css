@@ -292,10 +292,11 @@ number {
 	font-size: 12px;
 }
 #privacy {
-	width:380px;
+	width:400px;
+	float:right;
 }
 #privacy p {
-	font-size: 10px;
+	font-size: 12px;
 }
 #column_left h2 {
 	font-size: 16px;
