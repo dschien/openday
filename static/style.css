@@ -5,10 +5,9 @@ body {
 /* Basic layout */
 #frame {
 	width: 1024px;
-	position:relative;
-	top:0px;
-	left:0px;
-	
+	position: relative;
+	top: 0px;
+	left: 0px;
 }
 #header {
 	float: left;
@@ -189,6 +188,9 @@ number {
 #blurb p {
 	font-size: 12px;
 }
+#privacy p {
+	font-size: 10px;
+}
 #column_left h2 {
 	font-size: 16px;
 	margin-top: 12px;
@@ -199,11 +201,11 @@ a {
 	text-decoration: none;
 	border-bottom: 1px dotted #333;
 }
-#header a{
-	border-bottom: none;	
+#header a {
+	border-bottom: none;
 }
-#header2 a{
-	border-bottom: none;	
+#header2 a {
+	border-bottom: none;
 }
 /*#sliders {
  width: 200px;
@@ -217,4 +219,10 @@ a {
 
 ul#sliders {
 	list-style-type: none;
+}
+#skip_button {
+	float: right;
+}
+#OK_button {
+	float: left;
 }

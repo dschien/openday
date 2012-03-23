@@ -5,43 +5,41 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-<div id="about">
-	<h1>Survey and Demonstration Background:</h1>
-	<p>
-		<a href="http://sympact.cs.bris.ac.uk/" target="_blank">SYMPACT </a> is a joint research project between University of Bristol, University of Surrey and Guardian News and Media that is exploring the environmental impact of digital transformation.
-	</p>
-	<p>
-		This exhibit was developed by <a href="http://sympact.cs.bris.ac.uk/" target="_blank">SYMPACT</a>, in collaboration with <a href="http://cesc.kth.se/" target="_blank">KTH CESC,</a> to demonstrate the energy consumed when delivering digital media over the Internet. It consists of an 'Energy Explorer' application designed to allow users to explore internet energy consumption, and a short survey to provide further research data for <a href="http://sympact.cs.bris.ac.uk/" target="_blank">SYMPACT </a> .
-	</p>
-	<p>
-		The survey involves answering some general demographic questions and some questions concerning the respondents understanding of the energy consumed when reading a website.
-	</p>
-	<p>
-		Your participation in the survey is entirely voluntary therefore you do not have to answer any question you do not wish to answer. Hence if so desired, is also possible to enjoy the 'Energy Explorer' without completing the survey.
-	</p>
-	<p>
-		The survey consists of no more than 10 questions and takes about 5 minutes to complete.
-	</p>
-	<h1>Privacy Statement:</h1>
-	<p>
-		All responses are anonymous and no personally identifiable information is requested in this survey.  Consequently there will be no way to retrieve specific individual responses once the survey is complete.
-	</p>
-	<p>
-		The data collected will be analysed at the University of Bristol and relevant results shared both within the academic community and with the Guardian News Group.
-	</p>
-	<p>
-		None of the data collected will be shared with any other third party.
-	</p>
-	<p>
-		If you wish to participate please proceed.
-	</p>
-	<form action="gender" method="POST">
-		{% csrf_token %}
+<div id="frame">
+	<div id="column_left">
+		<h1>How much energy does visiting The Guardian website consume?</h1>
 		<p>
-			<input type="submit" value="Continue" name="type"/>
-			<input type="submit" value="Skip survey" name="type"/>
+			It depends on your device, they way you connect and how much time you spent in the site. We've prepared an application for you to explore these options.
 		</p>
-	</form>
-	</p>
+		<p>
+			We'd like you to take a quick survey. Your participation in the survey is entirely voluntary.
+		</p>
+	</div>
+	<div id="column_right">
+		<div id="privacy">
+			<b>Privacy Statement:</b>
+			<p>
+				All responses are anonymous and no personally identifiable information is requested in this survey.  Consequently there will be no way to retrieve specific individual responses once the survey is complete.
+			</p>
+			<p>
+				The data collected will be analysed at the University of Bristol and relevant results shared both within the academic community and with the Guardian News Group.
+			</p>
+			<p>
+				None of the data collected will be shared with any other third party.
+			</p>
+		</div>
+		<form action="gender" method="POST">
+			{% csrf_token %}
+			<p>
+				<div id="OK_button">
+					<input type="submit" value="Continue" name="type"/>
+				</div>
+				<div id="skip_button">
+					<input type="submit" value="Skip survey" name="type"/>
+				</div>
+			</p>
+		</form>
+		</p>
+	</div>
 </div>
 {% endblock %} 
