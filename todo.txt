@@ -1,16 +1,11 @@
-high - prepower.html - connect sliders - @dan
-high - postpower.html - connect sliders - @dan
 
-medium -questionaires  - highlight unanswered questions - @dan
-medium -questionaires  - add 'skip these questions' button - @dan
+medium -prepower.html - don't know button - @dan
 
-medium -postpower.html - change drop down list for sliders - @dan
-medium -prepower.html - change drop down list for sliders - @dan
 medium -prepower.html - add image of light bulb - @dan
 medium -postpower.html - add image of light bulb - @dan
 
-medium -prepower.html - change to 60W - @dan
-medium -postpower.html - change to 60W - @dan
+medium -prepower.html - change back to 11W - @dan
+medium -postpower.html - change back to 11W - @dan
 
 medium - postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
 medium - postpower.html - reformulat: "Rank the parts of this chain by how much electrical energy you think that it consumes." - @dan
@@ -19,7 +14,14 @@ medium - climate.html - undecided > 'neither agree nor disagree' - @dan
 medium - questionaires - 'carbon' to 'energy' - @dan
 
 medium - app - record interaction start/end time  - @dan
-medium - app - 60W ref  - @dan
+medium - app - record interaction scenarios  - @dan
 
 medium - questionaire - position headline - @jorge
+
+medium - app - 'undefined' minutes  - @dan
+medium - app - for video add decoding overhead  - @dan
+  
+low - app - blurb 'it says 'wifi' even when selecting 3G mobile.  @dan
+low - app - main number write out Wh to watt hours.  - @jorge
+low - app - swap order of Internet and server bubbles.  @jorge
 
