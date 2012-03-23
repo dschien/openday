@@ -121,6 +121,27 @@ body {
 	height: 110px;
 	margin-bottom: 6px;
 }
+/**/
+.prio{
+	position:relative;
+	height:80px;
+	width:300px;
+}
+.priotext{
+	float: left;
+}
+.priobox{
+	float: left;
+	top: 0px;
+	width: 60px;
+	height: 60px;
+	padding: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-color: #333;
+	color: white;
+}
+
 /* Results*/
 #bignr {
 	float: left;
