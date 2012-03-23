@@ -62,7 +62,7 @@ function calc() {
 		durationSecs = durationMins * 60
 	}
 
-	selection['duration'] = durationMins.value
+	selection['duration'] = durationMins
 	var deviceType = document.getElementById('device_selected').value
 
 	String.prototype.trim = function() {
@@ -177,7 +177,7 @@ function calcLightBulbsAndCarbon(e_total_joule, durationSecs) {
 
 	// kg per km
 	carEmissions = 0.20864
-	document.getElementById('carMeters').innerHTML ="<p><number>" +Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meter driving an average petrol car</p>";
+	document.getElementById('carMeters').innerHTML ="<p><number>" +Math.round((carbon / carEmissions ) * 10) / 10 + "</number></p><p> meters driving an average petrol car</p>";
 }
 
 function setBlurb() {
