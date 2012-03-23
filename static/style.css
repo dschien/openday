@@ -11,6 +11,8 @@ body {
 	height: 680px;
 }
 .submit_button{
+	position:relative;
+	float:left;
 	width: 1000px;
 	padding-left:20px;
 	padding-right:20px;
