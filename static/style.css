@@ -294,6 +294,7 @@ number {
 #privacy {
 	width:400px;
 	float:right;
+	margin-right:20px;
 }
 #privacy p {
 	font-size: 12px;
