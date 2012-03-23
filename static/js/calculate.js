@@ -163,8 +163,11 @@ function calc() {
 	var circle_acc_net = Math.round(Math.sqrt(max_size * (e_acc_net / 3600) / 3.1416))
 	margin = (100 - circle_acc_net) / 2
 	margintop = (100 - circle_acc_net) / 3
+	if(connectionType == "3G mobile"){
+		connectionType = "3G mobile connection"
+	}
 	document.getElementById('circle_access').innerHTML = '<div style="width:' + circle_acc_net + 'px; height:' + circle_acc_net + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#A3C3D8; -moz-border-radius: 40px; -webkit-border-radius:80px;"></div>'
-	document.getElementById('text_access').innerHTML = "<h2>" + connectionType + " connection</h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p><p> " + Math.round(p_acc_net) + " &#37;</p>"
+	document.getElementById('text_access').innerHTML = "<h2>" + connectionType + "</h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p><p> " + Math.round(p_acc_net) + " &#37;</p>"
 
 	//drawChart(e_serv, e_network, e_acc_net, e_user)
 	calcLightBulbsAndCarbon(e_total_joule, durationSecs)
