@@ -110,28 +110,7 @@ $(function() {
 			</div>
 		</div>
 		<div id="question_right">
-		<b>7: How many 11W light bulbs can you light with the same power?</b>
-		<script>
-			$(function() {
-				$("#light_slider").slider({
-					value : 50,
-					min : .5,
-					max : 50,
-					step : .5,
-					slide : function(event, ui) {
-						$("#bulbs").val(ui.value);
-					}
-				});
-				$("#bulbs").val("" + $("#light_slider").slider("value"));
-			});
-			function addValuesToForm() {
-				$("#pre_servers").val($("#sl_servers").slider("value"))
-				$("#pre_laptop").val($("#sl_laptop").slider("value"))
-				$("#pre_acc_net").val($("#sl_acc_net").slider("value"))
-				$("#pre_internet").val($("#sl_internet").slider("value"))
-				$("#pre_points").val($("#light_slider").slider("value"))
-			}
-		</script>
+		<b>7: How many 11W light bulbs can you light with the same power?</b>		
 		<div class="light_selection">
 			<div id="light_slider"></div>
 			<br/><br/>
