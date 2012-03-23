@@ -57,8 +57,6 @@
 		<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
 	</div>
 <div id="about">
-	<form action="app" method="post" accept-charset="utf-8">
-	{% csrf_token %}
 		 <h2>Internet Energy Footprint</h2>
 		<p>
 			John Deane browses the Guardian website for <b>10 MINUTES</b> and he reads 10 web pages in that time. The technology he is using to access the digital Guardian consists of:
@@ -157,11 +155,13 @@
 		</div>
 		</div>
 		<p>
+		<form action="app" method="post" accept-charset="utf-8">
+			{% csrf_token %}
 			<input id="pre_internet" type="hidden" value="" runat="server" />
 			<input id="pre_laptop" type="hidden" value="" runat="server" />
 			<input id="pre_acc_net" type="hidden" value="" runat="server" />
 			<input id="pre_servers" type="hidden" value="" runat="server" />
-			<input type="hidden" runat="server" value="" id="pre_points"/>
+			<input id="pre_points" type="hidden" value="" runat="server" />
 			<div id="OK_button">
 				<input type="submit" value="Continue" name="type"/>
 			</div>
