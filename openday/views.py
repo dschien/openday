@@ -179,9 +179,10 @@ def thankyou(request):
     
     logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
-    if not 'expect' in request.POST:        
-        return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
-    
+    if not re.search('Skip', request.POST['answer']): 
+        if not 'expect' in request.POST:        
+            return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+        
     logging.info('<thankyou> storing info')
     s = get_object_or_404(Survey, id=request.session['survey_id'])                    
     s.expect = request.POST['expect']                        
