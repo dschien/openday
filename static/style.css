@@ -329,10 +329,10 @@ ul#sliders {
 	list-style-type: none;
 }
 #skip_button {
-	float: right;
+	float: left;
 }
 #OK_button {
-	float: left;
+	float: right;
 }
 .light_selection {
 	position: relative;
