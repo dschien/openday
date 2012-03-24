@@ -183,12 +183,11 @@ def thankyou(request):
         if not 'expect' in request.POST:        
             return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
         
-    logging.info('<thankyou> storing info')
-    s = get_object_or_404(Survey, id=request.session['survey_id'])                    
-    s.expect = request.POST['expect']                        
-            
-    s.save()
-        # reset the session information
+        logging.info('<thankyou> storing info')
+        s = get_object_or_404(Survey, id=request.session['survey_id'])                    
+        s.expect = request.POST['expect']                                        
+        s.save()
+            # reset the session information
     del request.session['survey_id']
     
     return render_to_response('thankyou.html', {}, context_instance=RequestContext(request))
