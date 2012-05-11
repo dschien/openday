@@ -6,6 +6,12 @@ from django.contrib import admin
 from openday.models import Survey
 admin.autodiscover()
 
+from django.contrib import databrowse
+from openday.models import Survey, Selection 
+
+databrowse.site.register(Survey)
+databrowse.site.register(Selection)
+
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'openday.views.start'),
@@ -18,6 +24,7 @@ urlpatterns = patterns('',
      url(r'^app', 'openday.views.app'),
      url(r'^review', 'openday.views.review'),     
      url(r'^thankyou', 'openday.views.thankyou'),
+     url(r'^export', 'openday.views.export'),
     
      url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -32,4 +39,5 @@ urlpatterns = patterns('',
             queryset=Survey.objects.order_by('-survey_date')[:50],
             context_object_name='past_surveys_list',
             template_name='list.html')),
+    (r'^databrowse/(.*)', databrowse.site.root),
 )

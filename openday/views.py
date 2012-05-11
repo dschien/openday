@@ -1,8 +1,10 @@
+from django.http import HttpResponse
+from django.views.decorators.http import require_http_methods
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from forms import ContactForm
-from models import Contact, Survey, Selection
+from models import Survey,   Selection , Contact
 import logging
 import datetime
 from django.core.urlresolvers import reverse
@@ -23,6 +25,7 @@ def start(request):
     return render_to_response('start.html', context_instance=RequestContext(request))
     del request.session['type']
     
+@require_http_methods(["POST"])    
 def gender(request):
 
     if not request.session :
@@ -47,6 +50,7 @@ def gender(request):
     # no data to show    
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
 
+@require_http_methods(["POST"])
 def climate(request):
     # no data to show
     if not request.session:
@@ -74,6 +78,7 @@ def climate(request):
     
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
 
+@require_http_methods(["POST"])
 def rank(request):
     if not request.session :
         # if it doesn't have a session -> start again
@@ -103,6 +108,7 @@ def rank(request):
     
     return render_to_response('rank.html', {}, context_instance=RequestContext(request))
 
+@require_http_methods(["POST"])
 def rate(request):
     if not request.session :
         # if it doesn't have a session -> start again
@@ -156,6 +162,7 @@ def app(request):
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
+@require_http_methods(["POST"])
 def review(request):    
     #store app data
     
@@ -171,7 +178,7 @@ def review(request):
     logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     return render_to_response('review.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
-
+@require_http_methods(["POST"])
 def thankyou(request):
     if not request.session :
         # if it doesn't have a session -> start again
@@ -229,4 +236,23 @@ def get_device(json):
         return 'L'
     if json['device'] == 'pc':
         return 'D'
+    
+def export(request):
+    html = "<html><body>"
+    list = Survey.objects.all()
+    
+    s = Survey.objects.get(pk=1)
+    fields = ""
+    for field in ['acc_net', 'age', 'cc', 'cit', 'duration', 'expect', 'gender', 'id', 'internet', 'it', 'laptop', 'pk', 'rank_confidence', 'rate_confidence', 'rating', 'servers', 'survey_date']:        
+        fields += field + ","
+    
+#    fields += s.get_acc_net_display()
+    
+    html += fields
+    html += "<br>"
+    for s in list:
+        html += "{}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {} , {} , {} , {} , {}".format(s.acc_net, s.age, s.cc, s.cit, s.duration, s.expect, s.gender, s.id, s.internet, s.it, s.laptop, s.pk, s.rank_confidence, s.rate_confidence, s.rating, s.servers, s.survey_date)
+        html += "<br>"
+    html += "</body></html>"
+    return HttpResponse(html)
     
