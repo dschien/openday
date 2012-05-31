@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Guardian energy calculator</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
+		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jqueryipad.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			String.prototype.trim = function() {
+				return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+			};
+			$(function() {
+				$("#prio1 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text().trim();
+					$("#pre_laptop").val(connection);
+				});
+				$("#prio2 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text().trim();
+					$("#pre_internet").val(connection);
+				});
+				$("#prio3 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text().trim();
+					$("#pre_servers").val(connection);
+				});
+				$("#prio4 li").click(function() {
+					$(this).addClass("selected").siblings().removeClass("selected");
+					connection = $(this).text().trim();
+					$("#pre_acc_net").val(connection);
+				});
+			});
+			$(function() {
+				$("#light_slider").slider({
+					value : 50,
+					min : .5,
+					max : 50,
+					step : .5,
+					slide : function(event, ui) {
+						$("#bulbs").val(ui.value);
+						$("#pre_points").val($("#light_slider").slider("value"))
+					}
+				});
+				$("#bulbs").val("" + $("#light_slider").slider("value"));
+			});
+
+		</script>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-1465382-26']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	</head>
+	<body>
+		<div id="header2">
+			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
+		</div>
+		<form action="rate" method="post" accept-charset="utf-8">
+			<div id="about">
+				<h2>Internet Energy Footprint</h2>
+				{% if error_message %}
+				<p>
+					<font color="red">{{ error_message }}</font>
+				</p>
+				{% endif %}
+				<h3> Please consider the following scenario: </h3>
+				<p>
+					John Deane browses the web for 10 MINUTES and he reads 10 text web pages in that time. The technology he is using to access the web can be divided into three groups:
+					<ul>
+					<li> The access technology that is in John’s <b>HOME</b>, for example his computer, his WiFi router and his Internet modem. </li>
+					<li> The <b>CONTENT SERVERS</b> that store the pages that John is accessing.</li>
+					<li>John’s share of the rest of the <b>INTERNET</b>. This is all the equipment (routers, DNS servers, switches etc.) that is used to serve John’s pages that is neither owned by John nor the servers that store the pages John is accessing.</li>
+					</ul>
+				</p>
+				<div id="question_left">
+					<p>
+						<b>6: The three parts of the system each use electricity. Please rank these parts from which uses the least (1st) to the most (3rd) energy. If you think two are roughly the same, you may give them the same rank. </b>
+					</p>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Home</h2>
+						</div>
+						<ol id="prio1">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Content Servers</h2>
+						</div>
+						<ol id="prio4">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Internet</h2>
+						</div>
+						<ol id="prio2">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+				</div>
+				<div id="question_right">
+					<div id="confidence_rank">
+						<p><b>7: How confident are you about your choice? </b></p>
+						<br>
+						<div id="confidence_rate_options">
+							<input type="radio" name="confidence" value="4" id='very'>
+							<label for="very">Very</label>
+							<br>
+							<input type="radio" name="confidence" value="3" id='fair'>
+							<label for="fair">Fairly</label>
+							<br>
+							<input type="radio" name="confidence" value="2" id='nvery'>
+							<label for="nvery">Not very</label>
+							<br>
+							<input type="radio" name="confidence" value="1" id='naall'>
+							<label for="naall">Not at all</label>
+						</div>
+					</div>
+				</div>
+				{% csrf_token %}
+				<input id="pre_internet" type="hidden" value="0" runat="server" name="pre_internet"/>
+				<input id="pre_laptop" type="hidden" value="0" runat="server" name="pre_laptop"/>
+				<input id="pre_acc_net" type="hidden" value="0" runat="server" name="pre_acc_net"/>
+				<input id="pre_servers" type="hidden" value="0" runat="server" name="pre_servers"/>
+				<br/><br/>
+				<div id="OK_button">
+					<input type="submit" value="Continue" name="answer"/>
+				</div>
+				<div id="skip_button">
+					<input type="submit" value="Skip page" name="answer"/>
+				</div>
+			</div>
+		</form>
+		<div id="footer">
+			<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
+			<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
+		</div>
+	</body>
+</html>
