@@ -1,35 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-	<div id="about">
-		<form action="rate" method="post" accept-charset="utf-8">
-			<h2>Internet Energy Footprint</h2>
-			{% if error_message %}
-				<p>
-				<font color="red">{{ error_message }}</font>
-				</p>
-			{% endif %}
-			<h2> Please consider the following scenario: </h2>
-			<p>
-				John Deane browses the Internet for an hour, looking only at text. He is using a desktop PC connected to the Internet via a WiFi router and a broadband modem.
-				<br>
-				The technology he is using to access the Internet can be divided into two groups: 
-				<ul>
-					<li> The equipment that is in John’s <b>HOME</b>. This is his computer, his WiFi router and his Internet modem. </li>
-					<li> The <b>CONTENT SERVERS</b> that store the pages that John is accessing.</li>
-					<li>John’s share of the rest of the <b>INTERNET</b>. This is all the equipment (routers, DNS servers, switches etc.) that is used to serve John’s pages that is neither owned by John nor the servers that store the pages John is accessing.</li>
-				</ul>
-			</p>
-			<p>
+<div id="about">
+	<form action="climate" method="post" accept-charset="utf-8" onsubmit="check()">
+		{% csrf_token %}
+		{% if error_message %}
+		<p>
+			<font color="red">{{ error_message }}</font>
+		</p>
+		{% endif %} 
+		<h2>Internet Energy Footprint</h2>
+		<p>
+		<b> Please consider the following scenario: </b>
+		</p>
+		<p>
+			John Deane browses the Internet for an hour, looking only at text. He is using a desktop PC connected to the Internet via a WiFi router and a broadband modem.
+			<br>
+			The technology he is using to access the Internet can be divided into two groups: 
+			<ul>
+				<li> The equipment that is in John’s <b>HOME</b>. This is his computer, his WiFi router and his Internet modem. </li>
+				<li> The <b>CONTENT SERVERS</b> that store the pages that John is accessing.</li>
+				<li>John’s share of the rest of the <b>INTERNET</b>. This is all the equipment (routers, DNS servers, switches etc.) that is used to serve John’s pages that is neither owned by John nor the servers that store the pages John is accessing.</li>
+			</ul>
+		</p>
+		<p>
 			<b>6: The two parts of the system each use electricity. Thinking about the energy consumption of these parts please select the statement below that you believe to be true.</b>
+			<div id="rankGroup" >
 				<input type="radio" name="rank" value="0" id='home'>
-				<label for="home">The equipment in John’s HOME uses MORE energy than the share of the INTERNET responsible for serving John’s pages.</label>
+				<label for="home">The equipment in John’s <b>HOME</b> uses <b>MORE</b> energy than the share of the <b>INTERNET</b> responsible for serving John’s pages.</label>
 				<br>
 				<input type="radio" name="rank" value="1" id='internet'>
-				<label for="internet">John’s share of the rest of the INTERNET uses MORE energy than the equipment in John’s HOME</label>
+				<label for="internet">John’s share of the rest of the <b>INTERNET</b> uses <b>MORE</b> energy than the equipment in John’s <b>HOME</b></label>
 				<input type="radio" name="rank" value="2" id='same'>
-				<label for="same">The energy used in John’s HOME and John’s share of the rest of the INTERNET are about the SAME </label>
-			</p>
-			<div id="confidence_rank">
+				<label for="same">The energy used in John’s <b>HOME</b> and John’s share of the rest of the <b>INTERNET</b> are about the <b>SAME</b> </label>
+			</div>
+		</p>
+		<p>
+			<div id="onfidence_rank">
 				<p>
 				<b>7: How confident are you about your choice? </b>
 				</p>
@@ -48,14 +54,14 @@
 						<label for="naall">Not at all</label>
 					</div>
 			</div>
-			<div id="OK_button">
-				<input type="submit" value="Continue" name="answer"/>
-			</div>
-			<div id="skip_button">
-				<input type="submit" value="Skip page" name="answer"/>
-			</div>
 		</p>
+		<br>
+		<div id="OK_button">
+			<input type="submit" value="Continue" name="answer"/>
+		</div>
+		<div id="skip_button">
+			<input type="submit" value="Skip page" name="answer"/>
+		</div>
 	</form>
 </div>
 {% endblock %} 
-		
