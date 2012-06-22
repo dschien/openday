@@ -60,14 +60,15 @@
 				</p>
 				{% endif %}
 				
+				<p>
 				<div>
 				<b>
-					8: John uses a desktop PC connected to the Internet via a WiFi router and a broadband modem to browse a text website for 10 MINUTES Which appliance uses an equivalent amount of energy in 10 minutes
+					8: John uses a desktop PC connected to the Internet via a WiFi router and a broadband modem to browse a website for 10 MINUTES. In that time he looks at only text and images. Which appliance uses a roughly equivalent amount of energy in an hour?
 				</b>
 				<br>
 						<div id="rating_options">
 							<input type="radio" name="rate" value="1" id='led'>
-							<label for="led">A LED bicycle light (~0.02 Wh) </label>
+							<label for="led">An LED bicycle light (~0.02 Wh) </label>
 							<br>
 							<input type="radio" name="rate" value="2" id='clockradio'>
 							<label for="clockradio">A clock radio (~0.2 Wh)</label>
@@ -76,10 +77,7 @@
 							<label for="bulb">A low-energy light bulb (~2 Wh) </label>
 							<br>
 							<input type="radio" name="rate" value="4" id='tv'>
-							<label for="tv">A 40" LCD television (~25 Wh)</label>
-							<br>
-							<input type="radio" name="rate" value="5" id='wash'>
-							<label for="wash">A washing machine (~85 Wh)</label>
+							<label for="tv">A 32" LCD television (~70 Wh)</label>
 							<br>
 							<input type="radio" name="rate" value="6" id='vac'>
 							<label for="vac">A cyclone vacuum cleaner (~250 Wh)</label>
@@ -90,6 +88,8 @@
 						</div>
 				
 				</div>
+				</p>
+				<p>
 				<div>
 					<div id="confidence_rate">
 						<b>9: How confident are you about your choice? </b>
@@ -110,6 +110,7 @@
 						</div>
 					</div>
 				</div>
+				</p>
 				{% csrf_token %}
 				<input id="pre_points" type="hidden" value="-1" runat="server" name="pre_points"/>
 				</div>
