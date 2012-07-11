@@ -63,7 +63,7 @@ body {
 	/*width: 380px;*/
 	/*min_width: 380px;*/
 	padding: 20px;
-	border-right: 1px dotted #333;
+	border: 1px dotted #333;
 	padding-top: 0px;
 }
 #column_right {
@@ -73,7 +73,7 @@ body {
 	/*width: 550px;*/
 	/*min_width:550px;*/
 	padding: 10px;
-	border-right: 1px dotted #333;
+	border: 1px dotted #333;
 	padding-top: 20px;
 }
 #about {
