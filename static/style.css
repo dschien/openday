@@ -1,13 +1,14 @@
 body {
 	font-family: 'PT Mono', sans-serif;
 	background-color: #fff;
-	min_width:1000px;
+	text-align: center;
+	/*min_width:1000px;*/
 }
 /* Basic layout */
 #frame {
-	/*width: 1000px;*/
+	width: 1000px;*/
 	/*min_width:1000px;*/
-	width: 100%;
+	margin: 0px, auto;
 	position: relative;
 	top: 0px;
 	left: 0px;
@@ -58,17 +59,18 @@ body {
 	position: relative;
 	float: left;
 	width: 380px;
-	min_width: 380px;
+	/*min_width: 380px;*/
 	padding: 20px;
-	/*border-right: 1px dotted #333;*/
+	border-right: 1px dotted #333;
 	padding-top: 0px;
 }
 #column_right {
 	position: relative;
 	float: right;
 	width: 550px;
-	min_width:550px;
+	/*min_width:550px;*/
 	padding: 10px;
+	border-right: 1px dotted #333;
 	padding-top: 20px;
 }
 #about {
