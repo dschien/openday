@@ -7,7 +7,7 @@ body {
 /* Basic layout */
 #frame {
 	text-align: left;
-	width: 800px;*/
+	width: 900px;*/
 	/*min_width:1000px;*/
 	margin: 0px, auto;
 	position: relative;
@@ -20,7 +20,7 @@ body {
 	position:relative;
 	float:left;
 	/* width: 940px; */
-	width: 800px;
+	width: 900px;
 	/*min_width:1000px;*/
 	padding-left:20px;
 	padding-right:20px;
