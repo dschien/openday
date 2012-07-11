@@ -4,11 +4,13 @@ body {
 }
 /* Basic layout */
 #frame {
-	width: 1000px;
+	/*width: 1000px;*/
+	width:100%
 	position: relative;
 	top: 0px;
 	left: 0px;
-	height: 680px;
+	/*height: 680px;*/
+	height: 100%;
 }
 .submit_button{
 	position:relative;
