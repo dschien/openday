@@ -51,7 +51,7 @@ body {
 }
 #footer{
 	position:relative;
-	bottom:0px;
+	/*bottom:0px;*/
 	float:left;
 	border: 1px dashed #333;
 	width: 800px;
