@@ -66,8 +66,8 @@ body {
 	float: right;
 	width: 360px;
 	border:1px dashed #333;
-	padding: 10px;
-	padding-top: 20px;
+	padding: 20px;
+	padding-top: 0px;
 }
 #about {
 	position: relative;
