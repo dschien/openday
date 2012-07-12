@@ -9,7 +9,7 @@ body {
 #frame {
 	overflow:hidden;
 	height:1%;
-	text-align: center;
+	text-align: left;
 	width: 1000px;
 	margin: 0px, auto;
 	border:1px dashed #333;
