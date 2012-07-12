@@ -54,7 +54,7 @@ body {
 	padding:20px;
 }
 #column_left {
-	position: absolute;
+	position: relative;
 	float: left;
 	width: 360px;
 	border:1px dashed #333;
@@ -62,7 +62,7 @@ body {
 	padding-top: 0px;
 }
 #column_right {
-	position: absolute;
+	position: relative;
 	float: right;
 	width: 360px;
 	border:1px dashed #333;
