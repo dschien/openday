@@ -2,6 +2,7 @@ body {
 	font-family: 'PT Mono', sans-serif;
 	background-color: #fff;
 	text-align: center;
+	margin:px, auto;
 	padding:0px;
 }
 /* Basic layout */
@@ -19,9 +20,7 @@ body {
 .submit_button{
 	position:relative;
 	float:left;
-	/* width: 940px; */
 	width: 960px;
-	/*min_width:1000px;*/
 	padding-left:20px;
 	padding-right:20px;
 }
@@ -60,8 +59,6 @@ body {
 	position: relative;
 	float: left;
 	width: 460px;
-	/*width: 380px;*/
-	/*min_width: 380px;*/
 	padding: 20px;
 	border: 1px dotted #333;
 	padding-top: 0px;
@@ -70,8 +67,6 @@ body {
 	position: relative;
 	float: right;
 	width: 460px;
-	/*width: 550px;*/
-	/*min_width:550px;*/
 	padding: 10px;
 	border: 1px dotted #333;
 	padding-top: 20px;
