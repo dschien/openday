@@ -11,8 +11,9 @@ body {
 	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 0px;
 	width: 800px;
-	border:1px dashed #333;
+	border:2px dashed #333;
 	/*background-color: #eee;*/
 }
 .submit_button{
