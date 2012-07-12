@@ -64,7 +64,7 @@ body {
 #column_left {
 	position: relative;
 	float: left;
-	width: 500px;
+	width: 460px;
 	/*width: 380px;*/
 	/*min_width: 380px;*/
 	padding: 20px;
@@ -74,7 +74,7 @@ body {
 #column_right {
 	position: relative;
 	float: right;
-	width: 500px;
+	width: 460px;
 	/*width: 550px;*/
 	/*min_width:550px;*/
 	padding: 10px;
