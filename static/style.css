@@ -31,7 +31,7 @@ body {
 	width: 800px;
 	height: 30px;
 	border:1px dashed #333;
-	/*padding: 20px;*/
+	padding: 20px;
 	/*padding-top: 20px;*/
 }
 #header2 {
@@ -51,7 +51,7 @@ body {
 }
 #footer{
 	position:relative;
-	bottom: 0px;
+	/*bottom: 0px;*/
 	float:left;
 	border: 1px dashed #333;
 	width: 800px;
