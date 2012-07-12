@@ -13,7 +13,7 @@ body {
 	margin-right: auto;
 	margin-top: 0px;
 	width: 800px;
-	border:2px dashed #333;
+	border: 1px dashed #333;
 	/*background-color: #eee;*/
 }
 .submit_button{
@@ -58,7 +58,7 @@ body {
 	position: relative;
 	float: left;
 	width: 360px;
-	border:1px dashed #333;
+	border: 1px dashed #333;
 	padding: 15px;
 	padding-top: 0px;
 }
@@ -66,7 +66,7 @@ body {
 	position: relative;
 	float: right;
 	width: 360px;
-	border:1px dashed #333;
+	border: 1px dashed #333;
 	padding: 15px;
 	padding-top: 0px;
 }
