@@ -3,7 +3,6 @@ body {
 	background-color: #fff;
 	text-align: center;
 	padding:0px;
-	margin:0px, auto;
 }
 /* Basic layout */
 #frame {
@@ -12,8 +11,8 @@ body {
 	text-align: left;
 	width: 1000px;
 	margin: 0px, auto;
-	top: 0px;
-	left: 0px;
+	/*top: 0px;*/
+	/*left: 0px;*/
 	border:1px dashed #333;
 	background-color: #eee;
 }
