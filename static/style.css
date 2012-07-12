@@ -51,8 +51,10 @@ body {
 	position:relative;
 	bottom:0px;
 	float:left;
+	border: 1px dashed #333;
 	width: 800px;
 	padding:20px;
+	
 }
 #column_left {
 	position: relative;
