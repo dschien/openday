@@ -78,6 +78,7 @@ body {
 }
 #about {
 	position: relative;
+	top: 0px;
 	float: left;
 	width: 800px;
 	padding: 20px;
