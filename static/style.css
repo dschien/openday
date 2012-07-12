@@ -2,7 +2,8 @@ body {
 	font-family: 'PT Mono', sans-serif;
 	background-color: #fff;
 	text-align: center;
-	margin: 0px, auto;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0px;
 }
 /* Basic layout */
@@ -11,7 +12,6 @@ body {
 	height:1%;
 	text-align: left;
 	width: 1000px;
-	margin: 0px, auto;
 	border:1px dashed #333;
 	/*background-color: #eee;*/
 }
