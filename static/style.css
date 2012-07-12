@@ -81,6 +81,7 @@ body {
 	width: 800px;
 	padding: 20px;
 	padding-top: 0px;
+	border: 1px dashed #333;
 }
 /*Items*/
 #selected_service .selected {
