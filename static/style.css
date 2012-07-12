@@ -2,8 +2,6 @@ body {
 	font-family: 'PT Mono', sans-serif;
 	background-color: #fff;
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
 	padding: 0px;
 }
 /* Basic layout */
@@ -11,6 +9,8 @@ body {
 	overflow:hidden;
 	height:1%;
 	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
 	width: 1000px;
 	border:1px dashed #333;
 	/*background-color: #eee;*/
