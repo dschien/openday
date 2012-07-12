@@ -27,6 +27,7 @@ body {
 	position: relative;
 	width: 800px;
 	height: 30px;
+	border:1px dashed #333;
 	padding: 20px;
 	padding-top: 20px;
 }
