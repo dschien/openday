@@ -51,7 +51,7 @@ body {
 }
 #footer{
 	position:relative;
-	/*bottom:0px;*/
+	bottom: 0px;
 	float:left;
 	border: 1px dashed #333;
 	width: 800px;
@@ -77,6 +77,16 @@ body {
 	padding-top: 0px;
 }
 #about {
+	position: relative;
+	top: 0px;
+	float: left;
+	width: 800px;
+	padding: 20px;
+	margin-top: 0px;
+	padding-top: 0px;
+	border: 5px dashed #333;
+}
+#start {
 	position: relative;
 	top: 0px;
 	float: left;
