@@ -57,7 +57,7 @@ body {
 	float: left;
 	width: 360px;
 	border:1px dashed #333;
-	padding: 19px;
+	padding: 15px;
 	padding-top: 0px;
 }
 #column_right {
@@ -65,7 +65,7 @@ body {
 	float: right;
 	width: 360px;
 	border:1px dashed #333;
-	padding: 19px;
+	padding: 15px;
 	padding-top: 0px;
 }
 #about {
