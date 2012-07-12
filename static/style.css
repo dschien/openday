@@ -46,7 +46,7 @@ body {
 	text-align: right;
 }
 #footer{
-	position:absolute;
+	position:relative;
 	bottom:0px;
 	float:left;
 	width: 900px;
@@ -58,7 +58,6 @@ body {
 	float: left;
 	width: 460px;
 	padding: 20px;
-	border: 1px dotted #333;
 	padding-top: 0px;
 }
 #column_right {
@@ -66,7 +65,6 @@ body {
 	float: right;
 	width: 460px;
 	padding: 10px;
-	border: 1px dotted #333;
 	padding-top: 20px;
 }
 #about {
