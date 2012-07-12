@@ -11,14 +11,14 @@ body {
 	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
+	width: 800px;
 	border:1px dashed #333;
 	/*background-color: #eee;*/
 }
 .submit_button{
 	position:relative;
 	float:left;
-	width: 960px;
+	width: 760px;
 	padding-left:20px;
 	padding-right:20px;
 }
@@ -49,28 +49,28 @@ body {
 	position:relative;
 	bottom:0px;
 	float:left;
-	width: 900px;
+	width: 800px;
 	float: left;
 	padding:20px;
 }
 #column_left {
 	position: relative;
 	float: left;
-	width: 460px;
+	width: 360px;
 	padding: 20px;
 	padding-top: 0px;
 }
 #column_right {
 	position: relative;
 	float: right;
-	width: 460px;
+	width: 360px;
 	padding: 10px;
 	padding-top: 20px;
 }
 #about {
 	position: relative;
 	float: left;
-	width: 900px;
+	width: 800px;
 	padding: 20px;
 	padding-top: 0px;
 }
