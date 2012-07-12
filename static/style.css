@@ -55,9 +55,11 @@ body {
 	position: relative;
 	top: 0px;
 	float: left;
-	width: 800px;
+	width: 700px;
 	padding: 20px;
 	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
 	padding-top: 0px;
 	border: 5px dashed #333;
 }
