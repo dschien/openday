@@ -30,13 +30,12 @@ body {
 	position: relative;
 	width: 800px;
 	height: 30px;
-	border:1px dashed #333;
+	border: 1px dashed #333;
 	padding: 20px;
-	/*padding-top: 20px;*/
 }
 #footer{
 	position:relative;
-	/*bottom: 0px;*/
+	bottom: 0px;
 	float:left;
 	border: 1px dashed #333;
 	width: 800px;
@@ -56,7 +55,7 @@ body {
 	position: relative;
 	top: 0px;
 	float: left;
-	width: 760px;
+	width: 800px;
 	padding: 20px;
 	margin-top: 0px;
 	padding-top: 0px;
