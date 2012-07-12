@@ -6,8 +6,8 @@ body {
 }
 /* Basic layout */
 #frame {
-	/*overflow:hidden;*/
-	/*height:1%;*/
+	overflow:hidden;
+	height:1%;
 	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
@@ -30,7 +30,7 @@ body {
 	position: relative;
 	width: 800px;
 	height: 30px;
-	border:5px dashed #333;
+	border:1px dashed #333;
 	padding: 20px;
 	padding-top: 20px;
 }
@@ -83,7 +83,7 @@ body {
 	padding: 20px;
 	margin-top: 0px;
 	padding-top: 0px;
-	border: 1px dashed #333;
+	border: 5px dashed #333;
 }
 /*Items*/
 #selected_service .selected {
