@@ -3,17 +3,15 @@ body {
 	background-color: #fff;
 	text-align: center;
 	margin: 0px, auto;
-	padding:0px;
+	padding: 0px;
 }
 /* Basic layout */
 #frame {
 	overflow:hidden;
 	height:1%;
-	text-align: left;
+	text-align: center;
 	width: 1000px;
 	margin: 0px, auto;
-	/*top: 0px;*/
-	/*left: 0px;*/
 	border:1px dashed #333;
 	background-color: #eee;
 }
