@@ -7,6 +7,8 @@ body {
 }
 /* Basic layout */
 #frame {
+	overflow:hidden;
+	height:1%;
 	text-align: left;
 	width: 1000px;
 	/*min_width:1000px;*/
