@@ -13,7 +13,7 @@ body {
 	width: 1000px;
 	margin: 0px, auto;
 	border:1px dashed #333;
-	background-color: #eee;
+	/*background-color: #eee;*/
 }
 .submit_button{
 	position:relative;
