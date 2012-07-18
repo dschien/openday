@@ -21,7 +21,7 @@ body {
 	position:relative;
 	float:left;
 	width: 90%;
-	padding-left:20px;
+	padding-left:5%;
 	padding-right:5%;
 	border: 1px dashed #333;
 }
@@ -55,7 +55,7 @@ body {
 	position: relative;
 	top: 0px;
 	float: left;
-	width: 90%;
+	width: 80%;
 	padding: 20px;
 	margin-top: 0px;
 	margin-left: auto;
