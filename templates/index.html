@@ -7,7 +7,7 @@
 		<title>Guardian energy calculator</title>
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<link href="{{STATIC_URL}}style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{{STATIC_URL}}style-app.css" media="screen" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="{{STATIC_URL}}js/calculate.js"></script>
 		<link type="text/css" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
@@ -18,9 +18,9 @@
 			$('#slider').draggable();
 			$(function() {
 				$("#slider").slider({
-					value : 10,
+					value : 60,
 					min : 1,
-					max : 30,
+					max : 60,
 					step : 1,
 					slide : function(event, ui) {
 						$("#duration").val(ui.value);
@@ -72,7 +72,12 @@
 					}
 				});
 			});
-
+			function init(){				
+				alert("Here is the scenario from the text. Have a good look at it, OK? We'll question you about it afterwards.")
+				$("#selected_service li").click();
+				$("#selectable li").click();
+				$("#selectable2 li").click();
+			}
 		</script>
 		<script type="text/javascript">
 
@@ -88,7 +93,7 @@
 
 		</script>
 	</head>
-	<body>
+	<body onload="init()">
 		<div id="frame">
 			<div id="header2">
 				<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
