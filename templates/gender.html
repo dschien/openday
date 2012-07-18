@@ -10,7 +10,7 @@
 		{% endif %} 
 		<h2>About You</h2>
 		<p>
-			<div id="genderGroup">
+			<!-- <div id="genderGroup"> -->
 				<b>1: Are you? </b>
 				<br>
 				<input type="radio" name="gender" value="0" id='male'>
@@ -18,10 +18,10 @@
 				<br>
 				<input type="radio" name="gender" value="1" id='female'>
 				<label for="female">Female</label>
-			</div>
+			<!--</div> -->
 		</p>
 		<p>
-			<div id="ageGroup">
+			<!-- <div id="ageGroup"> -->
 				<b>2: What is your age group? </b>
 				<br>
 				<input type="radio" name="age" value="17">
@@ -42,14 +42,19 @@
 				<input type="radio" name="age" value="55">
 				<label for="55">Over 55</label>
 				<br>
-			</div>
+			<!-- </div> -->
 		</p>
 		<br>
-		<div id="OK_button">
-			<input type="submit" value="Continue" name="answer"/>
-		</div>
-		<div id="skip_button">
-			<input type="submit" value="Skip page" name="answer"/>
+		<div class="submit_button">
+		{% csrf_token %}
+			<p>
+			<div id="OK_button">
+				<input type="submit" value="Continue" name="answer"/>
+			</div>
+			<div id="skip_button">
+				<input type="submit" value="Skip survey" name="answer"/>
+			</div>
+		</p>
 		</div>
 	</form>
 </div>
