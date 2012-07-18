@@ -81,6 +81,7 @@ body {
 	/*border: 1px dashed #333;*/
 }
 #scenario {
+	background-color: red;
 	position: relative;
 	top: 0px;
 	float: left;
