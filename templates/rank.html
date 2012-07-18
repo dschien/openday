@@ -69,11 +69,15 @@
 
 		</script>
 	</head>
+	
+	
 	<body>
 		<div id="header">
 			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
 		</div>
+		
 		<form action="rate" method="post" accept-charset="utf-8">
+			
 			<div id="start">
 				<h2>Internet Energy Footprint</h2>
 				{% if error_message %}
@@ -81,9 +85,8 @@
 					<font color="red">{{ error_message }}</font>
 				</p>
 				{% endif %}
-				<h3> Please consider the following scenario: </h3>
-				
 				<div id="scenario">
+					<h3> Please consider the following scenario: </h3>
 					<p>
 						John Deane browses the web for an hour looking at pages that contain only text and images. He is using a desktop PC connected to the internet via a WiFi router and a broadband modem.
 					</p>
