@@ -80,6 +80,20 @@ body {
 	margin-right: auto;
 	/*border: 1px dashed #333;*/
 }
+#scenario {
+	position: relative;
+	top: 0px;
+	float: left;
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 0%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px;
+}
 #skip_button {
 	float: left;
 }
