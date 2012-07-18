@@ -13,6 +13,7 @@ body {
 	margin-right: auto;
 	margin-top: 0px;
 	width: 800px;
+	min-width: 100px;
 	border: 1px dashed #333;
 	padding-top: 0px;
 	/*background-color: #eee;*/
