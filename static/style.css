@@ -97,6 +97,12 @@ body {
 	margin-right: auto;
 	margin-bottom: 20px;
 }
+#question_answers {
+	position: relative;
+	float: left;
+	width: 50%;
+	margin_top: 0%;
+}
 
 #skip_button {
 	float: left;
