@@ -21,7 +21,7 @@ body {
 .submit_button{
 	position:relative;
 	float:left;
-	width: 100%;
+	width: 96%;
 	padding-left: 2%;
 	padding-right: 2%;
 	border: 1px dashed #333;
@@ -65,7 +65,7 @@ body {
 	position: relative;
 	top: 0px;
 	float: left;
-	width: 100%;
+	width: 96%;
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-top: 5px;
