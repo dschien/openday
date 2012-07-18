@@ -11,22 +11,44 @@
 		<br>
 		<h2>Review</h2>
 		<p>
-			<b>8: Based on your interaction with this 'energy explorer' App, do you think the energy footprint of browsing the internet is: </b>
+			<b>10: Based on your interaction with the 'Energy Explorer', has your opinion changed as to which part of the system (home vs Internet) consumes the most energy?<b>
+			<br>
+			<input type="radio" name="expect" value="1" id='yes'>
+			<label for="yes">Yes</label>
+			<br>
+			<input type="radio" name="expect" value="0" id='no'>
+			<label for="no">No</label>
+			<br>
+		</p>
+		<p>
+			<b>11: If you answered YES to the previous question, please select the statement below that you now believe to be true</b>
+			<br>
+			<input type="radio" name="newrank" value="4" id='home_more'>
+			<label for="home_more">The equipment in John's <b>HOME</b> uses <b>MORE</b> energy than John's share of the rest of the <b>INTERNET</b></label>
+			<br>
+			<input type="radio" name="newrank" value="3" id='home_less'>
+			<label for="home_less">The equipment in John's <b>HOME</b> uses <b>LESS</b> energy than John's share of the rest of the <b>INTERNET</b></label>
+			<br>
+			<input type="radio" name="newrank" value="2" id='same'>
+			<label for="same">The equipment in John’s <b>HOME</b> uses about the <b>SAME</b> energy as John’s share of the rest of the <b>INTERNET</b></label>
+		</p>
+		<p>
+			<b>12: Also based on your interaction with the 'Energy Explorer', do you now think the energy footprint of browsing the internet is: </b>
 			<br>
 			<input type="radio" name="expect" value="5" id='lot'>
-			<label for="lot">A lot more than you would expect</label>
+			<label for="lot">A lot more than you expected</label>
 			<br>
 			<input type="radio" name="expect" value="4" id='slight'>
-			<label for="slight">Slightly more than you would expect</label>
+			<label for="slight">Slightly more than you expected</label>
 			<br>
 			<input type="radio" name="expect" value="3" id='expect'>
-			<label for="expect">About what you you would expect</label>
+			<label for="expect">About what you expected</label>
 			<br>
 			<input type="radio" name="expect" value="2" id='less'>
-			<label for="less">Slightly less than you would expect</label>
+			<label for="less">Slightly less than you expected</label>
 			<br>
 			<input type="radio" name="expect" value="1" id='lotless'>
-			<label for="lotless">A lot less than you would expect</label>
+			<label for="lotless">A lot less than you expected</label>
 		</p>
 		<p>
 			<div id="OK_button">

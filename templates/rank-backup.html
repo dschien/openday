@@ -83,29 +83,65 @@
 				{% endif %}
 				<h3> Please consider the following scenario: </h3>
 				<p>
-					John Deane browses the web for an hour looking at pages that contain only text and images. He is using a desktop PC connected to the internet via a WiFi router and a broadband modem.
-				</p>
-				<p>
-					The technology he is using to access the web pages can be divided into two groups:
+					John Deane browses the web for 10 MINUTES and he reads 10 text web pages in that time. The technology he is using to access the web can be divided into three groups:
 					<ul>
-					<li> The equipment that is in John’s <b>HOME</b>. This is his computer, his WiFi router and his Internet modem.</li>
-					<li>The share of the <b>INTERNET</b> and web servers that are used to fetch only John's pages.</li>
+					<li> The access technology that is in John’s <b>HOME</b>, for example his computer, his WiFi router and his Internet modem. </li>
+					<li> The <b>CONTENT SERVERS</b> that store the pages that John is accessing.</li>
+					<li>John’s share of the rest of the <b>INTERNET</b>. This is all the equipment (routers, DNS servers, switches etc.) that is used to serve John’s pages that is neither owned by John nor the servers that store the pages John is accessing.</li>
 					</ul>
 				</p>
 				<div id="question_left">
 					<p>
-						<b>6: The two parts of the system each use electricity. Thinking about the energy consumption of these parts please select the statement below that you believe to be true</b>
+						<b>6: The three parts of the system each use electricity. Please rank these parts from which uses the least (1st) to the most (3rd) energy. If you think two are roughly the same, you may give them the same rank. </b>
 					</p>
-					<div id=rank_options">
-						<input type="radio" name="rank" value="4" id='home_more'>
-						<label for="home_more">The equipment in John's <b>HOME</b> uses <b>MORE</b> energy than John's share of the rest of the <b>INTERNET</b></label>
-						<br>
-						<input type="radio" name="rank" value="3" id='home_less'>
-						<label for="home_less">The equipment in John's <b>HOME</b> uses <b>LESS</b> energy than John's share of the rest of the <b>INTERNET</b></label>
-						<br>
-						<input type="radio" name="rank" value="2" id='same'>
-						<label for="same">The equipment in John’s <b>HOME</b> uses about the <b>SAME</b> energy as John’s share of the rest of the <b>INTERNET</b></label>
-					</div>	
+					<div class="prio">
+						<div class="priotext">
+							<h2>Home</h2>
+						</div>
+						<ol id="prio1">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Content Servers</h2>
+						</div>
+						<ol id="prio4">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
+					<div class="prio">
+						<div class="priotext">
+							<h2>Internet</h2>
+						</div>
+						<ol id="prio2">
+							<li class="priobox">
+								3
+							</li>
+							<li class="priobox">
+								2
+							</li>
+							<li class="priobox">
+								1
+							</li>
+						</ol>
+					</div>
 				</div>
 				<div id="question_right">
 					<div id="confidence_rank">
