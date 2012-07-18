@@ -81,6 +81,7 @@ body {
 	/*border: 1px dashed #333;*/
 }
 #scenario {
+	border: 2px solid #333;
 	background-color: red;
 	position: relative;
 	top: 0px;
@@ -93,9 +94,6 @@ body {
 	margin-top: 0%;
 	margin-left: auto;
 	margin-right: auto;
-	border-style: line;
-	border-color: black;
-	border-width: 2px;
 }
 
 #skip_button {
