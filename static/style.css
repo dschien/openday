@@ -1,7 +1,7 @@
 body {
 	font-family: 'PT Mono', sans-serif;
 	background-color: #fff;
-	text-align: center;
+	text-align: left;
 	padding: 0px;
 }
 /* Basic layout */
@@ -10,7 +10,6 @@ body {
 	height:1%;
 	text-align: left;
 	margin-left: 0px;
-	margin-right: auto;
 	margin-top: 0px;
 	width: 100%;
 	max-width: 800px;
