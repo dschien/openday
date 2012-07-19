@@ -13,6 +13,7 @@ body {
 	margin-top: 0px;
 	width: 100%;
 	max-width: 800px;
+	min_width: 200px;
 	padding-top: 0px;
 	/*background-color: #eee;*/
 }
@@ -102,7 +103,7 @@ body {
 	margin-top: 0%;
 	margin-bottom: 20px;
 	float: left;
-	width: 60%;
+	width: 50%;
 }
 .question{
 float: left;
