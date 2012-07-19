@@ -99,6 +99,7 @@ body {
 }
 #question_answers {
 	position: relative;
+	margin-top: 0%;
 	float: left;
 	width: 50%;
 	margin_top: 0%;
