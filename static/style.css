@@ -101,10 +101,7 @@ body {
 	position: relative;
 	margin-top: 0%;
 	float: left;
-	width: 50%;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #333;
+	width: 60%;
 }
 .question{
 float: left;
