@@ -102,7 +102,9 @@ body {
 	margin-top: 0%;
 	float: left;
 	width: 50%;
-	margin_top: 0%;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #333;
 }
 
 #skip_button {
