@@ -5,7 +5,7 @@ body {
 	padding: 0px;
 }
 /* Basic layout */
-#frame {
+.frame {
 	overflow:hidden;
 	height:1%;
 	text-align: left;
@@ -24,7 +24,7 @@ body {
 	padding-right: 10%;
 	/*border: 1px dashed #333;*/
 }
-#header {
+.header {
 	float: left;
 	position: relative;
 	width: 100%;
@@ -42,7 +42,7 @@ body {
 	height: 30px;
 	padding: 20px;
 	padding-top: 20px;*/
-#footer{
+.footer{
 	position:relative;
 	bottom: 0px;
 	float:left;
@@ -53,7 +53,7 @@ body {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-#about {
+.about {
 	position: relative;
 	top: 0px;
 	float: left;
@@ -66,7 +66,7 @@ body {
 	padding-top: 0px;
 	/*border: 1px dashed #333;*/
 }
-#start {
+.start {
 	position: relative;
 	top: 0px;
 	float: left;
@@ -97,7 +97,7 @@ body {
 	margin-right: auto;
 	margin-bottom: 20px;
 }
-#question_answers {
+.question_answers {
 	position: relative;
 	margin-top: 0%;
 	float: left;
