@@ -2,13 +2,17 @@ from django.db import models
 import datetime
 import base64
 
-# Create your models here.
 class Contact(models.Model):
     topic = models.CharField(max_length=200)
     message = models.CharField(max_length=200)
     sender = models.CharField(max_length=200)
 
 
+class SurveyGroup(models.Model):
+    name = models.CharField(max_length=200)
+    def __unicode__(self):
+        return  u'%s' %  self.name
+    
 class Selection(models.Model):
     DEVICE_CHOICES = (
         ('P', 'phone'),
@@ -34,19 +38,17 @@ class Selection(models.Model):
 
 
 class Survey(models.Model):
+    group = models.ForeignKey(SurveyGroup, null=True)
     
     cc = models.IntegerField('knowledgeable about climate change', null=True)    
     it = models.IntegerField('knowledgeable about IT', null=True)
     cit = models.IntegerField('thought about the climate impacts of using the Internet', null=True)
+    
     age = models.IntegerField('age', null=True)
     gender = models.IntegerField('gender', null=True)
     
-    servers = models.IntegerField('server ranking', null=True)
-    laptop = models.IntegerField('laptop ranking', null=True)
-    acc_net = models.IntegerField('access network ranking', null=True)
-    internet = models.IntegerField('internet ranking', null=True)
-
-    rank_confidence = models.IntegerField('ranking confidence', null=True)
+    home_rank = models.IntegerField('home ranking (more,less,same)', null=True)
+    home_rank_confidence = models.IntegerField('ranking confidence for home to internet ratio', null=True)
 
     rating = models.FloatField('rating', null=True)
     rate_confidence = models.IntegerField('rating confidence', null=True)
