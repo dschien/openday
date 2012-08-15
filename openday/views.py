@@ -4,34 +4,43 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from forms import ContactForm
-from models import Survey,   Selection , Contact
+from models import Survey, Selection , Contact
 import logging
 import datetime
 from django.core.urlresolvers import reverse
 import re
 import json
+from openday.models import SurveyGroup
 #import pdb;
 
 # Create your views here.
 
+#https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpResponse.set_cookie
+logger = logging.getLogger(__name__)
 
-def start(request):
+def start(request, group=None):
+
+    logger.info("Group:" + group if group else ' no group defined')
+    if not group:
+        # if it doesn't have a group -> run in no-tracking mode
+        #@todo: implement no group mode
+        pass        
            
     if not request.session :
         # if it doesn't have a session -> start again
-        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))        
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))        
         
-    logging.info('<start> : {}'.format(request.session.session_key)) 
-    return render_to_response('start.html', context_instance=RequestContext(request))
+    logger.info('<start> : {}'.format(request.session.session_key)) 
+    return render_to_response('start.html', {'group':group}, context_instance=RequestContext(request))
     del request.session['type']
     
 @require_http_methods(["POST"])    
-def gender(request):
+def gender(request, group=None):
 
     if not request.session :
         # if it doesn't have a session -> start again
-        return render_to_response('start', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
-    logging.info('<gender> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+        return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
+    logger.info('<gender> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if 'survey_id' in request.session:
         del request.session['survey_id']
@@ -44,6 +53,7 @@ def gender(request):
     # create new survey
     s = Survey() 
     s.survey_date = datetime.datetime.now()
+    s.group = get_group(group)
     s.save()
     request.session['survey_id'] = s.id
     request.session['type'] = 'survey'
@@ -51,13 +61,13 @@ def gender(request):
     return render_to_response('gender.html', {}, context_instance=RequestContext(request))
 
 @require_http_methods(["POST"])
-def climate(request):
+def climate(request, group=None):
     # no data to show
     if not request.session:
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session                
-    logging.info('<climate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))        
+    logger.info('<climate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))        
     
     if re.search('Skip', request.POST['answer']):
         return render_to_response('climate.html', {}, context_instance=RequestContext(request))
@@ -79,12 +89,12 @@ def climate(request):
     return render_to_response('climate.html', {}, context_instance=RequestContext(request))
 
 @require_http_methods(["POST"])
-def rank(request):
+def rank(request, group=None):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     
-    logging.info('<rank> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logger.info('<rank> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if re.search('Skip', request.POST['answer']):
         return render_to_response('rank.html', {}, context_instance=RequestContext(request))
@@ -109,28 +119,23 @@ def rank(request):
     return render_to_response('rank.html', {}, context_instance=RequestContext(request))
 
 @require_http_methods(["POST"])
-def rate(request):
+def rate(request, group=None):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session
-    logging.info('<rate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
+    logger.info('<rate> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
     
     if request.session['type'] == 'survey':
         
         if not re.search('Skip', request.POST['answer']): 
-            if not all([ key in request.POST for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
-                or not all([  request.POST[key] > 0 for key in ['pre_servers', 'pre_laptop', 'pre_acc_net', 'pre_internet']]) \
-                    or not 'confidence' in request.POST:
-                        return render_to_response('rank.html', {'error_message':'Please make all selections'}, context_instance=RequestContext(request))
+            if not 'rank' in request.POST or not 'confidence' in request.POST : 
+                return render_to_response('rank.html', {'error_message':'Please make all selections'}, context_instance=RequestContext(request))                
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
-            s.servers = request.POST['pre_servers']                        
-            s.laptop = request.POST['pre_laptop']
-            s.acc_net = request.POST['pre_acc_net']
-            s.internet = request.POST['pre_internet']
-            s.rate_confidence = request.POST['confidence']
+            s.home_rank = request.POST['rank']                                    
+            s.home_rank_confidence = request.POST['confidence']
                     
             s.save()
             
@@ -138,13 +143,13 @@ def rate(request):
 
     
 
-def app(request):
+def app(request, group=None):
      
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     # save the information from the form into the session
-    logging.info('<app> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
+    logger.info('<app> sid: {} , POST:{}'.format(request.session.session_key, request.POST))    
     
     if request.session['type'] == 'survey':
                 
@@ -163,10 +168,10 @@ def app(request):
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 @require_http_methods(["POST"])
-def review(request):    
+def review(request, group=None):    
     #store app data
     
-    logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     now = datetime.datetime.now()
@@ -175,22 +180,22 @@ def review(request):
         s.selections = createSelections(json.loads(request.POST['selections']))
     s.save()
     
-    logging.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     return render_to_response('review.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
 @require_http_methods(["POST"])
-def thankyou(request):
+def thankyou(request, group=None):
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
     
-    logging.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logger.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if not re.search('Skip', request.POST['answer']): 
         if not 'expect' in request.POST:        
             return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
         
-        logging.info('<thankyou> storing info')
+        logger.info('<thankyou> storing info')
         s = get_object_or_404(Survey, id=request.session['survey_id'])                    
         s.expect = request.POST['expect']                                        
         s.save()
@@ -199,7 +204,7 @@ def thankyou(request):
     
     return render_to_response('thankyou.html', {}, context_instance=RequestContext(request))
 
-def contact(request):
+def contact(request, group=None):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -256,3 +261,7 @@ def export(request):
     html += "</body></html>"
     return HttpResponse(html)
     
+def get_group(name):
+    groups = SurveyGroup.objects.all()
+    group = groups.filter(name=name)[0]
+    return group
