@@ -171,8 +171,19 @@ LOGGING = {
         'simple': {
             'format': '%(levelname)s %(message)s'
         },
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
     },
     'handlers': {
+        'default': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/openday.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },  
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
@@ -182,15 +193,25 @@ LOGGING = {
             'class':'logging.StreamHandler',
             'formatter': 'simple'
         },
+        'file':{
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': 'debug.log'
+        }    
     },
     'loggers': {
+        '': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
         },
         'console': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG',
         }
     
