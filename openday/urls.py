@@ -12,26 +12,27 @@ from openday.models import Survey, Selection
 databrowse.site.register(Survey)
 databrowse.site.register(Selection)
 
-urlpatterns = patterns('',
-    # Examples:
-     url(r'^$', 'openday.views.start'),
-     url(r'^start', 'openday.views.start'),
+from openday import views
+
+urlpatterns = patterns('',                  
+#     url(r'$', views.start),
+     url(r'^(?P<group>\w{4})/start', views.start),
 #     url(r'^gender', 'openday.quest.views.gender'),
-     url(r'^gender', 'openday.views.gender'),
-     url(r'^climate', 'openday.views.climate'),
-     url(r'^rank', 'openday.views.rank'),
-     url(r'^rate', 'openday.views.rate'),
-     url(r'^app', 'openday.views.app'),
-     url(r'^review', 'openday.views.review'),     
-     url(r'^thankyou', 'openday.views.thankyou'),
-     url(r'^export', 'openday.views.export'),
+     url(r'^(?P<group>\w{4})/gender', views.gender),
+     url(r'^(?P<group>\w{4})/climate', views.climate),
+     url(r'^(?P<group>\w{4})/rank', views.rank),
+     url(r'^(?P<group>\w{4})/rate', views.rate),
+     url(r'^(?P<group>\w{4})/app', views.app),
+     url(r'^(?P<group>\w{4})/review', views.review),     
+     url(r'^(?P<group>\w{4})/thankyou', views.thankyou),
+     url(r'export', views.export),
     
-     url(r'^about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
+     url(r'about', 'django.views.generic.simple.direct_to_template', {'template': 'about.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^contact', 'openday.views.contact'),
+    url(r'contact', 'openday.views.contact'),
     # Uncomment the next line to enable the admin:
-     url(r'^admin/', include(admin.site.urls)),
+     url(r'admin/', include(admin.site.urls)),
      #(r'^favicon\.ico$', redirect_to, {'url': '/media/favicon.ico'}),
      (r'^robots\.txt$', 'django.views.generic.simple.direct_to_template', {'template': 'robots.txt', 'mimetype': 'text/plain'}),
      (r'^favicon\.ico$', redirect_to, {'url': ' {{ STATIC_URL }}favicon.ico'}),
