@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="about">
+<div class="about">
 	<form action="climate" method="post" accept-charset="utf-8" onsubmit="check()">
 		{% csrf_token %}
 		{% if error_message %}
