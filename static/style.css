@@ -77,8 +77,8 @@ body {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 0%;
-	margin-left: auto;
-	margin-right: auto;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
 	/*border: 1px dashed #333;*/
 }
 #scenario {

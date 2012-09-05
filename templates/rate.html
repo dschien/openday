@@ -47,26 +47,27 @@
 
 		</script>
 	</head>
+	
 	<body>
-		<div id="header2">
-			<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
-		</div>
-		<div id="about">
-			<form action="app" method="post" accept-charset="utf-8">
-				<h2>Internet Energy Footprint</h2>
-				{% if error_message %}
-				<p>
-					<font color="red">{{ error_message }}</font>
-				</p>
-				{% endif %}
+		<div class="frame"> 
+			<div id="header2">
+				<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>
+			</div>
+			<div class="start">  
+				<form action="app" method="post" accept-charset="utf-8">
+					<h2>Internet Energy Footprint</h2>
+					{% if error_message %}
+					<p>
+						<font color="red">{{ error_message }}</font>
+					</p>
+					{% endif %}
 				
-				<p>
-				<div>
-				<b>
-					8: John uses a desktop PC connected to the Internet via a WiFi router and a broadband modem to browse a website for an hour. In that time he looks at only text and images. Which appliance uses a roughly equivalent amount of energy in an hour?
-				</b>
-				<br>
-						<div id="rating_options">
+					<p>
+				
+					<div class="question"> 
+						<b> 8: John uses a laptop computer connected to the Internet via a WiFi router and a broadband modem to browse a website for an hour. In that time he looks at only text and images. Which appliance uses a roughly equivalent amount of energy in an hour?</b>
+						<br>
+						<div class="question_answers"> 
 							<input type="radio" name="rate" value="1" id='led'>
 							<label for="led">An LED bicycle light (~0.02 Wh) </label>
 							<br>
@@ -77,24 +78,22 @@
 							<label for="bulb">A low-energy light bulb (~2 Wh) </label>
 							<br>
 							<input type="radio" name="rate" value="4" id='tv'>
-							<label for="tv">A 32" LCD television (~70 Wh)</label>
+							<label for="tv">A 32" LED television (~50 Wh)</label>
 							<br>
 							<input type="radio" name="rate" value="6" id='vac'>
 							<label for="vac">A cyclone vacuum cleaner (~250 Wh)</label>
 							<br>
 							<input type="radio" name="rate" value="7" id='kettle'>
 							<label for="kettle">A fast boil kettle (~500 Wh)</label>
-							</dvi>
-						</div>
+						</dvi> 
+					</div> 
+					</p>
+					<p>
 				
-				</div>
-				</p>
-				<p>
-				<div>
-					<div id="confidence_rate">
+					<div class="question"> 
 						<b>9: How confident are you about your choice? </b>
 						<br>
-						<div id="confidence_rate_options">
+						<div class="question_answers"> 
 							<input type="radio" name="confidence" value="4" id='very'>
 							<label for="very">Very</label>
 							<br>
@@ -106,28 +105,25 @@
 							<br>
 							<input type="radio" name="confidence" value="1" id='naall'>
 							<label for="naall">Not at all</label>
-							</dvi>
-						</div>
-					</div>
-				</div>
-				</p>
-				{% csrf_token %}
-				<input id="pre_points" type="hidden" value="-1" runat="server" name="pre_points"/>
-				</div>
-				<div class="submit_button">
-					<div id="OK_button">
-						<input type="submit" value="Continue" name="answer"/>
-					</div>
-					<div id="skip_button">
-						<input type="submit" value="Skip page" name="answer"/>
-					</div>
-				</div>
-			</form>
-		
-		<div id="footer">
-			<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
-			<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
-		</div>
+						</div> 
+					</div> 
+					</p>
+					{% csrf_token %}
+					<input id="pre_points" type="hidden" value="-1" runat="server" name="pre_points"/>
+					<div class="submit_button"> 
+						<div id="OK_button"> 
+							<input type="submit" value="Continue" name="answer"/>
+						</div> 
+						<div id="skip_button"> 
+							<input type="submit" value="Skip page" name="answer"/>
+						</div> 
+					</div> 
+				</form> 
+			 </div>
+			 <div id="footer">
+					<img src="{{ STATIC_URL }}/img/sympact.png" width="160px"/>
+					<img src="{{ STATIC_URL }}/img/CESC.png" width="75px"/>
+			</div>	
 		</div>
 	</body>
 </html>
