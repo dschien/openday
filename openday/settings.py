@@ -196,7 +196,7 @@ LOGGING = {
         'file':{
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': 'debug.log'
+                'filename': 'logs/openday_debug.log'
         }    
     },
     'loggers': {
