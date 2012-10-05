@@ -48,7 +48,7 @@ def gender(request, group=None):
     if request.POST['answer'] == 'Skip survey':
         request.session['type'] = 'skip'
 #        return render_to_response('index.html', {}, context_instance=RequestContext(request))
-        return HttpResponseRedirect(reverse('openday.views.app'))
+        return HttpResponseRedirect(reverse('openday.views.app', kwargs={'group':group}))
     
     # create new survey
     s = Survey() 
@@ -154,14 +154,14 @@ def app(request, group=None):
     if request.session['type'] == 'survey':
                 
         if not re.search('Skip', request.POST['answer']): 
-            if not 'pre_points' in request.POST or request.POST['pre_points'] == -1 \
+            if not 'rate' in request.POST \
                 or not 'confidence' in request.POST:
                     return render_to_response('rate.html', {'error_message':'Please answer each question.'}, context_instance=RequestContext(request))
 
             s = get_object_or_404(Survey, id=request.session['survey_id'])
             
             s.survey_date = datetime.datetime.now()            
-            s.rating = request.POST['pre_points']
+            s.rating = request.POST['rate']
             s.rank_confidence = request.POST['confidence']
             s.save()
             
@@ -192,12 +192,20 @@ def thankyou(request, group=None):
     logger.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
     if not re.search('Skip', request.POST['answer']): 
-        if not 'expect' in request.POST:        
+        if not 'expect' in request.POST or \
+            not 'opinion_change' in request.POST \
+            or request.POST['opinion_change'] == '1' and not 'newrank' in request.POST:                    
             return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
         
         logger.info('<thankyou> storing info')
         s = get_object_or_404(Survey, id=request.session['survey_id'])                    
-        s.expect = request.POST['expect']                                        
+        s.expect = request.POST['expect']
+        opc = int(request.POST['opinion_change'])     
+        logger.info (opc)
+        s.opinion_change = bool(opc)
+        if s.opinion_change:
+            s.new_rank = request.POST['newrank']                                        
+        
         s.save()
             # reset the session information
     del request.session['survey_id']
@@ -265,3 +273,9 @@ def get_group(name):
     groups = SurveyGroup.objects.all()
     group = groups.filter(name=name)[0]
     return group
+
+
+def disclaimer(request, group=None):
+    return render_to_response('start.html', {'group':'none'}, context_instance=RequestContext(request))
+
+

@@ -50,10 +50,12 @@ class Survey(models.Model):
     home_rank = models.IntegerField('home ranking (more,less,same)', null=True)
     home_rank_confidence = models.IntegerField('ranking confidence for home to internet ratio', null=True)
 
-    rating = models.FloatField('rating', null=True)
+    rating = models.IntegerField('rating', null=True)
     rate_confidence = models.IntegerField('rating confidence', null=True)
 
     expect = models.IntegerField('expectation met', null=True)    
+    new_rank = models.IntegerField('ranking after app', null=True)    
+    opinion_change = models.NullBooleanField('opinion changed by survey', null=True)    
     
     selections = models.ManyToManyField(Selection)
     
