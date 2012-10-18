@@ -51,7 +51,7 @@ p{ font-size:14px}
 	padding: 20px;
 	padding-top: 20px;*/
 #footer{
-	position:absolute;
+	position:relative;
 	bottom:0px;
 	float:left;
 	width: 900px;
