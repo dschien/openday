@@ -10,7 +10,8 @@ p{ font-size:14px}
 	width: 1000px;
 	position: relative;
 	top: 0px;
-	height: 680px;
+	min-height: 680px;
+	height: auto;	
 	margin-right:auto;
 	margin-left:auto;
 	overflow:hidden;
