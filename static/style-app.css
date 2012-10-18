@@ -7,8 +7,9 @@ body {
 	width: 1000px;
 	position: relative;
 	top: 0px;
-	left: 0px;
 	height: 680px;
+	margin-right:auto;
+	margin-left:auto;
 }
 .submit_button{
 	position:relative;

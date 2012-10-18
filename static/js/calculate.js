@@ -171,6 +171,10 @@ function calc() {
 			document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#C7E2EC; border-radius:400px;"></div>'
 			document.getElementById('text_device').innerHTML = "<h2>" + deviceType.capitalize() + "<br/><br/></h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 		
+
+		document.getElementById('text_access').innerHTML = ""
+
+
 			var circle_internet = Math.round(Math.sqrt(max_size * (e_internet / 3600) / 3.1416))
 			margin = (100 - circle_internet) / 2
 			margintop = (100 - circle_internet) / 3
