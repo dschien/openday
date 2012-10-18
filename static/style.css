@@ -16,8 +16,16 @@ p{ font-size:14px}
 	margin-left:auto;
 	overflow:hidden;
 }
-#header2 {
+#header {
 	float: left;
+	position: relative;
+	width: 350px;
+	height: 30px;
+	padding: 20px;
+	padding-top: 20px;
+}
+#header2 {
+	float: right;
 	position: relative;
 	width: 350px;
 	height: 30px;
