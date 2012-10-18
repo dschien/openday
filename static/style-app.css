@@ -10,6 +10,7 @@ body {
 	height: 680px;
 	margin-right:auto;
 	margin-left:auto;
+	overflow:hidden;
 }
 .submit_button{
 	position:relative;

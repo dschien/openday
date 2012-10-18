@@ -172,7 +172,7 @@ function calc() {
 			document.getElementById('text_device').innerHTML = "<h2>" + deviceType.capitalize() + "<br/><br/></h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 		
 
-		document.getElementById('text_access').innerHTML = ""
+		document.getElementById('text_access').innerHTML = " "
 
 
 			var circle_internet = Math.round(Math.sqrt(max_size * (e_internet / 3600) / 3.1416))

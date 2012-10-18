@@ -5,17 +5,22 @@ body {
 	padding: 0px;
 }
 /* Basic layout */
-.frame {
+#frame {
+	width: 1000px;
+	position: relative;
+	top: 0px;
+	height: 680px;
+	margin-right:auto;
+	margin-left:auto;
 	overflow:hidden;
-	height:1%;
-	text-align: left;
-	margin-left: 0px;
-	margin-top: 0px;
-	width: 100%;
-	max-width: 800px;
-	min_width: 200px;
-	padding-top: 0px;
-	/*background-color: #eee;*/
+}
+#header2 {
+	float: left;
+	position: relative;
+	width: 350px;
+	height: 30px;
+	padding: 20px;
+	padding-top: 20px;
 }
 .submit_button{
 	position:relative;
