@@ -162,7 +162,7 @@ def app(request, group=None):
             
             s.survey_date = datetime.datetime.now()            
             s.rating = request.POST['rate']
-            s.rank_confidence = request.POST['confidence']
+            s.rate_confidence = request.POST['confidence']
             s.save()
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
