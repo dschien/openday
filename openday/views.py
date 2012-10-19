@@ -167,11 +167,11 @@ def app(request, group=None):
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))
 
-@require_http_methods(["POST"])
-def review(request, group=None):    
-    #store app data
+
+@require_http_methods(["POST"])    
+def prereview(request, group=None):
     
-    logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    logger.info('<prereview> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     s = get_object_or_404(Survey, id=request.session['survey_id'])
     now = datetime.datetime.now()
@@ -180,8 +180,28 @@ def review(request, group=None):
         s.selections = createSelections(json.loads(request.POST['selections']))
     s.save()
     
+    logger.info('<prereview> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
+    return render_to_response('prereview.html', {'type':request.session['type']}, context_instance=RequestContext(request))
+    
+@require_http_methods(["POST"])
+def review(request, group=None):    
     logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
-    return render_to_response('review.html', {'type':request.session['type']}, context_instance=RequestContext(request))
+    
+    if not re.search('Skip', request.POST['answer']): 
+        if not 'opinion_change' in request.POST:                    
+            return render_to_response('prereview.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+        
+    s = get_object_or_404(Survey, id=request.session['survey_id'])                    
+    opc = int(request.POST['opinion_change'])
+    logger.info (opc)
+    s.opinion_change = bool(opc)
+    s.save()
+    
+    if s.opinion_change:
+        return render_to_response('review.html', {}, context_instance=RequestContext(request))
+    return render_to_response('review_no_change.html', {}, context_instance=RequestContext(request))
+    
+
 
 @require_http_methods(["POST"])
 def thankyou(request, group=None):
@@ -191,18 +211,19 @@ def thankyou(request, group=None):
     
     logger.info('<thankyou> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
 
-    if not re.search('Skip', request.POST['answer']): 
-        if not 'expect' in request.POST or \
-            not 'opinion_change' in request.POST \
-            or request.POST['opinion_change'] == '1' and not 'newrank' in request.POST:                    
-            return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+    if not re.search('Skip', request.POST['answer']):
+        
+        s = get_object_or_404(Survey, id=request.session['survey_id'])                    
+         
+        if not 'expect' in request.POST \
+            or s.opinion_change and not 'newrank' in request.POST:                    
+                if s.opinion_change:
+                    return render_to_response('review.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
+                return render_to_response('review_no_change.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
         
         logger.info('<thankyou> storing info')
-        s = get_object_or_404(Survey, id=request.session['survey_id'])                    
         s.expect = request.POST['expect']
-        opc = int(request.POST['opinion_change'])     
-        logger.info (opc)
-        s.opinion_change = bool(opc)
+             
         if s.opinion_change:
             s.new_rank = request.POST['newrank']                                        
         
@@ -277,5 +298,7 @@ def get_group(name):
 
 def disclaimer(request, group=None):
     return render_to_response('start.html', {'group':'none'}, context_instance=RequestContext(request))
+
+
 
 

@@ -180,7 +180,7 @@
 				</div>
 				<div id="continue">
 					{%if type == 'survey'%}
-					<form action="review" method="post" accept-charset="utf-8" id='postForm'>
+					<form action="prereview" method="post" accept-charset="utf-8" id='postForm'>
 						{% csrf_token %}
 						<input type="submit" value="Finish" onclick="submitSelections()"/>
 						<input type="hidden" name="selections" id="selections"/>
