@@ -72,13 +72,6 @@
 					}
 				});
 			});
-			function init(){				
-				alert("Here is the scenario from the text. Have a good look at it, OK? We'll question you about it afterwards.")
-				$("#selected_service li").first().click();
-				// $("#selected_service li").click();
-				$("#selectable li").first().next().next().click();
-				$("#selectable2 li").first().click();
-			}
 		</script>
 		<script type="text/javascript">
 
@@ -94,13 +87,14 @@
 
 		</script>
 	</head>
-	<body onload="init()">
 		<div id="frame">
 			<div id="header2">
 				<a href="start"><img src="{{STATIC_URL}}img/guardian.gif" width="200px"/></a>	
 			</div>	
 			<div id="column_right">
 				<div id="bignr">
+					<h1><br/>Explore how much energy does visiting The Guardian website really consumes!</h1>
+					<h2>Choose in the left column different configurations and experiment how the energy consumption changes.</h2>
 				</div>
 				<div id="blurb"></div>
 				<div id="lightBulb" class="comparison"></div>
@@ -175,20 +169,6 @@
 						<input type="text" id="duration" style="border:0px; font-size:14px; font-weight:bold; width:30px" />
 						Minutes
 					</p>
-				</div>
-				<div id="continue">
-					{%if type == 'survey'%}
-					<form action="prereview" method="post" accept-charset="utf-8" id='postForm'>
-						{% csrf_token %}
-						<input type="submit" value="Finish" onclick="submitSelections()"/>
-						<input type="hidden" name="selections" id="selections"/>
-					</form>
-					{% else %}
-					<form action="start" method="post" accept-charset="utf-8">
-						{% csrf_token %}
-						<input type="submit" value="Restart"/>
-					</form>
-					{% endif %}
 				</div>
 			</div>
 			<div id="footer">
