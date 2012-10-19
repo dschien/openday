@@ -168,14 +168,14 @@ function calc() {
 			var circle_user = Math.round(Math.sqrt(max_size * (e_user / 3600) / 3.1416))
 			margin = (100 - circle_user) / 2
 			margintop = (100 - circle_user) / 3
-			document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#C7E2EC; border-radius:400px;"></div>'
+			document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#C7E2EC; border-radius:400px; -moz-border-radius:400px;"></div>'
 			document.getElementById('text_device').innerHTML = "<h2>" + deviceType.capitalize() + "<br/><br/></h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 
 
 			var circle_internet = Math.round(Math.sqrt(max_size * (e_internet / 3600) / 3.1416))
 			margin = (100 - circle_internet) / 2
 			margintop = (100 - circle_internet) / 3
-			document.getElementById('circle_infra').innerHTML = '<div style="width:' + circle_internet + 'px; height:' + circle_internet + 'px; margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#51A1B7; border-radius:300px;"></div>'
+			document.getElementById('circle_infra').innerHTML = '<div style="width:' + circle_internet + 'px; height:' + circle_internet + 'px; margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#51A1B7; border-radius:300px; -moz-border-radius:300px;"></div>'
 			document.getElementById('text_infra').innerHTML = "<h2>Internet   <br/><br/></h2><p>" + Math.round(e_internet / 36) / 100 + " Wh</p><p> " + Math.round(p_internet) + " &#37;</p>"
 
 			document.getElementById('circle_access').innerHTML = '<div> </div>'
@@ -188,20 +188,20 @@ function calc() {
 		var circle_user = Math.round(Math.sqrt(max_size * (e_user / 3600) / 3.1416))
 		margin = (100 - circle_user) / 2
 		margintop = (100 - circle_user) / 3
-		document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#C7E2EC; border-radius:400px;"></div>'
+		document.getElementById('circle_device').innerHTML = '<div style="width:' + circle_user + 'px; height:' + circle_user + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#C7E2EC; border-radius:400px; -moz-border-radius:400px;"></div>'
 		document.getElementById('text_device').innerHTML = "<h2>" + deviceType.capitalize() + "<br/><br/></h2><p>" + Math.round(e_user / 36) / 100 + " Wh</p><p> " + Math.round(p_user) + " &#37;</p>"
 		
 		var circle_acc_net = Math.round(Math.sqrt(max_size * (e_acc_net / 3600) / 3.1416))
 		margin = (100 - circle_acc_net) / 2
 		margintop = (100 - circle_acc_net) / 3
 		
-		document.getElementById('circle_access').innerHTML = '<div style="width:' + circle_acc_net + 'px; height:' + circle_acc_net + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#A3C3D8; border-radius:300px;"></div>'
+		document.getElementById('circle_access').innerHTML = '<div style="width:' + circle_acc_net + 'px; height:' + circle_acc_net + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#A3C3D8; border-radius:300px; -moz-border-radius:300px;"></div>'
 		document.getElementById('text_access').innerHTML = "<h2>Home Wi-Fi<br/><br/></h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p><p> " + Math.round(p_acc_net) + " &#37;</p>"
 
 		var circle_internet = Math.round(Math.sqrt(max_size * (e_internet / 3600) / 3.1416))
 		margin = (100 - circle_internet) / 2
 		margintop = (100 - circle_internet) / 3
-		document.getElementById('circle_infra').innerHTML = '<div style="width:' + circle_internet + 'px; height:' + circle_internet + 'px; margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#51A1B7; border-radius:300px;"></div>'
+		document.getElementById('circle_infra').innerHTML = '<div style="width:' + circle_internet + 'px; height:' + circle_internet + 'px; margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#51A1B7; border-radius:300px; -moz-border-radius:300px;"></div>'
 		document.getElementById('text_infra').innerHTML = "<h2>Internet<br/><br/></h2></h2><p>" + Math.round(e_internet / 36) / 100 + " Wh</p><p> " + Math.round(p_internet) + " &#37;</p>"
 	
 		
