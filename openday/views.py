@@ -57,7 +57,11 @@ def gender(request, group=None):
     # create new survey
     s = Survey() 
     s.survey_date = datetime.datetime.now()
-    s.group = get_group(group)
+    try:
+        s.group = get_group(group)
+    except:
+        return redirect(reverse('start_view', args=['main']))
+    
     s.save()
     request.session['survey_id'] = s.id
     request.session['type'] = 'survey'
@@ -306,6 +310,7 @@ def get_group(group_name):
     group_res = groups.filter(name=group_name)
     if len(group_res) == 0:
         logger.error('could not find group %s' % group_name)
+        raise Exception("Group not found")
     return group_res[0]
 
 
@@ -314,7 +319,11 @@ def disclaimer(request, group=None):
     return render_to_response('start.html', {'group':'none'}, context_instance=RequestContext(request))
 
 def redirection_view(request, group='main'):
-    logger.info("view: " + str(stack()[0][3]))    
-    return redirect(reverse('start_view', args=[group if group else 'main']))
+    logger.info("view: " + str(stack()[0][3]))
+    try:
+        get_group(group)
+    except:
+        return redirect(reverse('start_view', args=['main']))
+    return redirect(reverse('start_view', args=[group]))
 
 
