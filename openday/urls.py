@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.core.urlresolvers import reverse
 from django.views.generic.simple import redirect_to
 from django.views.generic import ListView
 # Uncomment the next two lines to enable the admin:
@@ -15,7 +16,7 @@ databrowse.site.register(Selection)
 from openday import views
 
 urlpatterns = patterns('',                       
-     url(r'^(?P<group>\w+)/start', views.start),
+     url(r'^(?P<group>\w+)/start', views.start, name="start_view"),
 #     url(r'$', redirect_to, {'url': '/openday/test/start'}), 
 #     url(r'^gender', 'openday.quest.views.gender'),
      url(r'^(?P<group>\w+)/gender', views.gender),
@@ -42,6 +43,6 @@ urlpatterns = patterns('',
             context_object_name='past_surveys_list',
             template_name='list.html')),
     (r'^databrowse/(.*)', databrowse.site.root),
-    url(r'^(?P<group>\w+$)', views.redirection_view),
-    url(r'^$', views.redirection_view,  {'group': 'main'}),
+    url(r'^(?P<group>\w+)$', views.redirection_view),
+    url(r'^$', views.redirection_view)
 )

@@ -1,0 +1,16 @@
+[
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 1,
+    "fields": {
+      "name": "main"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 2,
+    "fields": {
+      "name": "longname"
+    }
+  } 
+]

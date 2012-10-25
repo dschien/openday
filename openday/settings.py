@@ -119,7 +119,7 @@ TEMPLATE_LOADERS = (
 )
 
 
-#TEMPLATE_CONTEXT_PROCESSORS= ()
+#TEMPLATE_CONTEXT_PROCESSORS= ('django.core.context_processors.request','django.contrib.auth.context_processors.auth')
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',

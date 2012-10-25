@@ -40,7 +40,7 @@ def start(request, group=None):
     
 @require_http_methods(["POST"])    
 def gender(request, group=None):
-    logger.info("view: " + str(stack()[0][3]))
+    logger.info("view %s, group %s" % (str(stack()[0][3]),group))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
@@ -301,20 +301,20 @@ def export(request):
     html += "</body></html>"
     return HttpResponse(html)
     
-def get_group(name):
+def get_group(group_name):
     groups = SurveyGroup.objects.all()
-    group = groups.filter(name=name)[0]
-    return group
+    group_res = groups.filter(name=group_name)
+    if len(group_res) == 0:
+        logger.error('could not find group %s' % group_name)
+    return group_res[0]
 
 
 def disclaimer(request, group=None):
     logger.info("view: " + str(stack()[0][3]))
     return render_to_response('start.html', {'group':'none'}, context_instance=RequestContext(request))
 
-def redirection_view(request, group=None):
-    logger.info("view: " + str(stack()[0][3]))
-    target_view = '/' + group + '/start'
-    logger.info("Group:" + group if group else ' no group defined')    
-    return redirect(target_view)
+def redirection_view(request, group='main'):
+    logger.info("view: " + str(stack()[0][3]))    
+    return redirect(reverse('start_view', args=[group if group else 'main']))
 
 
