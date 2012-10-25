@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from forms import ContactForm
@@ -13,13 +13,17 @@ import json
 from openday.models import SurveyGroup
 #import pdb;
 
+# get current method 
+# from http://stackoverflow.com/questions/894088/how-do-i-get-the-current-file-current-class-and-current-method-with-python 
+from inspect import stack
+
 # Create your views here.
 
 #https://docs.djangoproject.com/en/dev/ref/request-response/#django.http.HttpResponse.set_cookie
 logger = logging.getLogger(__name__)
 
 def start(request, group=None):
-
+    logger.info("view: " + str(stack()[0][3]))
     logger.info("Group:" + group if group else ' no group defined')
     if not group:
         # if it doesn't have a group -> run in no-tracking mode
@@ -36,7 +40,7 @@ def start(request, group=None):
     
 @require_http_methods(["POST"])    
 def gender(request, group=None):
-
+    logger.info("view: " + str(stack()[0][3]))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
@@ -62,6 +66,7 @@ def gender(request, group=None):
 
 @require_http_methods(["POST"])
 def climate(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     # no data to show
     if not request.session:
         # if it doesn't have a session -> start again
@@ -90,6 +95,7 @@ def climate(request, group=None):
 
 @require_http_methods(["POST"])
 def rank(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
@@ -120,6 +126,7 @@ def rank(request, group=None):
 
 @require_http_methods(["POST"])
 def rate(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
@@ -144,7 +151,7 @@ def rate(request, group=None):
     
 
 def app(request, group=None):
-     
+    logger.info("view: " + str(stack()[0][3]))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
@@ -170,7 +177,7 @@ def app(request, group=None):
 
 @require_http_methods(["POST"])    
 def prereview(request, group=None):
-    
+    logger.info("view: " + str(stack()[0][3]))
     logger.info('<prereview> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     s = get_object_or_404(Survey, id=request.session['survey_id'])
@@ -184,7 +191,8 @@ def prereview(request, group=None):
     return render_to_response('prereview.html', {'type':request.session['type']}, context_instance=RequestContext(request))
     
 @require_http_methods(["POST"])
-def review(request, group=None):    
+def review(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))    
     logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
     if not re.search('Skip', request.POST['answer']): 
@@ -205,6 +213,7 @@ def review(request, group=None):
 
 @require_http_methods(["POST"])
 def thankyou(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))
@@ -234,6 +243,7 @@ def thankyou(request, group=None):
     return render_to_response('thankyou.html', {}, context_instance=RequestContext(request))
 
 def contact(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -253,6 +263,7 @@ def contact(request, group=None):
     
 
 def createSelections(jsonArray):
+    
     # iterate over all
     list = []
     for json in jsonArray:
@@ -297,8 +308,13 @@ def get_group(name):
 
 
 def disclaimer(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
     return render_to_response('start.html', {'group':'none'}, context_instance=RequestContext(request))
 
-
+def redirection_view(request, group=None):
+    logger.info("view: " + str(stack()[0][3]))
+    target_view = '/' + group + '/start'
+    logger.info("Group:" + group if group else ' no group defined')    
+    return redirect(target_view)
 
 

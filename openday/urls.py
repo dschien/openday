@@ -14,7 +14,7 @@ databrowse.site.register(Selection)
 
 from openday import views
 
-urlpatterns = patterns('',                  
+urlpatterns = patterns('',                       
      url(r'^(?P<group>\w+)/start', views.start),
 #     url(r'$', redirect_to, {'url': '/openday/test/start'}), 
 #     url(r'^gender', 'openday.quest.views.gender'),
@@ -42,4 +42,6 @@ urlpatterns = patterns('',
             context_object_name='past_surveys_list',
             template_name='list.html')),
     (r'^databrowse/(.*)', databrowse.site.root),
+    url(r'^(?P<group>\w+$)', views.redirection_view),
+    url(r'^$', views.redirection_view,  {'group': 'main'}),
 )
