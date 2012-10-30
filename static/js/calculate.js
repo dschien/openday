@@ -87,6 +87,7 @@ function calc() {
 			break;
 		case 'pc':
 			p_device = 115
+			deviceType = 'PC'
 			break;
 		default:
 			// default is laptop
@@ -196,7 +197,7 @@ function calc() {
 		margintop = (100 - circle_acc_net) / 3
 		
 		document.getElementById('circle_access').innerHTML = '<div style="width:' + circle_acc_net + 'px; height:' + circle_acc_net + 'px;margin-left:' + margin + 'px;margin-top:' + margintop + 'px; background:#A3C3D8; border-radius:300px; -moz-border-radius:300px;"></div>'
-		document.getElementById('text_access').innerHTML = "<h2>Home Wi-Fi<br/><br/></h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p><p> " + Math.round(p_acc_net) + " &#37;</p>"
+		document.getElementById('text_access').innerHTML = "<h2>Home WiFi<br/><br/></h2><p>" + Math.round(e_acc_net / 36) / 100 + " Wh</p><p> " + Math.round(p_acc_net) + " &#37;</p>"
 
 		var circle_internet = Math.round(Math.sqrt(max_size * (e_internet / 3600) / 3.1416))
 		margin = (100 - circle_internet) / 2
@@ -243,7 +244,7 @@ function setBlurb() {
 			text = text + "using a mobile phone "
 			break;
 		case 'tablet':
-			text = text + "using a tablet such as iPad "
+			text = text + "using a tablet such as an iPad "
 			break;
 		case 'pc':
 			text = text + "using a desktop computer "
@@ -254,7 +255,7 @@ function setBlurb() {
 	}
 
 	if(currentSelection['connection'] == 'M') {
-		text = text + "connected to the Internet by a mobile networks (GPRS, 3G, etc.) "
+		text = text + "connected to the Internet by a mobile network (GPRS, 3G, etc.) "
 	} else {
 		text = text + "connected to the Internet by domestic broadband modem and WiFi router "
 	}
