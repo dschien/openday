@@ -12,5 +12,96 @@
     "fields": {
       "name": "longname"
     }
-  } 
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 3,
+    "fields": {
+      "name": "test"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 4,
+    "fields": {
+      "name": "opendoors"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 5,
+    "fields": {
+      "name": "cs"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 6,
+    "fields": {
+      "name": "sust"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 7,
+    "fields": {
+      "name": "gurt"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 8,
+    "fields": {
+      "name": "lj"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 9,
+    "fields": {
+      "name": "gumtree"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 10,
+    "fields": {
+      "name": "btg"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 11,
+    "fields": {
+      "name": "bust"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 12,
+    "fields": {
+      "name": "pml"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 13,
+    "fields": {
+      "name": "bristol"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 14,
+    "fields": {
+      "name": "school"
+    }
+  },
+  {
+    "model": "openday.SurveyGroup",
+    "pk": 15,
+    "fields": {
+      "name": "zebras"
+    }
+  }   
 ]
