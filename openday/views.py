@@ -199,6 +199,10 @@ def review(request, group=None):
     logger.info("view: " + str(stack()[0][3]))    
     logger.info('<review> sid: {} , POST:{}'.format(request.session.session_key, request.POST))
     
+    if re.search('Skip', request.POST['answer']):
+        del request.session['survey_id']
+        return render_to_response('thankyou.html', {}, context_instance=RequestContext(request))
+    
     if not re.search('Skip', request.POST['answer']): 
         if not 'opinion_change' in request.POST:                    
             return render_to_response('prereview.html', {'error_message':'Please choose one answer'}, context_instance=RequestContext(request))
