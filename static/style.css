@@ -7,6 +7,10 @@ body {
 p { 
 	font-size:14px
 }
+p.rank {
+	font-size:14px
+}
+
 /* Basic layout */
 #frame {
 	width: 1000px;
