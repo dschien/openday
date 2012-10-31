@@ -26,11 +26,11 @@ class SurveyAdmin(admin.ModelAdmin):
     search_fields = ['it_pre']
     date_hierarchy = 'survey_date'  
     
-    def has_add_permission(self, request):
-        return False
-    
-    def has_change_permission(self, request, obj=None):
-        return False
+#    def has_add_permission(self, request):
+#        return False
+#    
+#    def has_change_permission(self, request, obj=None):
+#        return False
 
 admin.site.register(SurveyGroup, SurveyGroupAdmin)
 admin.site.register(Selection, SelectionAdmin)
