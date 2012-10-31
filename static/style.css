@@ -116,9 +116,11 @@ p {
 	margin-bottom: 20px;
 	float: left;
 	width: 50%;
+	font-size: 14px;
 }
 .question{
-float: left;
+	float: left;
+	font-size: 14px;
 }
 
 #skip_button {
