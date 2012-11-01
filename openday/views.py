@@ -174,6 +174,9 @@ def app(request, group=None):
             s.survey_date = datetime.datetime.now()            
             s.rating = request.POST['rate']
             s.rate_confidence = request.POST['confidence']
+            if 'HTTP_USER_AGENT' in request.META:
+                data = request.META['HTTP_USER_AGENT']
+                s.ua = (data[:9995] + '..') if len(data) > 9995 else data  
             s.save()
             
     return render_to_response('index.html', {'type':request.session['type']}, context_instance=RequestContext(request))

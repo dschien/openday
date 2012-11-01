@@ -73,7 +73,7 @@
 				});
 			});
 			function init(){				
-				alert("Here is the scenario from the text. Have a good look at it, OK? We'll question you about it afterwards.")
+				alert("Here is the scenario presented in our survey. Have a good look at it, OK? We'll question you about it afterwards.")
 				$("#selected_service li").first().click();
 				// $("#selected_service li").click();
 				$("#selectable li").first().next().next().click();
@@ -94,7 +94,11 @@
 
 		</script>
 	</head>
-	<body onload="init()">
+	{%if type == 'survey'%}
+		<body onload="init()">
+	{% else %}
+		<body>
+	{% endif %}		
 		<div id="frame">
 			<div id="header2">
 				<a href="start"><img src="{{STATIC_URL}}img/bristol.gif" width="200px"/></a>	

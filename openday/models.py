@@ -11,7 +11,7 @@ class Contact(models.Model):
 class SurveyGroup(models.Model):
     name = models.CharField(max_length=200)
     def __unicode__(self):
-        return  u'%s' %  self.name
+        return  u'%s' % self.name
     
 class Selection(models.Model):
     DEVICE_CHOICES = (
@@ -58,6 +58,8 @@ class Survey(models.Model):
     opinion_change = models.NullBooleanField('opinion changed by survey', null=True)    
     
     selections = models.ManyToManyField(Selection)
+    
+    ua = models.CharField(max_length=10000, null=True)
     
 #    # ------------- selections --------------------
 #    _selections = models.TextField(
