@@ -40,7 +40,7 @@ def start(request, group=None):
     
 @require_http_methods(["POST"])    
 def gender(request, group=None):
-    logger.info("view %s, group %s" % (str(stack()[0][3]),group))
+    logger.info("view %s, group %s" % (str(stack()[0][3]), group))
     if not request.session :
         # if it doesn't have a session -> start again
         return render_to_response('start.html', {'error_message': "Your session had time out. Start again.", }, context_instance=RequestContext(request))             
@@ -299,7 +299,8 @@ def export(request):
     
     s = Survey.objects.get(pk=1)
     fields = ""
-    for field in ['acc_net', 'age', 'cc', 'cit', 'duration', 'expect', 'gender', 'id', 'internet', 'it', 'laptop', 'pk', 'rank_confidence', 'rate_confidence', 'rating', 'servers', 'survey_date']:        
+#    for field in ['acc_net', 'age', 'cc', 'cit', 'duration', 'expect', 'gender', 'group','home_rank','home_rank_confidence', 'id', 'internet', 'it', 'laptop', 'new_rank','opinion_change','pk', 'rank_confidence', 'rate_confidence', 'rating', 'servers', 'survey_date','ua']:        
+    for field in ['age', 'cc', 'cit', 'duration', 'expect', 'gender', 'group', 'home_rank', 'home_rank_confidence', 'id', 'it', 'new_rank', 'opinion_change', 'pk', 'rate_confidence', 'rating', 'survey_date', 'ua']:        
         fields += field + ","
     
 #    fields += s.get_acc_net_display()
@@ -307,7 +308,8 @@ def export(request):
     html += fields
     html += "<br>"
     for s in list:
-        html += "{}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {} , {} , {} , {} , {}".format(s.acc_net, s.age, s.cc, s.cit, s.duration, s.expect, s.gender, s.id, s.internet, s.it, s.laptop, s.pk, s.rank_confidence, s.rate_confidence, s.rating, s.servers, s.survey_date)
+#        html += "{}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {} , {} , {} , {} , {}".format(s.acc_net, s.age, s.cc, s.cit, s.duration, s.expect, s.gender, s.group,s.home_rank, s.home_rank_confidence,s.id, s.internet, s.it, s.laptop, s.new_rank,s.opinion_change,s.pk, s.rank_confidence, s.rate_confidence, s.rating, s.servers, s.survey_date,s.ua)
+        html += "{}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {} , {} , {} , {} , {}".format(s.age, s.cc, s.cit, s.duration, s.expect, s.gender, s.group, s.home_rank, s.home_rank_confidence, s.id, s.it, s.new_rank, s.opinion_change, s.pk, s.rate_confidence, s.rating, s.survey_date, s.ua)
         html += "<br>"
     html += "</body></html>"
     return HttpResponse(html)
