@@ -121,7 +121,8 @@ function calc() {
 	var e_origin = e_origin_per_request * pageLoads
 	var e_3rdp = 6.9E-006 * dataVolume * pageLoads
 	var e_serv = e_3rdp + e_origin
-	var e_network = 5.8616855E-6 * dataVolume * pageLoads
+	// 0.000045 J/b = 0.1 kWh/GB
+	var e_network = 0.000045 * dataVolume * pageLoads 
 
 	var e_acc_net = 0
 	switch(connectionType) {
